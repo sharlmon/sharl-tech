@@ -1,0 +1,604 @@
+:root {
+    --bg-dark: #050505;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --border-light: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --accent-glow: rgba(255, 255, 255, 0.5);
+    --font-heading: 'Syncopate', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+    /* Custom cursor implementation later or just styling */
+}
+
+/* Custom Cursor */
+/* We will stick to default for now for usability, or add a simple dot follower in JS */
+* {
+    cursor: auto;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* 3D Canvas */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.6;
+    /* Slight dim to let text pop */
+    pointer-events: none;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    /* Cool effect on white/black */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo .thin {
+    font-weight: 300;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links li a {
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background: white;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.btn-nav {
+    border: 1px solid white;
+    padding: 8px 20px;
+    border-radius: 0;
+    /* Sharp edges for high end feel */
+}
+
+.btn-nav:hover {
+    background: white;
+    color: black;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.glitch {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: var(--text-muted);
+}
+
+.hero-btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Tech Buttons */
+.btn {
+    padding: 15px 40px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    color: white;
+    /* Tech Corner Cut */
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    letter-spacing: 4px;
+    /* Expanding text effect */
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-primary {
+    background: white;
+    color: black;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    /* Keep primary solid but add glow */
+}
+
+/* Scroll Indication */
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+}
+
+.mouse {
+    width: 20px;
+    height: 35px;
+    border: 1px solid white;
+    border-radius: 15px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 6px;
+    background: white;
+    animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+    0% {
+        top: 5px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 20px;
+        opacity: 0;
+    }
+}
+
+/* Section Common */
+.section {
+    padding: 120px 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+}
+
+/* Hex Grid */
+.hex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hex-wrapper {
+    position: relative;
+    width: 250px;
+    height: 270px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.05));
+    transition: 0.3s;
+}
+
+.hex-wrapper:hover {
+    transform: translateY(-10px) scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+    z-index: 10;
+}
+
+.hex {
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.9);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid var(--border-light);
+    /* This doesn't work well with clip-path */
+    /* Alternative border approach: Inset shadow or pseudo element */
+    position: relative;
+}
+
+/* Fix hexagon border visual */
+.hex::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: black;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+}
+
+.hex-wrapper:hover .hex {
+    background: white;
+}
+
+.hex-content {
+    background: transparent;
+    z-index: 2;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.hex-wrapper:hover .hex-content {
+    color: black;
+}
+
+.hex i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.hex h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.hex p {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    opacity: 0.7;
+}
+
+/* Pricing Grid */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.pricing-card.featured {
+    border-color: white;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: white;
+    color: black;
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transform: translateZ(20px);
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 20px;
+    transform: translateZ(30px);
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin-top: 10px;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 40px;
+    transform: translateZ(20px);
+}
+
+.features li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.features li i {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.btn-block {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid white;
+    transform: translateZ(40px);
+    /* 3D pop */
+}
+
+.btn-block:hover {
+    background: white;
+    color: black;
+}
+
+/* Footer & Contact */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: center;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contact-item {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-form-wrapper {
+    flex: 1;
+    min-width: 300px;
+    background: var(--glass-bg);
+    padding: 30px;
+    border: 1px solid var(--border-light);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-light);
+    padding: 15px;
+    margin-bottom: 20px;
+    color: white;
+    font-family: var(--font-body);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: white;
+}
+
+.footer-bottom {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-light);
+    padding-top: 30px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        /* Solid bg for mobile readability */
+    }
+
+    .nav-links {
+        display: none;
+        /* Hidden by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: black;
+        flex-direction: column;
+        padding: 40px;
+        text-align: center;
+        gap: 30px;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .nav-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+    }
+
+    .hamburger {
+        display: block;
+        /* Show hamburger */
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .hero h1.glitch {
+        font-size: 2.5rem;
+        /* Smaller for mobile */
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+    }
+
+    .pricing-grid,
+    .hex-grid {
+        gap: 40px;
+    }
+
+    .pricing-card {
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

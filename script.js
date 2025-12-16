@@ -184,6 +184,16 @@ const servicesData = {
     }
 };
 
+// Navbar Scroll Effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
 // Modal Logic
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('service-modal');
@@ -227,5 +237,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = 'hidden'; // Prevent scrolling
             }
         });
+    });
+
+    // Close Modal Logic
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Close on outside click
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
     });
 });

@@ -110,6 +110,17 @@
         @media (max-width: 768px) {
             .order-layout {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .order-summary {
+                position: relative;
+                top: 0;
+                margin-bottom: 30px;
+            }
+
+            .order-container {
+                padding: 100px 20px 40px;
             }
         }
     </style>
@@ -156,7 +167,11 @@
                     <div class="req-id">SESSION ID: <span id="session-id"></span></div>
                 </div>
 
-                <form class="transmission-form" action="thank-you.html">
+                <form class="transmission-form" action="https://formsubmit.co/sharlmon19@gmail.com" method="POST">
+                    <input type="hidden" name="_next" value="https://sharl-tech.netlify.app/thank-you.html">
+                    <input type="hidden" name="_subject" value="New Service Order - Sharl Tech">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
                     <input type="hidden" id="form-item-name" name="item_name">
 
                     <div class="input-group">

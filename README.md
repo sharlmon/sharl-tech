@@ -1,6 +1,6 @@
-# Sharl Tech - Premium Web Solutions
+# SHARL-TECH - Premium Web Solutions
 
-A modern, futuristic landing page for **Sharl Tech**, a web design and hosting company.
+A modern, futuristic landing page for **SHARL-TECH**, a web design and hosting company.
 
 ## 🚀 Features
 
@@ -50,7 +50,7 @@ The site features:
 
 ## 📄 License
 
-© 2025 Sharl Tech. All Rights Reserved.
+© 2025 SHARL-TECH. All Rights Reserved.
 
 ## 📞 Contact
 

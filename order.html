@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Configuration | SHARL-TECH</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .order-container {
+            padding: 150px 20px 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        .order-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        /* Order Summary Panel */
+        .order-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 150px;
+            height: fit-content;
+        }
+
+        .order-header {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .order-type {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .order-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .order-price {
+            font-size: 2rem;
+            color: #4ade80;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .order-desc {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .order-features {
+            list-style: none;
+        }
+
+        .order-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #eee;
+        }
+
+        .order-features li i {
+            color: #4ade80;
+        }
+
+        /* Requisition Form Panel */
+        .requisition-panel {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-light);
+            padding: 40px;
+        }
+
+        .req-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .req-header h3 {
+            font-size: 1.8rem;
+        }
+
+        .req-id {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .order-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 3D Background Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.jpg" alt="SHARL-TECH Logo" class="logo-img">
+            <span>SHARL-TECH</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#contact" class="btn-nav">Contact Us</a></li>
+        </ul>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <div class="container order-container">
+        <div class="order-layout">
+            <!-- Left: Dynamic Order Summary -->
+            <div class="order-summary" id="order-summary">
+                <div class="order-header">
+                    <div class="order-type" id="item-type">SELECTED PLAN</div>
+                    <h2 class="order-title" id="item-title">Loading...</h2>
+                    <div class="order-price" id="item-price">--</div>
+                </div>
+                <p class="order-desc" id="item-desc">Please wait while we retrieve the details from the database.</p>
+                <ul class="order-features" id="item-features">
+                    <!-- Features injected here -->
+                </ul>
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div class="requisition-panel">
+                <div class="req-header">
+                    <h3>COMPLETE REQUISITION</h3>
+                    <div class="req-id">SESSION ID: <span id="session-id"></span></div>
+                </div>
+
+                <form class="transmission-form" action="thank-you.html">
+                    <input type="hidden" id="form-item-name" name="item_name">
+
+                    <div class="input-group">
+                        <input type="text" name="name" required>
+                        <label>Identity (Name)</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" required>
+                        <label>Signal Frequency (Email)</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" name="phone">
+                        <label>Comms Link (Phone - Optional)</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="input-group">
+                        <textarea name="notes" rows="4"></textarea>
+                        <label>Additional Specs (Notes)</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        CONFIRM ORDER <i class="fas fa-check-circle"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Data Store (Duplicated from script.js + Pricing Data)
+        const db = {
+            plans: {
+                'starter': {
+                    type: 'Package',
+                    title: 'Starter Plan',
+                    price: 'KES 15,000',
+                    desc: 'Perfect for small businesses establishing a digital footprint.',
+                    features: ['1-3 Page Website', 'Free .co.ke Domain', 'Basic Hosting (1 Yr)', 'Social Media Links']
+                },
+                'business': {
+                    type: 'Package',
+                    title: 'Business Plan',
+                    price: 'KES 25,000',
+                    desc: 'A robust solution for growing companies needing more interactions.',
+                    features: ['Up to 7 Pages', 'Standard Hosting', 'CMS Admin Panel', 'WhatsApp Integration']
+                },
+                'executive': {
+                    type: 'Package',
+                    title: 'Executive Plan',
+                    price: 'KES 35,000',
+                    desc: 'The ultimate digital command center for established enterprises.',
+                    features: ['Up to 12 Pages', 'High-Speed Hosting', 'Payment Integration', 'Free SSL Certificate']
+                }
+            },
+            services: {
+                'web': {
+                    type: 'Service',
+                    title: 'Web Design',
+                    price: 'Custom Quote',
+                    desc: 'Custom, responsive, and aesthetic websites tailored to your brand.',
+                    features: ['Responsive UI', 'Custom Branding', 'SEO Ready', 'Fast Loading']
+                },
+                'hosting': {
+                    type: 'Service',
+                    title: 'Web Hosting',
+                    price: 'From KES 3,500/yr',
+                    desc: 'Reliable, high-speed hosting solutions ensuring your site is always online.',
+                    features: ['99.9% Uptime', 'SSD Storage', 'Daily Backups', '24/7 Support']
+                },
+                'seo': {
+                    type: 'Service',
+                    title: 'SEO & Marketing',
+                    price: 'Custom Quote',
+                    desc: 'Boost your visibility and drive traffic with data-driven strategies.',
+                    features: ['Keyword Analysis', 'On-Page Optimization', 'Content Strategy']
+                },
+                'app': {
+                    type: 'Service',
+                    title: 'App Development',
+                    price: 'Custom Quote',
+                    desc: 'Native and cross-platform mobile applications for iOS and Android.',
+                    features: ['iOS & Android', 'Modern UI/UX', 'Cloud Integration']
+                },
+                'repair': {
+                    type: 'Service',
+                    title: 'IT Repair',
+                    price: 'Service Based',
+                    desc: 'Expert hardware diagnostics and repair for all devices.',
+                    features: ['Hardware Repair', 'Software Fixes', 'Virus Removal']
+                },
+                'domain': {
+                    type: 'Service',
+                    title: 'Domain Registration',
+                    price: 'Market Rates',
+                    desc: 'Secure your perfect digital identity with our vast selection of TLDs.',
+                    features: ['.com / .co.ke', 'DNS Management', 'auto-Renewal']
+                }
+            }
+        };
+
+        // Parse URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const planKey = urlParams.get('plan');
+        const serviceKey = urlParams.get('service');
+        let selectedItem = null;
+
+        if (planKey && db.plans[planKey]) {
+            selectedItem = db.plans[planKey];
+        } else if (serviceKey && db.services[serviceKey]) {
+            selectedItem = db.services[serviceKey];
+        }
+
+        // Generate Random Session ID
+        document.getElementById('session-id').innerText = 'REQ-' + Math.floor(Math.random() * 100000);
+
+        // Populate Content
+        if (selectedItem) {
+            document.getElementById('item-type').innerText = selectedItem.type;
+            document.getElementById('item-title').innerText = selectedItem.title;
+            document.getElementById('item-price').innerText = selectedItem.price;
+            document.getElementById('item-desc').innerText = selectedItem.desc;
+            document.getElementById('form-item-name').value = selectedItem.title;
+
+            const featureList = document.getElementById('item-features');
+            featureList.innerHTML = selectedItem.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('');
+        } else {
+            document.getElementById('item-title').innerText = 'Item Not Found';
+            document.getElementById('item-desc').innerText = 'The requested service or package could not be located.';
+        }
+    </script>
+</body>
+
+</html>

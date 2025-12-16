@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharl Tech | Premium Web Solutions</title>
+    <title>SHARL-TECH | Premium Web Solutions</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,11 +19,14 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">SHARL <span class="thin">TECH</span></div>
+        <div class="logo">
+            <img src="images/logo.jpg" alt="SHARL-TECH Logo" class="logo-img">
+            <span>SHARL-TECH</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="#contact" class="btn-nav">Contact Us</a></li>
         </ul>
         <div class="hamburger"><i class="fas fa-bars"></i></div>
@@ -34,7 +37,7 @@
         <div class="hero-content">
             <h1 class="glitch" data-text="FUTURE READY">FUTURE READY</h1>
             <h2 class="hero-sub">High-End Web Design & Hosting Solutions</h2>
-            <p>Elevate your online presence with Sharl Tech's premium digital services.</p>
+            <p class="hero-desc">Elevate your online presence with SHARL-TECH's premium digital services.</p>
             <div class="hero-btns">
                 <a href="#pricing" class="btn btn-primary">Get Started</a>
                 <a href="#services" class="btn btn-outline">Explore Services</a>
@@ -45,6 +48,26 @@
             <p>SCROLL</p>
         </div>
     </header>
+
+    <!-- About Preview Section (New) -->
+    <a href="about.html" class="about-preview-link">
+        <section id="about-preview" class="section about-preview-section">
+            <div class="container">
+                <div class="about-preview-content">
+                    <div class="glitch-wrapper">
+                        <h3 class="section-title">WHO WE ARE</h3>
+                    </div>
+                    <p class="about-teaser">
+                        Architects of the digital future. Click to access classified company data and mission
+                        parameters.
+                    </p>
+                    <div class="access-btn">
+                        <span class="blink">></span> ACCESS DATA
+                    </div>
+                </div>
+            </div>
+        </section>
+    </a>
 
     <!-- Services Section (Hexagon Grid) -->
     <section id="services" class="section">
@@ -137,7 +160,7 @@
                         <li><i class="fas fa-check"></i> 1 Month Free Support</li>
                         <li><i class="fas fa-check"></i> 5 Working Days Delivery</li>
                     </ul>
-                    <a href="#contact" class="btn btn-block">Choose Starter</a>
+                    <a href="order.html?plan=starter" class="btn btn-block">Choose Starter</a>
                 </div>
 
                 <!-- Business Package -->
@@ -159,7 +182,7 @@
                         <li><i class="fas fa-check"></i> 3 Months Free Maintenance</li>
                         <li><i class="fas fa-check"></i> 10 Working Days Delivery</li>
                     </ul>
-                    <a href="#contact" class="btn btn-block btn-primary">Choose Business</a>
+                    <a href="order.html?plan=business" class="btn btn-block btn-primary">Choose Business</a>
                 </div>
 
                 <!-- Executive Package -->
@@ -180,7 +203,7 @@
                         <li><i class="fas fa-check"></i> 6 Months Free Maintenance</li>
                         <li><i class="fas fa-check"></i> 14-21 Working Days Delivery</li>
                     </ul>
-                    <a href="#contact" class="btn btn-block">Choose Executive</a>
+                    <a href="order.html?plan=executive" class="btn btn-block">Choose Executive</a>
                 </div>
             </div>
 
@@ -252,10 +275,12 @@
                         </div>
 
                         <div class="social-matrix">
-                            <a href="#" class="matrix-node"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#" class="matrix-node"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="matrix-node"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="matrix-node"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://wa.me/message/AKQPZAPC5J7MJ1" class="matrix-node" target="_blank"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/sharlmon?igsh=MXNoMHBsczBvZ3ozbw%3D%3D&utm_source=qr"
+                                class="matrix-node" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@jaymoney4unow?_r=1&_t=ZM-92Gfi4RgT1c" class="matrix-node"
+                                target="_blank"><i class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
                 </div>
@@ -266,11 +291,11 @@
                         <h4>Transmission</h4>
                         <div class="form-id">ID: #REQ-001</div>
                     </div>
-                    <form class="transmission-form" action="https://formsubmit.co/sharlmon19@gmail.com" method="POST">
-                        <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_next" value="https://sharlmon.github.io/sharl-tech.github.io/">
-                        <input type="hidden" name="_subject" value="New Client Inquiry - Sharl Tech">
-                        <input type="hidden" name="_captcha" value="false">
+                    <form class="transmission-form" action="thank-you.html">
+                        <!-- FormSubmit Removed for Local Demo - Use standard Action -->
+                        <!-- <input type="hidden" name="_next" value="thank-you.html"> -->
+                        <!-- <input type="hidden" name="_subject" value="New Client Inquiry - Sharl Tech"> -->
+                        <!-- <input type="hidden" name="_captcha" value="false"> -->
 
                         <div class="input-group">
                             <input type="text" name="name" required>
@@ -300,7 +325,7 @@
             </div>
         </div>
         <footer class="footer-bottom">
-            &copy; 2025 Sharl Tech. All Rights Reserved. SYSTEM ACTIVE.
+            &copy; 2025 SHARL-TECH. All Rights Reserved. SYSTEM ACTIVE.
         </footer>
     </section>
 

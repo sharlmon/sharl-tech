@@ -197,12 +197,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const mFeatures = document.getElementById('modal-features');
     const mBtn = document.getElementById('modal-btn');
 
+    // Purchase Button - Redirect to Order Page
+    mBtn.addEventListener('click', () => {
+        // Get current service key from modal title association or store it temporarily?
+        // Better way: Store the key on the opened modal or variable
+        const currentService = mTitle.getAttribute('data-active-service');
+        if (currentService) {
+            window.location.href = `order.html?service=${currentService}`;
+        }
+    });
+
     serviceCards.forEach(card => {
         card.addEventListener('click', () => {
             const serviceKey = card.getAttribute('data-service');
             const data = servicesData[serviceKey];
 
             if (data) {
+                // Set active service key
+                mTitle.setAttribute('data-active-service', serviceKey);
+
                 mTitle.innerText = data.title;
                 mIcon.className = data.icon;
                 mDesc.innerText = data.desc;
@@ -214,22 +227,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = 'hidden'; // Prevent scrolling
             }
         });
-    });
-
-    // Close Modal
-    const closeModal = () => {
-        modal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-    };
-
-    closeBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // Purchase Button - Scroll to contact
-    mBtn.addEventListener('click', () => {
-        closeModal();
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
 });

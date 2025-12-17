@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHARL-TECH | High-End Web Design & Hosting Solutions</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Premium web design, high-speed hosting, and digital solutions in Kenya. Sharl-Tech transforms your digital presence with futuristic design and tactical precision.">
+    <meta name="keywords"
+        content="Web Design Kenya, Hosting Services, App Development, SEO, Digital Marketing, Sharl-Tech, Nairobi Web Designer">
+    <meta name="author" content="Sharl-Tech">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sharl-tech.netlify.app/">
+    <meta property="og:title" content="SHARL-TECH | High-End Digital Solutions">
+    <meta property="og:description"
+        content="Deploy your online presence with Sharl-Tech. Professional Web Design, Hosting, and App Development.">
+    <meta property="og:image" content="https://sharl-tech.netlify.app/assets/screenshot.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sharl-tech.netlify.app/">
+    <meta property="twitter:title" content="SHARL-TECH | High-End Digital Solutions">
+    <meta property="twitter:description"
+        content="Deploy your online presence with Sharl-Tech. Professional Web Design, Hosting, and App Development.">
+    <meta property="twitter:image" content="https://sharl-tech.netlify.app/assets/screenshot.jpg">
+
+    <!-- CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+    <!-- 3D Background Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.jpg" alt="SHARL-TECH Logo" class="logo-img">
+            <span>SHARL-TECH</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#contact" class="btn-nav">Contact Us</a></li>
+        </ul>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="FUTURE READY">FUTURE READY</h1>
+            <h2 class="hero-sub">High-End Web Design & Hosting Solutions</h2>
+            <p class="hero-desc">Elevate your online presence with SHARL-TECH's premium digital services.</p>
+            <div class="hero-btns">
+                <a href="#pricing" class="btn btn-primary">Get Started</a>
+                <a href="#services" class="btn btn-outline">Explore Services</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>SCROLL</p>
+        </div>
+    </header>
+
+    <!-- About Preview Section (New) -->
+    <a href="about.html" class="about-preview-link">
+        <section id="about-preview" class="section about-preview-section">
+            <div class="container">
+                <div class="about-preview-content">
+                    <div class="glitch-wrapper">
+                        <h3 class="section-title">WHO WE ARE</h3>
+                    </div>
+                    <p class="about-teaser">
+                        Architects of the digital future. Click to access classified company data and mission
+                        parameters.
+                    </p>
+                    <div class="access-btn">
+                        <span class="blink">></span> ACCESS DATA
+                    </div>
+                </div>
+            </div>
+        </section>
+    </a>
+
+    <!-- Services Section (Hexagon Grid) -->
+    <section id="services" class="section">
+        <div class="container">
+            <h3 class="section-title">OUR SERVICES</h3>
+            <div class="hex-grid">
+                <!-- Web Dev -->
+                <div class="hex-wrapper" data-service="web">
+                    <div class="hex">
+                        <div class="hex-content">
+                            <i class="fas fa-globe"></i>
+                            <h4>Web Design</h4>
+                            <p>Custom Development</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hosting -->
+                <div class="hex-wrapper" data-service="hosting">
+                    <div class="hex">
+                        <div class="hex-content">
+                            <i class="fas fa-server"></i>
+                            <h4>Web Hosting</h4>
+                            <p>Fast & Secure</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Marketing -->
+                <div class="hex-wrapper" data-service="seo">
+                    <div class="hex">
+                        <div class="hex-content">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>SEO & Marketing</h4>
+                            <p>Grow Your Traffic</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- App Dev -->
+                <div class="hex-wrapper" data-service="app">
+                    <div class="hex">
+                        <div class="hex-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>App Dev</h4>
+                            <p>iOS & Android</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repair -->
+                <div class="hex-wrapper" data-service="repair">
+                    <div class="hex">
+                        <div class="hex-content">
+                            <i class="fas fa-tools"></i>
+                            <h4>IT Repair</h4>
+                            <p>Hardware Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Domain -->
+                <div class="hex-wrapper" data-service="domain">
+                    <div class="hex">
+                        <div class="hex-content">
+                            <i class="fas fa-link"></i>
+                            <h4>Domains</h4>
+                            <p>Registration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section: Case Files -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h3 class="section-title">CASE FILES</h3>
+            <div class="portfolio-grid">
+                <!-- Case File 1 -->
+                <div class="case-file">
+                    <div class="case-visual">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="case-info">
+                        <div class="case-status online">DECRYPTED</div>
+                        <h4>Project: Alpha</h4>
+                        <p>Corporate Identity Portal</p>
+                        <a href="#contact" class="case-link">ACCESS DATA</a>
+                    </div>
+                </div>
+
+                <!-- Case File 2 -->
+                <div class="case-file">
+                    <div class="case-visual">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="case-info">
+                        <div class="case-status dev">IN DEVELOPMENT</div>
+                        <h4>Operation: Commerce</h4>
+                        <p>High-Scale E-Store</p>
+                        <a href="#contact" class="case-link">VIEW LOGS</a>
+                    </div>
+                </div>
+
+                <!-- Case File 3 -->
+                <div class="case-file">
+                    <div class="case-visual">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="case-info">
+                        <div class="case-status online">ONLINE</div>
+                        <h4>App: Sentinel</h4>
+                        <p>iOS/Android Security App</p>
+                        <a href="#contact" class="case-link">DOWNLOAD</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section contrast-section">
+        <div class="container">
+            <h3 class="section-title">PACKAGES</h3>
+            <div class="pricing-grid">
+                <!-- Starter Package -->
+                <div class="pricing-card tilt-card" data-tilt>
+                    <div class="card-header">
+                        <h4>Starter</h4>
+                        <div class="price">KES 15,000</div>
+                        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">One-off</p>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> 1-3 Page Website</li>
+                        <li><i class="fas fa-check"></i> Free .co.ke Domain (1 Year)</li>
+                        <li><i class="fas fa-check"></i> 1-Year Free Basic Hosting</li>
+                        <li><i class="fas fa-check"></i> Up to 3 Corporate Emails</li>
+                        <li><i class="fas fa-check"></i> Basic Responsive Design</li>
+                        <li><i class="fas fa-check"></i> Social Media Links</li>
+                        <li><i class="fas fa-check"></i> 1 Month Free Support</li>
+                        <li><i class="fas fa-check"></i> 5 Working Days Delivery</li>
+                    </ul>
+                    <a href="order.html?plan=starter" class="btn btn-block">Choose Starter</a>
+                </div>
+
+                <!-- Business Package -->
+                <div class="pricing-card tilt-card featured" data-tilt>
+                    <div class="featured-badge">POPULAR</div>
+                    <div class="card-header">
+                        <h4>Business</h4>
+                        <div class="price">KES 25,000</div>
+                        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">One-off</p>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Up to 7 Pages</li>
+                        <li><i class="fas fa-check"></i> Free .com OR .co.ke Domain</li>
+                        <li><i class="fas fa-check"></i> 1-Year Standard Speed Hosting</li>
+                        <li><i class="fas fa-check"></i> Up to 10 Corporate Emails</li>
+                        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                        <li><i class="fas fa-check"></i> WhatsApp Chat & Map</li>
+                        <li><i class="fas fa-check"></i> Admin Panel (CMS)</li>
+                        <li><i class="fas fa-check"></i> 3 Months Free Maintenance</li>
+                        <li><i class="fas fa-check"></i> 10 Working Days Delivery</li>
+                    </ul>
+                    <a href="order.html?plan=business" class="btn btn-block btn-primary">Choose Business</a>
+                </div>
+
+                <!-- Executive Package -->
+                <div class="pricing-card tilt-card" data-tilt>
+                    <div class="card-header">
+                        <h4>Executive</h4>
+                        <div class="price">KES 35,000</div>
+                        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">One-off</p>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Up to 12 Pages or Online Shop</li>
+                        <li><i class="fas fa-check"></i> Free .com OR .co.ke Domain</li>
+                        <li><i class="fas fa-check"></i> 1-Year High-Speed Hosting</li>
+                        <li><i class="fas fa-check"></i> Free SSL Certificate</li>
+                        <li><i class="fas fa-check"></i> Unlimited Corporate Emails</li>
+                        <li><i class="fas fa-check"></i> Payment Integration / Booking</li>
+                        <li><i class="fas fa-check"></i> Google Analytics</li>
+                        <li><i class="fas fa-check"></i> 6 Months Free Maintenance</li>
+                        <li><i class="fas fa-check"></i> 14-21 Working Days Delivery</li>
+                    </ul>
+                    <a href="order.html?plan=executive" class="btn btn-block">Choose Executive</a>
+                </div>
+            </div>
+
+            <!-- Renewal Rates Section -->
+            <div class="renewal-section">
+                <h4 class="renewal-title">Yearly Renewal Rates</h4>
+                <div class="renewal-grid">
+                    <!-- Starter Renewal -->
+                    <div class="renewal-card">
+                        <div class="renewal-header">
+                            <h5>Starter</h5>
+                            <div class="renewal-price">KES 3,500<span>/yr</span></div>
+                        </div>
+                        <p class="renewal-desc">Domain Renewal + Basic Hosting Space.</p>
+                    </div>
+
+                    <!-- Business Renewal -->
+                    <div class="renewal-card">
+                        <div class="renewal-header">
+                            <h5>Business</h5>
+                            <div class="renewal-price">KES 5,500<span>/yr</span></div>
+                        </div>
+                        <p class="renewal-desc">Domain Renewal + Faster Hosting + Email Support.</p>
+                    </div>
+
+                    <!-- Executive Renewal -->
+                    <div class="renewal-card">
+                        <div class="renewal-header">
+                            <h5>Executive</h5>
+                            <div class="renewal-price">KES 8,500<span>/yr</span></div>
+                        </div>
+                        <p class="renewal-desc">Domain Renewal + High-Speed Hosting + Security SSL + Database Backup.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section: Intercepted Signals -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h3 class="section-title">INTERCEPTED SIGNALS</h3>
+            <div class="testimonials-grid">
+                <!-- Signal 1 -->
+                <div class="signal-card">
+                    <div class="signal-header">
+                        <div class="signal-source">SOURCE: HQ</div>
+                        <div class="signal-strength">
+                            <i class="fas fa-signal"></i> 100%
+                        </div>
+                    </div>
+                    <div class="signal-body">
+                        "Leading the digital frontier. Our solutions are designed to outpace the competition. Welcome to
+                        the future."
+                    </div>
+                    <div class="signal-meta">
+                        <div class="client-name">CMD. Sharlmon Junior</div>
+                        <div class="client-role">Director & Founder, Sharl-Tech</div>
+                    </div>
+                </div>
+
+                <!-- Signal 2 -->
+                <div class="signal-card">
+                    <div class="signal-header">
+                        <div class="signal-source">SOURCE: Nairobi</div>
+                        <div class="signal-strength">
+                            <i class="fas fa-signal"></i> 98%
+                        </div>
+                    </div>
+                    <div class="signal-body">
+                        "The web design mission was executed flawlessly. Our user engagement metrics have increased by
+                        200% since deployment."
+                    </div>
+                    <div class="signal-meta">
+                        <div class="client-name">Sarah J.</div>
+                        <div class="client-role">Founder, StyleHive</div>
+                    </div>
+                </div>
+
+                <!-- Signal 3 -->
+                <div class="signal-card">
+                    <div class="signal-header">
+                        <div class="signal-source">SOURCE: Secure Line</div>
+                        <div class="signal-strength">
+                            <i class="fas fa-signal"></i> 100%
+                        </div>
+                    </div>
+                    <div class="signal-body">
+                        "Critical error fixed in record time. App development protocols were followed to the letter. A
+                        tactical advantage for our business."
+                    </div>
+                    <div class="signal-meta">
+                        <div class="client-name">David M.</div>
+                        <div class="client-role">Director, FinSecure</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- XMP Metadata Extractor Section -->
+    <section id="xmp-tool" class="section">
+        <div class="container">
+            <h3 class="section-title">XMP DATA DECODER</h3>
+            <div class="command-center">
+                <div class="panel form-panel" style="width: 100%; max-width: 800px; margin: 0 auto;">
+                    <div class="panel-header">
+                        <h4>IMAGE INTEL</h4>
+                        <div class="status-indicator"><span class="blink"></span> READY</div>
+                    </div>
+                    <div class="panel-body">
+                        <p class="mission-text">Upload visual assets to extract concealed XMP metadata.</p>
+
+                        <div class="upload-zone" id="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to Initiate Upload Sequence</p>
+                            <input type="file" id="xmp-file-input" accept="image/*" hidden>
+                        </div>
+
+                        <div id="xmp-loading" class="hidden"
+                            style="text-align: center; margin: 20px 0; color: var(--accent);">
+                            <i class="fas fa-spinner fa-spin"></i> DECRYPTING...
+                        </div>
+
+                        <div id="xmp-results" class="xmp-results hidden">
+                            <div class="preview-container">
+                                <img id="xmp-preview-img" src="" alt="Preview">
+                            </div>
+                            <div class="data-readout">
+                                <div class="data-row">
+                                    <span class="data-label">TITLE:</span>
+                                    <span class="data-value" id="res-title">N/A</span>
+                                </div>
+                                <div class="data-row">
+                                    <span class="data-label">DESCRIPTION:</span>
+                                    <span class="data-value" id="res-desc">N/A</span>
+                                </div>
+                                <div class="data-row">
+                                    <span class="data-label">RIGHTS:</span>
+                                    <span class="data-value" id="res-rights">N/A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section: Digital Command Center -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h3 class="section-title">INITIATE CONTACT</h3>
+            <div class="command-center">
+                <!-- Left Panel: Direct Line -->
+                <div class="panel info-panel">
+                    <div class="panel-header">
+                        <h4>Direct Line</h4>
+                        <div class="status-indicator"><span class="blink"></span> ONLINE</div>
+                    </div>
+                    <div class="panel-body">
+                        <p class="mission-text">Ready to deploy your next digital project? Establish a connection with
+                            our team.</p>
+
+                        <div class="comm-link">
+                            <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+                            <div class="link-details">
+                                <span class="label">Voice</span>
+                                <span class="value">0707 575 397</span>
+                            </div>
+                        </div>
+
+                        <div class="comm-link">
+                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                            <div class="link-details">
+                                <span class="label">Data Stream</span>
+                                <span class="value">sharlmon19@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <div class="social-matrix">
+                            <a href="https://wa.me/message/AKQPZAPC5J7MJ1" class="matrix-node" target="_blank"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/sharlmon?igsh=MXNoMHBsczBvZ3ozbw%3D%3D&utm_source=qr"
+                                class="matrix-node" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@jaymoney4unow?_r=1&_t=ZM-92Gfi4RgT1c" class="matrix-node"
+                                target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Transmission Form -->
+                <div class="panel form-panel">
+                    <div class="panel-header">
+                        <h4>Transmission</h4>
+                        <div class="form-id">ID: #REQ-001</div>
+                    </div>
+                    <!-- Action removed, handled by script.js -->
+                    <form class="transmission-form" onsubmit="event.preventDefault(); handleForm(this);">
+                        <input type="hidden" name="item_name" value="General Inquiry">
+
+                        <div class="input-group">
+                            <input type="text" name="name" required>
+                            <label>Identity (Name)</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="email" required>
+                            <label>Signal Frequency (Email)</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" name="phone">
+                            <label>Comms Link (Phone - Optional)</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="input-group">
+                            <textarea name="message" rows="4" required></textarea>
+                            <label>Mission Brief (Message)</label>
+                            <span class="focus-border"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            SEND TRANSMISSION <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="footer-bottom">
+            &copy; 2025 SHARL-TECH. All Rights Reserved. SYSTEM ACTIVE.
+        </footer>
+    </section>
+
+    <!-- Service Detail Modal -->
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <i id="modal-icon" class="fas fa-globe"></i>
+                <h3 id="modal-title">Web Design</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal-desc">Description goes here...</p>
+                <div class="modal-features" id="modal-features">
+                    <!-- Features list injected via JS -->
+                </div>
+                <!-- Action Button -->
+                <a href="#contact" class="btn btn-primary btn-block" id="modal-btn">Purchase Service</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Tilt.js for 3D Cards -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+</body>
+
+</html>

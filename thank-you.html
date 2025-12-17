@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transmission Received | SHARL-TECH</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .thank-you-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            color: #4ade80;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .success-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+        }
+
+        .success-message {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .transmission-log {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--border-light);
+            padding: 20px;
+            margin-bottom: 40px;
+            color: #4ade80;
+            text-align: left;
+            width: 300px;
+            font-size: 0.8rem;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 0 rgba(74, 222, 128, 0.7);
+            }
+
+            70% {
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(74, 222, 128, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 0 rgba(74, 222, 128, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Reuse the 3D background if possible or just a dark bg -->
+    <div id="canvas-container"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.jpg" alt="SHARL-TECH Logo" class="logo-img">
+            <span>SHARL-TECH</span>
+        </div>
+    </nav>
+
+    <div class="thank-you-container">
+        <div class="thank-you-card">
+            <div class="icon-box">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>TRANSMISSION RECEIVED</h1>
+            <p id="confirmation-text">Your data packet has been successfully uploaded to our secure servers.</p>
+            <p style="color: #4ade80; font-family: 'Courier New', monospace; margin: 10px 0;">REF: <span
+                    id="ref-id">#ORD-0000</span></p>
+            <a href="index.html" class="btn btn-primary">Return to Command</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Parse URL parameters to customize the message
+        const urlParams = new URLSearchParams(window.location.search);
+        const item = urlParams.get('item');
+        const refId = '#ORD-' + Math.floor(Math.random() * 900000);
+
+        if (item) {
+            document.querySelector('.success-title').innerText = 'MISSION CONFIRMED';
+            document.getElementById('confirmation-text').innerHTML = `Requisition for <strong style="color: #fff;">${item}</strong> received.<br>Our operatives are reviewing your mission parameters.`;
+        }
+
+        document.getElementById('ref-id').innerText = refId;
+    </script>
+</body>
+
+</html>

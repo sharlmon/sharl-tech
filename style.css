@@ -707,14 +707,7 @@ a {
     }
 }
 
-/* Override to keep text visible on click/hover per user request */
-.hex-wrapper:hover .hex {
-    background: rgba(10, 10, 10, 0.9) !important;
-}
 
-.hex-wrapper:hover .hex-content {
-    color: white !important;
-}
 
 /* Modal Styles */
 .modal {
@@ -1667,7 +1660,9 @@ a {
 .case-file:hover .static-link {
     color: #888;
     border-color: #444;
-}/* --- Cyberpunk Services Hexagon Grid --- */
+}
+
+/* --- Cyberpunk Services Hexagon Grid --- */
 
 /* Wrapper adjustment for spacing */
 .hex-grid {

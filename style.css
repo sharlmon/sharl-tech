@@ -1535,7 +1535,9 @@ a {
     100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
-}/* --- Enhanced Portfolio Section --- */
+}
+
+/* --- Enhanced Portfolio Section --- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1593,7 +1595,8 @@ a {
 }
 
 /* Status Badges */
-.case-status {
+/* Status Badges */
+.project-status {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -1604,20 +1607,21 @@ a {
     text-transform: uppercase;
     letter-spacing: 1px;
     background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
 }
 
-.case-status.completed {
+.project-status.completed {
     color: #4ade80;
     border-color: #4ade80;
 }
 
-.case-status.in-progress {
+.project-status.in-progress {
     color: #fbbf24;
     border-color: #fbbf24;
     animation: blinker 2s infinite;
 }
 
-.case-status.live {
+.project-status.live {
     color: #38bdf8;
     border-color: #38bdf8;
     box-shadow: 0 0 5px rgba(56, 189, 248, 0.4);

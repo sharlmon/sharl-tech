@@ -2021,3 +2021,48 @@ a {
         flex-direction: column;
     }
 }
+
+/* CTA Card Styling */
+.pricing-cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-card {
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.cta-card:hover {
+    border-color: white;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.cta-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: white;
+    opacity: 0.8;
+}
+
+.cta-content h4 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.btn-lg {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}

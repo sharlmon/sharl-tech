@@ -331,6 +331,60 @@
 
             const featureList = document.getElementById('item-features');
             featureList.innerHTML = selectedItem.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('');
+
+            // CHECK FOR CUSTOM QUOTE DATA
+        } else if (urlParams.get('quote_data')) {
+            try {
+                const quoteData = JSON.parse(decodeURIComponent(urlParams.get('quote_data')));
+
+                document.getElementById('item-type').innerText = "CUSTOM QUOTE";
+                document.getElementById('item-title').innerText = "Your Configuration";
+                document.getElementById('item-price').innerText = quoteData.total;
+                document.getElementById('item-desc').innerText = "A tailored solution configured to your specific needs.";
+
+                document.getElementById('form-item-name').value = "Custom Web Quote";
+
+                const featureList = document.getElementById('item-features');
+                let featuresHTML = '';
+
+                featuresHTML += `<li><i class="fas fa-layer-group"></i> <strong>Service:</strong> ${quoteData.service.name}</li>`;
+                featuresHTML += `<li><i class="fas fa-server"></i> <strong>Hosting:</strong> ${quoteData.hosting.name}</li>`;
+                featuresHTML += `<li><i class="fas fa-globe"></i> <strong>Domain:</strong> ${quoteData.domain.name}</li>`;
+
+                if (quoteData.addons.length > 0) {
+                    featuresHTML += `<li><i class="fas fa-tools"></i> <strong>Add-ons:</strong> ${quoteData.addons.join(', ')}</li>`;
+                } else {
+                    featuresHTML += `<li><i class="fas fa-ban"></i> No Add-ons Selected</li>`;
+                }
+
+                featureList.innerHTML = featuresHTML;
+
+                // Prepare Quote Details String for Email
+                let quoteDetails = `Service: ${quoteData.service.name} (KES ${quoteData.service.price})\n`;
+                quoteDetails += `Hosting: ${quoteData.hosting.name} (KES ${quoteData.hosting.price})\n`;
+                quoteDetails += `Domain: ${quoteData.domain.name} (KES ${quoteData.domain.price})\n`;
+                if (quoteData.addons.length > 0) {
+                    quoteDetails += `Add-ons: ${quoteData.addons.join(', ')}\n`;
+                }
+                quoteDetails += `----------------\nTOTAL: ${quoteData.total}`;
+
+                // Create Hidden Input for EmailJS
+                const form = document.querySelector('.transmission-form');
+                let detailInput = document.getElementById('quote-details');
+                if (!detailInput) {
+                    detailInput = document.createElement('input');
+                    detailInput.type = 'hidden';
+                    detailInput.name = 'quote_details';
+                    detailInput.id = 'quote-details';
+                    form.appendChild(detailInput);
+                }
+                detailInput.value = quoteDetails;
+
+            } catch (e) {
+                console.error("Error parsing quote data", e);
+                document.getElementById('item-title').innerText = 'Error Loading Quote';
+            }
+
         } else {
             document.getElementById('item-title').innerText = 'Item Not Found';
             document.getElementById('item-desc').innerText = 'The requested service or package could not be located.';

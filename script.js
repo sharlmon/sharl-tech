@@ -308,6 +308,11 @@ window.handleForm = function (form) {
         item_name: data.item_name
     };
 
+    // Append Detailed Quote Breakdown if available
+    if (data.quote_details) {
+        templateParams.message += "\n\n--- QUOTE BREAKDOWN ---\n" + data.quote_details;
+    }
+
     // Send
     emailjs.send('service_hem4aor', 'template_9ddo88r', templateParams)
         .then(() => {
@@ -480,5 +485,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initial Calculation
         calculateTotal();
+
+        // "Proceed with Quote" Button Logic
+        const proceedBtn = document.getElementById('btn-proceed-quote');
+        if (proceedBtn) {
+            proceedBtn.addEventListener('click', () => {
+                const siteTypeSelect = document.getElementById('site-type');
+                const siteTypeText = siteTypeSelect.options[siteTypeSelect.selectedIndex].text;
+                const siteTypePrice = parseInt(siteTypeSelect.value) || 0;
+
+                const hostingEl = quoteForm.querySelector('input[name="hosting"]:checked');
+                const hostingText = hostingEl ? hostingEl.closest('.radio-box').querySelector('.r-title').innerText : 'None';
+                const hostingPrice = hostingEl ? parseInt(hostingEl.value) : 0;
+
+                const domainSelect = document.getElementById('domain-select');
+                const domainText = domainSelect.options[domainSelect.selectedIndex].text;
+                const domainPrice = parseInt(domainSelect.value) || 0;
+
+                const addons = [];
+                quoteForm.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
+                    const label = cb.closest('.check-box').querySelector('span:last-child').innerText;
+                    addons.push(label);
+                });
+                quoteForm.querySelectorAll('input[name="maintenance"]:checked').forEach(cb => {
+                    const label = cb.closest('.check-box').querySelector('span:last-child').innerText;
+                    addons.push(label);
+                });
+
+                const totalText = totalDisplay.innerText;
+
+                const quoteData = {
+                    service: { name: siteTypeText, price: siteTypePrice },
+                    hosting: { name: hostingText, price: hostingPrice },
+                    domain: { name: domainText, price: domainPrice },
+                    addons: addons,
+                    total: totalText
+                };
+
+                const quoteString = encodeURIComponent(JSON.stringify(quoteData));
+                window.location.href = `order.html?quote_data=${quoteString}`;
+            });
+        }
     }
 });

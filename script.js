@@ -451,33 +451,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (quoteForm && totalDisplay) {
         const calculateTotal = () => {
-             const siteType = parseInt(document.getElementById('site-type').value) || 0;
-             
-             let hosting = 0;
-             const hostingEl = quoteForm.querySelector('input[name="hosting"]:checked');
-             if (hostingEl) hosting = parseInt(hostingEl.value) || 0;
+            const siteType = parseInt(document.getElementById('site-type').value) || 0;
 
-             let domain = 0;
-             const domainEl = quoteForm.querySelector('input[name="domain"]:checked');
-             if (domainEl) domain = parseInt(domainEl.value) || 0;
+            let hosting = 0;
+            const hostingEl = quoteForm.querySelector('input[name="hosting"]:checked');
+            if (hostingEl) hosting = parseInt(hostingEl.value) || 0;
 
-             let addons = 0;
-             quoteForm.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
-                 addons += parseInt(cb.value) || 0;
-             });
-             
-             let maintenance = 0;
-             quoteForm.querySelectorAll('input[name="maintenance"]:checked').forEach(cb => {
-                 maintenance += parseInt(cb.value) || 0;
-             });
+            let domain = 0;
+            const domainSelect = document.getElementById('domain-select');
+            if (domainSelect) domain = parseInt(domainSelect.value) || 0;
 
-             const total = siteType + hosting + domain + addons + maintenance;
-             
-             totalDisplay.innerText = 'KES ' + total.toLocaleString();
+            let addons = 0;
+            quoteForm.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
+                addons += parseInt(cb.value) || 0;
+            });
+
+            let maintenance = 0;
+            quoteForm.querySelectorAll('input[name="maintenance"]:checked').forEach(cb => {
+                maintenance += parseInt(cb.value) || 0;
+            });
+
+            const total = siteType + hosting + domain + addons + maintenance;
+
+            totalDisplay.innerText = 'KES ' + total.toLocaleString();
         };
 
         quoteForm.addEventListener('change', calculateTotal);
-        
+
         // Initial Calculation
         calculateTotal();
     }

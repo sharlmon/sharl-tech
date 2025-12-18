@@ -373,26 +373,56 @@
 
                 featureList.innerHTML = featuresHTML;
 
-                // Prepare Quote Details String for Email
-                let quoteDetails = `Service: ${quoteData.service.name} (KES ${quoteData.service.price})\n`;
-                quoteDetails += `Hosting: ${quoteData.hosting.name} (KES ${quoteData.hosting.price})\n`;
-                quoteDetails += `Domain: ${quoteData.domain.name} (KES ${quoteData.domain.price})\n`;
-                if (quoteData.addons.length > 0) {
-                    quoteDetails += `Add-ons: ${quoteData.addons.join(', ')}\n`;
-                }
-                quoteDetails += `----------------\nTOTAL: ${quoteData.total}`;
+                // Prepare Invoice Items HTML for Email HTML Table
+                // Format: <tr style="border-bottom:1px solid #ddd;"> <td style="padding:10px;">Item Name</td> <td style="padding:10px;text-align:right;">Price</td> </tr>
+                let invoiceRows = '';
 
-                // Create Hidden Input for EmailJS
-                const form = document.querySelector('.transmission-form');
-                let detailInput = document.getElementById('quote-details');
-                if (!detailInput) {
-                    detailInput = document.createElement('input');
-                    detailInput.type = 'hidden';
-                    detailInput.name = 'quote_details';
-                    detailInput.id = 'quote-details';
-                    form.appendChild(detailInput);
+                const addRow = (item, price) => {
+                    invoiceRows += `
+                        <tr style="border-bottom: 1px solid #333;">
+                            <td style="padding: 10px; color: #ddd;">${item}</td>
+                            <td style="padding: 10px; text-align: right; color: #4ade80; font-family: monospace;">KES ${price.toLocaleString()}</td>
+                        </tr>`;
+                };
+
+                // Add Service
+                addRow(quoteData.service.name, quoteData.service.price);
+                // Add Hosting
+                addRow(quoteData.hosting.name, quoteData.hosting.price);
+                // Add Domain
+                addRow(quoteData.domain.name, quoteData.domain.price);
+                // Add Addons
+                if (quoteData.addons.length > 0) {
+                    quoteData.addons.forEach(addon => {
+                        // Assumption: Addon price is not split in the array, using placeholder or generic text if precise price isn't captured per item in array. 
+                        // In logic, addons was just array of strings. We'll list them.
+                        // Ideally we should fix the upstream logic to capture price objects, but for now:
+                        addRow(addon, "-");
+                    });
                 }
-                detailInput.value = quoteDetails;
+
+                // Create Hidden Input for Invoice HTML
+                const form = document.querySelector('.transmission-form');
+
+                let invoiceInput = document.getElementById('invoice-items');
+                if (!invoiceInput) {
+                    invoiceInput = document.createElement('input');
+                    invoiceInput.type = 'hidden';
+                    invoiceInput.name = 'invoice_items';
+                    invoiceInput.id = 'invoice-items';
+                    form.appendChild(invoiceInput);
+                }
+                invoiceInput.value = invoiceRows;
+
+                let totalInput = document.getElementById('total-amount');
+                if (!totalInput) {
+                    totalInput = document.createElement('input');
+                    totalInput.type = 'hidden';
+                    totalInput.name = 'total_amount';
+                    totalInput.id = 'total-amount';
+                    form.appendChild(totalInput);
+                }
+                totalInput.value = quoteData.total;
 
             } catch (e) {
                 console.error("Error parsing quote data", e);

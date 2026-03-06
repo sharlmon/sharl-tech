@@ -1,446 +1,708 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth dark" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>SHARL-TECH | High-End Web Design & Hosting Solutions</title>
-
-    <!-- SEO Meta Tags -->
     <meta name="description"
-        content="Premium web design, high-speed hosting, and digital solutions in Kenya. Sharl-Tech transforms your digital presence with futuristic design and tactical precision.">
+        content="Deploy your online presence with Sharl-Tech. Professional Web Design, Hosting, SEO, App Development and IT Solutions in Nairobi, Kenya." />
     <meta name="keywords"
-        content="Web Design Kenya, Hosting Services, App Development, SEO, Digital Marketing, Sharl-Tech, Nairobi Web Designer">
-    <meta name="author" content="Sharl-Tech">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sharl-tech.netlify.app/">
-    <meta property="og:title" content="SHARL-TECH | High-End Digital Solutions">
+        content="web design, hosting, SEO, app development, IT repair, domain registration, Nairobi, Kenya, Sharl-Tech" />
+    <meta property="og:title" content="SHARL-TECH | High-End Web Design & Hosting Solutions" />
     <meta property="og:description"
-        content="Deploy your online presence with Sharl-Tech. Professional Web Design, Hosting, and App Development.">
-    <meta property="og:image" content="https://sharl-tech.netlify.app/assets/screenshot.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://sharl-tech.netlify.app/">
-    <meta property="twitter:title" content="SHARL-TECH | High-End Digital Solutions">
-    <meta property="twitter:description"
-        content="Deploy your online presence with Sharl-Tech. Professional Web Design, Hosting, and App Development.">
-    <meta property="twitter:image" content="https://sharl-tech.netlify.app/assets/screenshot.jpg">
-
-    <!-- CSS -->
+        content="Deploy your online presence with Sharl-Tech. Professional Web Design, Hosting, and App Development." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#050505" />
+    <link rel="icon" href="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg"
+        type="image/jpeg" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
-    <link rel="apple-touch-icon" href="images/logo.jpg">
-
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#050505">
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QWS107WYBZ"></script>
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-QWS107WYBZ');
-    </script>
-</head>
-
-<body>
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('SW registered'))
-                    .catch(err => console.log('SW registration failed: ', err));
-            });
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 900: '#050505', 800: '#0a0a0a', 700: '#111111', 600: '#1a1a1a' },
+                        accent: { blue: '#3b82f6', cyan: '#06b6d4', green: '#4ade80' }
+                    },
+                    fontFamily: {
+                        heading: ['Syncopate', 'sans-serif'],
+                        body: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
         }
     </script>
+    <style type="text/tailwindcss">
+        body { font-family:'Space Grotesk',sans-serif; }
+h1,h2,h3,h4 { font-family:'Syncopate',sans-serif; text-transform:uppercase; letter-spacing:2px; }
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
 
-    <!-- 3D Background Canvas -->
-    <div id="canvas-container"></div>
+/* FORCE DARK MODE */
+body { background:#050505; color:#fff; }
+.glass { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); backdrop-filter:blur(12px); }
+.glass-strong { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(16px); }
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="images/logo.jpg" alt="SHARL-TECH Logo" class="logo-img">
-            <span>SHARL-TECH</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#contact" class="btn-nav">Contact Us</a></li>
-        </ul>
-        <div class="hamburger"><i class="fas fa-bars"></i></div>
-    </nav>
+.glow-border { border:1px solid rgba(59,130,246,0.3); box-shadow:0 0 20px rgba(59,130,246,0.1); }
+.text-gradient { background:linear-gradient(135deg,#3b82f6 0%,#06b6d4 50%,#8b5cf6 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.btn-shine { position:relative; overflow:hidden; }
+.btn-shine::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent); transition:0.6s; }
+.btn-shine:hover::before { left:100%; }
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="glitch" data-text="FUTURE READY">FUTURE READY</h1>
-            <h2 class="hero-sub">High-End Web Design & Hosting Solutions</h2>
-            <p class="hero-desc">Elevate your online presence with SHARL-TECH's premium digital services.</p>
-            <div class="hero-btns">
-                <a href="pricing.html" class="btn btn-primary">Start Project</a>
-                <a href="#services" class="btn btn-outline">Services</a>
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes pulse-glow { 0%,100%{box-shadow:0 0 5px rgba(59,130,246,0.3)} 50%{box-shadow:0 0 20px rgba(59,130,246,0.6)} }
+@keyframes fade-up { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes grid-move { 0%{background-position:0 0} 100%{background-position:50px 50px} }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+
+.animate-float { animation:float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation:pulse-glow 3s ease-in-out infinite; }
+.animate-fade-up { animation:fade-up 0.8s ease-out both; }
+.animate-marquee { animation:marquee 25s linear infinite; }
+.animate-shimmer { background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,0.05) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3s linear infinite; }
+
+
+
+.particle-bg {
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size:40px 40px;
+    animation:grid-move 8s linear infinite;
+}
+
+</style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WS107WYBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WS107WYBZ');
+    </script>
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_IF_ANY" />
+    <style>html { scroll-behavior: smooth; }</style>
+</head>
+
+<body class="selection:bg-blue-500/20 transition-colors duration-500">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 dark:bg-dark-900/80 bg-white/80 backdrop-blur-xl border-b dark:border-white/5 border-gray-200/50"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg"
+                    alt="SHARL-TECH Logo" width="40" height="40" fetchpriority="high"
+                    class="w-10 h-10 rounded-lg object-cover ring-1 dark:ring-white/10 ring-gray-200 group-hover:ring-blue-500/50 transition-all" />
+                <span class="font-heading font-bold text-lg tracking-widest dark:text-white text-gray-900">SHARL<span
+                        class="text-blue-500">-TECH</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium dark:text-gray-400 text-gray-600">
+                <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+                    href="index.html">Home</a>
+                <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+                    href="services.html">Services</a>
+                <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+                    href="pricing.html">Pricing</a>
+                <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+                    href="#about">About</a>
+                <a class="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20 btn-shine"
+                    href="#contact">Contact Us</a>
+            </div>
+            <div class="flex items-center gap-3 md:hidden">
+                <button class="dark:text-white text-gray-900" id="mobile-menu-btn"><span
+                        class="material-symbols-outlined text-3xl">menu</span></button>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <p>SCROLL</p>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div
+                class="px-6 py-6 space-y-4 text-center dark:bg-dark-900/95 bg-white/95 backdrop-blur-xl border-t dark:border-white/5 border-gray-200">
+                <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2" href="index.html">Home</a>
+                <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2"
+                    href="services.html">Services</a>
+                <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2"
+                    href="pricing.html">Pricing</a>
+                <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2" href="#about">About</a>
+                <a class="block py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-all"
+                    href="#contact">Contact Us</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- About Preview Section (New) -->
-    <a href="about.html" class="about-preview-link">
-        <section id="about-preview" class="section about-preview-section">
-            <div class="container">
-                <div class="about-preview-content">
-                    <div class="glitch-wrapper">
-                        <h3 class="section-title">WHO WE ARE</h3>
+    <!-- HERO WITH BACKGROUND IMAGE -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="images/hero-bg.png" alt="Hero Background" fetchpriority="high" class="w-full h-full object-cover"
+                aria-hidden="true" />
+            <div
+                class="absolute inset-0 dark:bg-gradient-to-b dark:from-dark-900/70 dark:via-dark-900/80 dark:to-dark-900 bg-gradient-to-b from-white/60 via-white/80 to-white">
+            </div>
+        </div>
+        <div class="absolute inset-0 particle-bg opacity-40"></div>
+        <div class="absolute top-1/4 right-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/3 left-1/5 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float"
+            style="animation-delay:3s"></div>
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8 animate-fade-up">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    <span
+                        class="text-xs font-semibold dark:text-gray-400 text-gray-600 uppercase tracking-[0.2em]">Future
+                        Ready · Systems Online</span>
+                </div>
+                <h1 class="text-2xl sm:text-4xl md:text-6xl font-bold leading-[1.1] mb-8 animate-fade-up"
+                    style="animation-delay:0.1s">
+                    <span class="dark:text-white text-gray-900">High-End Web Design</span> <br /><span
+                        class="text-gradient">&amp; Hosting Solutions</span>
+                </h1>
+                <p class="text-lg md:text-xl dark:text-gray-400 text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed font-body animate-fade-up"
+                    style="animation-delay:0.2s">
+                    Elevate your online presence with SHARL-TECH's premium digital services. Security, performance, and
+                    innovation integrated.
+                </p>
+                <div class="flex flex-wrap justify-center gap-5 mb-16 animate-fade-up" style="animation-delay:0.3s">
+                    <a class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 btn-shine"
+                        href="#contact">Start Project</a>
+                    <a class="px-8 py-4 dark:border-white/20 border-gray-300 border dark:text-white text-gray-900 font-bold rounded-lg dark:hover:bg-white/5 hover:bg-gray-100 transition-all btn-shine"
+                        href="#services">Explore Services</a>
+                </div>
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-8 max-w-lg mx-auto animate-fade-up" style="animation-delay:0.4s">
+                    <div class="text-center">
+                        <p class="text-2xl md:text-3xl font-bold dark:text-white text-gray-900 font-heading">50+</p>
+                        <p class="text-xs dark:text-gray-500 text-gray-500 uppercase tracking-wider mt-1">Projects</p>
                     </div>
-                    <p class="about-teaser">
-                        Architects of the digital future. Click to access classified company data and mission
-                        parameters.
-                    </p>
-                    <div class="access-btn">
-                        <span class="blink">></span> ACCESS DATA
+                    <div class="text-center border-x dark:border-white/10 border-gray-200">
+                        <p class="text-2xl md:text-3xl font-bold dark:text-white text-gray-900 font-heading">99.9%</p>
+                        <p class="text-xs dark:text-gray-500 text-gray-500 uppercase tracking-wider mt-1">Uptime</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-2xl md:text-3xl font-bold dark:text-white text-gray-900 font-heading">24/7</p>
+                        <p class="text-xs dark:text-gray-500 text-gray-500 uppercase tracking-wider mt-1">Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+            <div class="w-5 h-8 border dark:border-white/30 border-gray-400 rounded-full relative">
+                <div
+                    class="w-1 h-2 dark:bg-white/60 bg-gray-500 rounded-full absolute top-1.5 left-1/2 -translate-x-1/2 animate-bounce">
+                </div>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.3em] dark:text-gray-500 text-gray-400">Scroll</span>
+        </div>
+    </section>
+
+    <!-- PARTNER LOGOS MARQUEE -->
+    <section class="py-8 border-y dark:border-white/5 border-gray-200 overflow-hidden dark:bg-dark-900 bg-white">
+        <div class="flex animate-marquee" style="width:200%">
+            <div class="flex items-center justify-around w-1/2 gap-16 px-8 opacity-30">
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-google text-lg"></i> Google Cloud</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-aws text-lg"></i> AWS</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-wordpress text-lg"></i> WordPress</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-microsoft text-lg"></i> Microsoft</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-cloudflare text-lg"></i> Cloudflare</span>
+            </div>
+            <div class="flex items-center justify-around w-1/2 gap-16 px-8 opacity-30">
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-google text-lg"></i> Google Cloud</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-aws text-lg"></i> AWS</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-wordpress text-lg"></i> WordPress</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-microsoft text-lg"></i> Microsoft</span>
+                <span class="font-bold text-xl flex items-center gap-2 whitespace-nowrap"><i
+                        class="fab fa-cloudflare text-lg"></i> Cloudflare</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT WITH IMAGE -->
+    <section class="py-24 md:py-32 relative dark:bg-dark-900 bg-white" id="about">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-xs font-bold text-blue-500 uppercase tracking-[0.3em] mb-4 block">Who We
+                        Are</span>
+                    <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-gray-900 mb-6 leading-tight">
+                        Architects of the <br /><span class="text-gradient">Digital Future</span></h2>
+                    <p class="dark:text-gray-400 text-gray-600 leading-relaxed mb-6">At Sharl-Tech, we don't just build
+                        websites; we engineer digital experiences. Founded on the principles of innovation, precision,
+                        and security, we empower businesses to dominate the online landscape.</p>
+                    <p class="dark:text-gray-500 text-gray-500 leading-relaxed mb-8">We specialize in creating
+                        high-performance, visually stunning web applications that serve as the digital command centers
+                        for modern businesses.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="glass p-5 rounded-xl hover:glow-border transition-all">
+                            <p class="text-2xl font-bold dark:text-white text-gray-900 font-heading mb-1">50+</p>
+                            <p class="text-[10px] dark:text-gray-500 text-gray-500 uppercase tracking-wider">Projects
+                            </p>
+                        </div>
+                        <div class="glass p-5 rounded-xl hover:glow-border transition-all">
+                            <p class="text-2xl font-bold dark:text-white text-gray-900 font-heading mb-1">99.9%</p>
+                            <p class="text-[10px] dark:text-gray-500 text-gray-500 uppercase tracking-wider">Uptime</p>
+                        </div>
+                        <div class="glass p-5 rounded-xl hover:glow-border transition-all">
+                            <p class="text-2xl font-bold dark:text-white text-gray-900 font-heading mb-1">24/7</p>
+                            <p class="text-[10px] dark:text-gray-500 text-gray-500 uppercase tracking-wider">Support</p>
+                        </div>
+                        <div class="glass p-5 rounded-xl hover:glow-border transition-all">
+                            <p class="text-2xl font-bold dark:text-white text-gray-900 font-heading mb-1">5+</p>
+                            <p class="text-[10px] dark:text-gray-500 text-gray-500 uppercase tracking-wider">Years
+                                Active</p>
+                        </div>
+                    </div>
+                    <a href="#services"
+                        class="inline-flex items-center gap-2 text-blue-500 font-semibold hover:gap-4 transition-all group">
+                        Our Mission <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="relative">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl blur-xl opacity-50">
+                    </div>
+                    <img src="images/about.png" alt="SHARL-TECH Office"
+                        class="relative rounded-2xl shadow-2xl dark:shadow-blue-500/5 w-full object-cover aspect-[4/3] dark:ring-1 dark:ring-white/10 ring-1 ring-gray-200" />
+                    <div class="absolute -bottom-6 -left-6 glass p-5 rounded-xl shadow-xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center"><i
+                                    class="fas fa-shield-halved text-blue-500"></i></div>
+                            <div>
+                                <p class="text-xs dark:text-gray-500 text-gray-500 uppercase tracking-wider">Founded</p>
+                                <p class="font-bold dark:text-white text-gray-900 text-sm">Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES WITH BG IMAGE -->
+    <section class="py-24 md:py-32 relative overflow-hidden" id="services">
+        <div class="absolute inset-0">
+            <img src="images/services-bg.png" alt="" class="w-full h-full object-cover" aria-hidden="true" />
+            <div class="absolute inset-0 dark:bg-dark-900/90 bg-white/90"></div>
+        </div>
+        <div class="absolute inset-0 particle-bg opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-xs font-bold text-blue-500 uppercase tracking-[0.3em] mb-4 block">Our Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-gray-900">Specialized <span
+                        class="text-gradient">Solutions</span></h2>
+                <p class="dark:text-gray-500 text-gray-500 mt-4 max-w-xl mx-auto">Enterprise-grade services designed to
+                    scale with your business demands.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Web Design -->
+                <a class="glass p-8 rounded-2xl group hover:glow-border transition-all duration-500 cursor-pointer dark:hover:bg-white/[0.04] hover:bg-white block"
+                    href="services.html">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-all">
+                        <i class="fas fa-globe text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-3 font-body">Web Design</h3>
+                    <p class="dark:text-gray-500 text-gray-500 text-sm leading-relaxed mb-4">Custom, responsive, and
+                        aesthetic websites tailored to your brand. We build everything from landing pages to complex
+                        portals.</p>
+                    <div class="flex flex-wrap gap-2"><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Responsive
+                            UI</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Custom
+                            Branding</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">SEO
+                            Ready</span></div>
+                </a>
+                <div class="glass p-8 rounded-2xl group hover:glow-border transition-all duration-500 cursor-pointer dark:hover:bg-white/[0.04] hover:bg-white"
+                    data-service="hosting">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all">
+                        <i class="fas fa-server text-cyan-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-3 font-body">Web Hosting</h3>
+                    <p class="dark:text-gray-500 text-gray-500 text-sm leading-relaxed mb-4">Reliable, high-speed
+                        hosting solutions ensuring your site is always online and performing at its peak.</p>
+                    <div class="flex flex-wrap gap-2"><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">99.9%
+                            Uptime</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">SSD
+                            Storage</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Daily
+                            Backups</span></div>
+                </div>
+                <div class="glass p-8 rounded-2xl group hover:glow-border transition-all duration-500 cursor-pointer dark:hover:bg-white/[0.04] hover:bg-white"
+                    data-service="seo">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/20 transition-all">
+                        <i class="fas fa-chart-line text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-3 font-body">SEO & Marketing</h3>
+                    <p class="dark:text-gray-500 text-gray-500 text-sm leading-relaxed mb-4">Boost your visibility and
+                        drive traffic with our data-driven SEO and digital marketing strategies.</p>
+                    <div class="flex flex-wrap gap-2"><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Keyword
+                            Analysis</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">On-Page
+                            SEO</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Analytics</span>
+                    </div>
+                </div>
+                <div class="glass p-8 rounded-2xl group hover:glow-border transition-all duration-500 cursor-pointer dark:hover:bg-white/[0.04] hover:bg-white"
+                    data-service="app">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-500/20 transition-all">
+                        <i class="fas fa-mobile-alt text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-3 font-body">App Development</h3>
+                    <p class="dark:text-gray-500 text-gray-500 text-sm leading-relaxed mb-4">Native and cross-platform
+                        mobile applications designed for seamless user experiences on iOS and Android.</p>
+                    <div class="flex flex-wrap gap-2"><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">iOS
+                            & Android</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Modern
+                            UI/UX</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Cloud</span>
+                    </div>
+                </div>
+                <div class="glass p-8 rounded-2xl group hover:glow-border transition-all duration-500 cursor-pointer dark:hover:bg-white/[0.04] hover:bg-white"
+                    data-service="repair">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all">
+                        <i class="fas fa-tools text-orange-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-3 font-body">IT Repair</h3>
+                    <p class="dark:text-gray-500 text-gray-500 text-sm leading-relaxed mb-4">Expert hardware diagnostics
+                        and repair for laptops, desktops, and mobile devices.</p>
+                    <div class="flex flex-wrap gap-2"><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Hardware
+                            Repair</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Virus
+                            Removal</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Data
+                            Recovery</span></div>
+                </div>
+                <div class="glass p-8 rounded-2xl group hover:glow-border transition-all duration-500 cursor-pointer dark:hover:bg-white/[0.04] hover:bg-white"
+                    data-service="domain">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-pink-500/20 transition-all">
+                        <i class="fas fa-link text-pink-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-3 font-body">Domain Registration</h3>
+                    <p class="dark:text-gray-500 text-gray-500 text-sm leading-relaxed mb-4">Secure your perfect digital
+                        identity with our vast selection of TLDs and domain management tools.</p>
+                    <div class="flex flex-wrap gap-2"><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">.com
+                            / .co.ke</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">DNS
+                            Management</span><span
+                            class="text-[10px] px-2 py-1 dark:bg-white/5 bg-gray-100 rounded dark:text-gray-400 text-gray-500 hover:bg-blue-500/20 hover:text-blue-400 hover:scale-105 transition-all cursor-default">Privacy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section
+        class="py-24 relative overflow-hidden border-y dark:border-white/5 border-gray-200 dark:bg-dark-800 bg-gray-50">
+        <div
+            class="absolute inset-0 dark:bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.1)_0%,_transparent_70%)]">
+        </div>
+        <div class="absolute inset-0 particle-bg opacity-10"></div>
+        <div class="absolute top-10 left-10 w-32 h-32 border border-white/10 rounded-full animate-float"></div>
+        <div class="absolute bottom-10 right-20 w-20 h-20 border border-white/10 rounded-full animate-float"
+            style="animation-delay:2s"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold dark:text-white text-gray-900 mb-6">Ready to <span
+                    class="text-gradient">Deploy?</span></h2>
+            <p class="dark:text-gray-400 text-gray-600 text-lg mb-10 max-w-2xl mx-auto">Explore transparent pricing or
+                build a custom
+                infrastructure that scales with your ambition.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <a class="px-10 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20 hover:-translate-y-0.5 btn-shine flex items-center gap-3"
+                    href="pricing.html">Go to Pricing <i class="fas fa-arrow-right"></i></a>
+                <a class="px-10 py-4 border-2 dark:border-white/10 border-gray-200 dark:text-white text-gray-900 font-bold rounded-lg hover:bg-white/5 transition-all"
+                    href="#contact">Custom Quote</a>
+            </div>
+        </div>
+
+
+        <!-- CONTACT -->
+        <section class="py-24 md:py-32 relative particle-bg dark:bg-dark-800 bg-gray-50" id="contact">
+            <div
+                class="absolute inset-0 dark:bg-gradient-to-b dark:from-dark-900 dark:via-dark-800/80 dark:to-dark-900 bg-gradient-to-b from-gray-50 via-white/80 to-gray-50">
+            </div>
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16"><span
+                        class="text-xs font-bold text-blue-500 uppercase tracking-[0.3em] mb-4 block">Get In
+                        Touch</span>
+                    <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-gray-900">Contact <span
+                            class="text-gradient">Command Center</span></h2>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div
+                            class="p-4 border-b dark:border-white/5 border-gray-200 flex justify-between items-center dark:bg-white/[0.02] bg-gray-50">
+                            <h4 class="text-xs font-bold uppercase tracking-widest dark:text-gray-400 text-gray-500">
+                                Direct
+                                Line</h4><span class="flex items-center gap-2 text-[10px] text-green-500"><span
+                                    class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Online</span>
+                        </div>
+                        <div class="p-8">
+                            <p class="dark:text-gray-400 text-gray-600 mb-8">Ready to start your next project? Get in
+                                touch.
+                                We're always online.</p>
+                            <div class="space-y-4">
+                                <a href="tel:+254707575397"
+                                    class="flex items-center gap-5 p-4 rounded-xl border dark:border-white/5 border-gray-200 dark:hover:border-white/20 hover:border-blue-200 dark:hover:bg-white/[0.02] hover:bg-blue-50/50 transition-all group">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all">
+                                        <i class="fas fa-phone text-blue-500"></i>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-[10px] dark:text-gray-500 text-gray-500 uppercase tracking-wider">
+                                            Phone</p>
+                                        <p class="dark:text-white text-gray-900 font-semibold">+254 707 575 397</p>
+                                    </div>
+                                </a>
+                                <a href="mailto:sharlmon19@gmail.com"
+                                    class="flex items-center gap-5 p-4 rounded-xl border dark:border-white/5 border-gray-200 dark:hover:border-white/20 hover:border-cyan-200 dark:hover:bg-white/[0.02] hover:bg-cyan-50/50 transition-all group">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-all">
+                                        <i class="fas fa-envelope text-cyan-500"></i>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-[10px] dark:text-gray-500 text-gray-500 uppercase tracking-wider">
+                                            Email</p>
+                                        <p class="dark:text-white text-gray-900 font-semibold">sharlmon19@gmail.com</p>
+                                    </div>
+                                </a>
+                                <a href="https://maps.app.goo.gl/wR2sxCj8ZWuwRnRR8" target="_blank"
+                                    class="flex items-center gap-5 p-4 rounded-xl border dark:border-white/5 border-gray-200 dark:hover:border-white/20 hover:border-green-200 dark:hover:bg-white/[0.02] hover:bg-green-50/50 transition-all group">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-all">
+                                        <i class="fas fa-map-marker-alt text-green-500"></i>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="text-[10px] dark:text-gray-500 text-gray-500 uppercase tracking-wider">
+                                            HQ
+                                        </p>
+                                        <p class="dark:text-white text-gray-900 font-semibold">Bekim House, Level 1 —
+                                            Nairobi</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="flex gap-3 mt-8">
+                                <a href="https://wa.me/254707575397" target="_blank"
+                                    class="w-11 h-11 rounded-xl border dark:border-white/10 border-gray-200 flex items-center justify-center dark:text-gray-400 text-gray-500 hover:bg-green-500 hover:text-white hover:border-green-500 transition-all"><i
+                                        class="fab fa-whatsapp text-lg"></i></a>
+                                <a href="#"
+                                    class="w-11 h-11 rounded-xl border dark:border-white/10 border-gray-200 flex items-center justify-center dark:text-gray-400 text-gray-500 hover:bg-gray-900 hover:text-white transition-all"><i
+                                        class="fab fa-x-twitter text-lg"></i></a>
+                                <a href="#"
+                                    class="w-11 h-11 rounded-xl border dark:border-white/10 border-gray-200 flex items-center justify-center dark:text-gray-400 text-gray-500 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all"><i
+                                        class="fab fa-instagram text-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div
+                            class="p-4 border-b dark:border-white/5 border-gray-200 flex justify-between items-center dark:bg-white/[0.02] bg-gray-50">
+                            <h4 class="text-xs font-bold uppercase tracking-widest dark:text-gray-400 text-gray-500">
+                                Transmission</h4><span
+                                class="text-[10px] dark:text-gray-600 text-gray-400 font-mono">ID-2025-ST</span>
+                        </div>
+                        <form action="#" class="p-8 space-y-6">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label
+                                        class="block text-[10px] font-bold dark:text-gray-500 text-gray-500 uppercase tracking-wider mb-2">Full
+                                        Name</label><input
+                                        class="w-full bg-transparent border-b dark:border-white/10 border-gray-300 dark:text-white text-gray-900 pb-3 focus:border-blue-500 focus:outline-none transition-colors dark:placeholder-gray-600 placeholder-gray-400"
+                                        placeholder="John Doe" type="text" minlength="2" maxlength="50"
+                                        pattern="[a-zA-Z\s\-]+" title="Only letters and spaces allowed" required />
+                                </div>
+                                <div><label
+                                        class="block text-[10px] font-bold dark:text-gray-500 text-gray-500 uppercase tracking-wider mb-2">Email</label><input
+                                        class="w-full bg-transparent border-b dark:border-white/10 border-gray-300 dark:text-white text-gray-900 pb-3 focus:border-blue-500 focus:outline-none transition-colors dark:placeholder-gray-600 placeholder-gray-400"
+                                        placeholder="john@company.com" type="email" maxlength="100" required /></div>
+                            </div>
+                            <div><label
+                                    class="block text-[10px] font-bold dark:text-gray-500 text-gray-500 uppercase tracking-wider mb-2">Project
+                                    Scope</label><select
+                                    class="w-full bg-transparent border-b dark:border-white/10 border-gray-300 dark:text-gray-400 text-gray-600 pb-3 focus:border-blue-500 focus:outline-none transition-colors dark:bg-dark-900 bg-white">
+                                    <option>Web Design & Dev</option>
+                                    <option>Cloud Hosting</option>
+                                    <option>SEO & Marketing</option>
+                                    <option>App Development</option>
+                                    <option>IT Repair</option>
+                                    <option>Domain Registration</option>
+                                </select></div>
+                            <div><label
+                                    class="block text-[10px] font-bold dark:text-gray-500 text-gray-500 uppercase tracking-wider mb-2">Message</label><textarea
+                                    class="w-full bg-transparent border-b dark:border-white/10 border-gray-300 dark:text-white text-gray-900 pb-3 focus:border-blue-500 focus:outline-none transition-colors dark:placeholder-gray-600 placeholder-gray-400 resize-none"
+                                    placeholder="Describe your mission..." rows="4" minlength="10" maxlength="1000"
+                                    required></textarea></div>
+                            <button
+                                class="w-full py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-500/40 hover:-translate-y-0.5 btn-shine uppercase tracking-wider text-sm"
+                                type="submit">Send Transmission</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
-    </a>
 
-    <!-- Services Section (Hexagon Grid) -->
-    <section id="services" class="section">
-        <div class="container">
-            <h3 class="section-title">OUR SERVICES</h3>
-            <div class="hex-grid">
-                <!-- Web Dev -->
-                <div class="hex-wrapper" data-service="web">
-                    <div class="hex">
-                        <div class="hex-content">
-                            <i class="fas fa-globe"></i>
-                            <h4>Web Design</h4>
-                            <p>Custom Development</p>
-                        </div>
+        <!-- FOOTER -->
+        <footer class="py-16 border-t dark:border-white/5 border-gray-200 dark:bg-dark-900 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4"><img
+                                src="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg"
+                                alt="SHARL-TECH"
+                                class="w-8 h-8 rounded-lg object-cover dark:ring-1 dark:ring-white/10 ring-1 ring-gray-200" /><span
+                                class="font-heading font-bold text-sm tracking-widest dark:text-white text-gray-900">SHARL<span
+                                    class="text-blue-500">-TECH</span></span></div>
+                        <p class="text-sm dark:text-gray-500 text-gray-500 leading-relaxed">Leading the digital frontier
+                            with high-end web design and hosting solutions.</p>
+                        <div class="flex gap-3 mt-4"><a href="https://wa.me/254707575397"
+                                class="dark:text-gray-600 text-gray-400 hover:text-green-500 transition-colors"><i
+                                    class="fab fa-whatsapp"></i></a><a href="#"
+                                class="dark:text-gray-600 text-gray-400 dark:hover:text-white hover:text-gray-900 transition-colors"><i
+                                    class="fab fa-x-twitter"></i></a><a href="#"
+                                class="dark:text-gray-600 text-gray-400 hover:text-pink-500 transition-colors"><i
+                                    class="fab fa-instagram"></i></a></div>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4 font-body">
+                            Solutions</h4>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a href="services.html" class="hover:text-blue-500 transition-colors">Web
+                                    Design</a>
+                            </li>
+                            <li><a href="hosting.html" class="hover:text-blue-500 transition-colors">Web
+                                    Hosting</a>
+                            </li>
+                            <li><a href="services.html" class="hover:text-blue-500 transition-colors">App
+                                    Development</a></li>
+                            <li><a href="services.html" class="hover:text-blue-500 transition-colors">SEO &
+                                    Marketing</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4 font-body">
+                            Company</h4>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a href="#about" class="hover:text-blue-500 transition-colors">About Us</a></li>
+                            <li><a href="pricing.html" class="hover:text-blue-500 transition-colors">Pricing</a>
+                            </li>
+                            <li><a href="#contact" class="hover:text-blue-500 transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-xs font-bold dark:text-white text-gray-900 uppercase tracking-widest mb-4 font-body">
+                            Contact</h4>
+                        <ul class="space-y-2 text-sm dark:text-gray-500 text-gray-500">
+                            <li><a href="mailto:sharlmon19@gmail.com" class="hover:text-blue-500 transition-colors"><i
+                                        class="fas fa-envelope mr-2 text-xs"></i>sharlmon19@gmail.com</a></li>
+                            <li><a href="tel:+254707575397" class="hover:text-blue-500 transition-colors"><i
+                                        class="fas fa-phone mr-2 text-xs"></i>+254 707 575 397</a></li>
+                            <li class="dark:text-gray-600 text-gray-400"><i
+                                    class="fas fa-map-marker-alt mr-2 text-xs"></i>Nairobi, Kenya</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- Hosting -->
-                <div class="hex-wrapper" data-service="hosting">
-                    <div class="hex">
-                        <div class="hex-content">
-                            <i class="fas fa-server"></i>
-                            <h4>Web Hosting</h4>
-                            <p>Fast & Secure</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Marketing -->
-                <div class="hex-wrapper" data-service="seo">
-                    <div class="hex">
-                        <div class="hex-content">
-                            <i class="fas fa-chart-line"></i>
-                            <h4>SEO & Marketing</h4>
-                            <p>Grow Your Traffic</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- App Dev -->
-                <div class="hex-wrapper" data-service="app">
-                    <div class="hex">
-                        <div class="hex-content">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h4>App Dev</h4>
-                            <p>iOS & Android</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Repair -->
-                <div class="hex-wrapper" data-service="repair">
-                    <div class="hex">
-                        <div class="hex-content">
-                            <i class="fas fa-tools"></i>
-                            <h4>IT Repair</h4>
-                            <p>Hardware Solutions</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Domain -->
-                <div class="hex-wrapper" data-service="domain">
-                    <div class="hex">
-                        <div class="hex-content">
-                            <i class="fas fa-link"></i>
-                            <h4>Domains</h4>
-                            <p>Registration</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section: Project Archive -->
-    <section id="portfolio" class="section">
-        <div class="container">
-            <h3 class="section-title">PROJECT PORTFOLIO</h3>
-            <div class="portfolio-grid">
-                <!-- Case File 1 -->
-                <div class="case-file">
-                    <div class="project-status completed">COMPLETED</div>
-                    <div class="file-overlay"></div>
-                    <div class="case-visual">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <div class="case-info">
-                        <h4>ALPHA CORP</h4>
-                        <p class="tech-mono">Corporate Identity System</p>
-                        <div class="case-meta">
-                            <span class="static-link"><i class="fas fa-lock"></i> DATA ARCHIVED</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Case File 2 -->
-                <div class="case-file">
-                    <div class="project-status in-progress">IN PROGRESS</div>
-                    <div class="file-overlay"></div>
-                    <div class="case-visual">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="case-info">
-                        <h4>STYLE HIVE</h4>
-                        <p class="tech-mono">E-Commerce Platform</p>
-                        <div class="case-meta">
-                            <span class="static-link"><i class="fas fa-cog fa-spin"></i> PROCESSING LOGS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Case File 3 -->
-                <div class="case-file">
-                    <div class="project-status live">LIVE SYSTEM</div>
-                    <div class="file-overlay"></div>
-                    <div class="case-visual">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="case-info">
-                        <h4>SENTINEL APP</h4>
-                        <p class="tech-mono">Mobile Security Suite</p>
-                        <div class="case-meta">
-                            <span class="static-link"><i class="fas fa-check-circle"></i> SYSTEM ACTIVE</span>
-                        </div>
-                    </div>
+                <div
+                    class="pt-8 border-t dark:border-white/5 border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-xs dark:text-gray-600 text-gray-400">© 2025 SHARL-TECH. All Rights Reserved.</p>
+                    <div class="flex items-center gap-2"><span
+                            class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span><span
+                            class="text-xs dark:text-gray-600 text-gray-400 uppercase tracking-wider">Systems:
+                            Operational</span></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="section contrast-section">
-        <div class="container">
-            <h3 class="section-title">DEPLOYMENT OPTIONS</h3>
-            <div class="pricing-cta-container">
-                <div class="glass-card cta-card">
-                    <div class="cta-content">
-                        <i class="fas fa-tags cta-icon"></i>
-                        <h4>View Plans & Custom Quotes</h4>
-                        <p>Explore our transparent pricing tiers or build a custom quote tailored to your mission.</p>
-                        <a href="pricing.html" class="btn btn-primary btn-lg">View Plans <i
-                                class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-    <!-- Testimonials Section: Client Feedback -->
-    <section id="testimonials" class="section">
-        <div class="container">
-            <h3 class="section-title">CLIENT FEEDBACK</h3>
-            <div class="testimonials-grid">
-                <!-- Feedback 1 -->
-                <div class="signal-card">
-                    <div class="signal-header">
-                        <div class="signal-source">LOCATION: HQ</div>
-                        <div class="signal-strength">
-                            <i class="fas fa-star"></i> 100%
-                        </div>
-                    </div>
-                    <div class="signal-body">
-                        "Leading the digital frontier. Our solutions are designed to outpace the competition. Welcome to
-                        the future."
-                    </div>
-                    <div class="signal-meta">
-                        <div class="client-name">Sharlmon Junior</div>
-                        <div class="client-role">Founder and Director, Sharl-Tech</div>
-                    </div>
-                </div>
-
-                <!-- Feedback 2 -->
-                <div class="signal-card">
-                    <div class="signal-header">
-                        <div class="signal-source">LOCATION: Nairobi</div>
-                        <div class="signal-strength">
-                            <i class="fas fa-star"></i> 98%
-                        </div>
-                    </div>
-                    <div class="signal-body">
-                        "The web design mission was executed flawlessly. Our user engagement metrics have increased by
-                        200% since deployment."
-                    </div>
-                    <div class="signal-meta">
-                        <div class="client-name">Sarah J.</div>
-                        <div class="client-role">Founder, StyleHive</div>
-                    </div>
-                </div>
-
-                <!-- Feedback 3 -->
-                <div class="signal-card">
-                    <div class="signal-header">
-                        <div class="signal-source">LOCATION: Online</div>
-                        <div class="signal-strength">
-                            <i class="fas fa-star"></i> 100%
-                        </div>
-                    </div>
-                    <div class="signal-body">
-                        "Critical error fixed in record time. App development protocols were followed to the letter. A
-                        tactical advantage for our business."
-                    </div>
-                    <div class="signal-meta">
-                        <div class="client-name">David M.</div>
-                        <div class="client-role">Director, FinSecure</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Contact Section: Digital Command Center -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h3 class="section-title">CONTACT US</h3>
-            <div class="command-center">
-                <!-- Left Panel: Direct Line -->
-                <div class="panel info-panel">
-                    <div class="panel-header">
-                        <h4>Direct Line</h4>
-                        <div class="status-indicator"><span class="blink"></span> ONLINE</div>
-                    </div>
-                    <div class="panel-body">
-                        <p class="mission-text">Ready to start your next project? Get in touch with our team.</p>
-
-                        <div class="comm-link">
-                            <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
-                            <div class="link-details">
-                                <span class="label">Phone</span>
-                                <span class="value">0707 575 397</span>
-                            </div>
-                        </div>
-
-                        <div class="comm-link">
-                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                            <div class="link-details">
-                                <span class="label">Email</span>
-                                <span class="value">sharlmon19@gmail.com</span>
-                            </div>
-                        </div>
-
-                        <div class="social-matrix">
-                            <a href="https://wa.me/message/AKQPZAPC5J7MJ1" class="matrix-node" target="_blank"><i
-                                    class="fab fa-whatsapp"></i></a>
-                            <a href="https://www.instagram.com/sharlmon?igsh=MXNoMHBsczBvZ3ozbw%3D%3D&utm_source=qr"
-                                class="matrix-node" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.tiktok.com/@jaymoney4unow?_r=1&_t=ZM-92Gfi4RgT1c" class="matrix-node"
-                                target="_blank"><i class="fab fa-tiktok"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Panel: Transmission Form -->
-                <div class="panel form-panel">
-                    <div class="panel-header">
-                        <h4>Message</h4>
-                        <div class="form-id">ID: #REQ-001</div>
-                    </div>
-                    <!-- Action removed, handled by script.js -->
-                    <form class="transmission-form" onsubmit="event.preventDefault(); handleForm(this);">
-                        <input type="hidden" name="item_name" value="General Inquiry">
-
-                        <div class="input-group">
-                            <input type="text" name="name" required>
-                            <label>Your Name</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="input-group">
-                            <input type="email" name="email" required>
-                            <label>Email Address</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="input-group">
-                            <input type="tel" name="phone">
-                            <label>Phone Number (Optional)</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="input-group">
-                            <textarea name="message" rows="4" required></textarea>
-                            <label>Your Message</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">
-                            SEND MESSAGE <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <footer class="footer-bottom">
-            &copy; 2025 SHARL-TECH. All Rights Reserved. SYSTEM ACTIVE.
         </footer>
-    </section>
 
-    <!-- Service Detail Modal -->
-    <div id="service-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <i id="modal-icon" class="fas fa-globe"></i>
-                <h3 id="modal-title">Web Design</h3>
-            </div>
-            <div class="modal-body">
-                <p id="modal-desc">Description goes here...</p>
-                <div class="modal-features" id="modal-features">
-                    <!-- Features list injected via JS -->
+        <!-- WHATSAPP FAB -->
+        <a class="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 hover:scale-110 transition-transform z-50 animate-pulse-glow"
+            href="https://wa.me/254707575397" target="_blank" aria-label="WhatsApp"><i
+                class="fab fa-whatsapp text-white text-2xl"></i></a>
+
+        <!-- SERVICE MODAL -->
+        <div class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm"
+            id="service-modal">
+            <div
+                class="dark:bg-dark-700 bg-white rounded-2xl max-w-md w-full mx-4 p-8 relative shadow-2xl border dark:border-white/10 border-gray-200">
+                <button
+                    class="absolute top-4 right-4 dark:text-gray-500 text-gray-400 hover:text-red-500 transition-colors close-modal"><span
+                        class="material-symbols-outlined">close</span></button>
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mx-auto mb-6">
+                        <i id="modal-icon" class="fas fa-globe text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold dark:text-white text-gray-900 mb-3 font-body" id="modal-title">Service
+                    </h3>
+                    <p class="dark:text-gray-400 text-gray-600 text-sm mb-6" id="modal-desc">Description</p>
+                    <div class="flex flex-wrap justify-center gap-2 mb-6" id="modal-features"></div><a href="#contact"
+                        class="inline-block px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all btn-shine text-sm uppercase tracking-wider"
+                        id="modal-btn">Get Started</a>
                 </div>
-                <!-- Action Button -->
-                <a href="#contact" class="btn btn-primary btn-block" id="modal-btn">Purchase Service</a>
             </div>
         </div>
-    </div>
 
-    <!-- WhatsApp Widget -->
-    <a href="https://wa.me/254707575397" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Contact Us on WhatsApp</span>
-    </a>
+        <script>
 
-    <script src="script.js"></script>
-    <!-- Tilt.js for 3D Cards -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+
+
+            // ===== NAVBAR SCROLL =====
+            window.addEventListener('scroll', () => { const n = document.getElementById('navbar'); n.classList.toggle('shadow-lg', window.scrollY > 50); });
+
+            // ===== MOBILE MENU =====
+            document.getElementById('mobile-menu-btn')?.addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+
+            // ===== SERVICE MODAL =====
+            const sd = { web: { t: 'Web Design', i: 'fas fa-globe', d: 'Custom, responsive, and aesthetic websites tailored to your brand.', f: ['Responsive UI', 'Custom Branding', 'SEO Ready', 'Fast Loading'] }, hosting: { t: 'Web Hosting', i: 'fas fa-server', d: 'Reliable, high-speed hosting with 99.9% uptime guarantee and automated daily backups.', f: ['99.9% Uptime', 'SSD Storage', 'Daily Backups', '24/7 Support'] }, seo: { t: 'SEO & Marketing', i: 'fas fa-chart-line', d: 'Boost your visibility with data-driven SEO and digital marketing strategies.', f: ['Keyword Analysis', 'On-Page SEO', 'Content Strategy', 'Analytics'] }, app: { t: 'App Development', i: 'fas fa-mobile-alt', d: 'Native and cross-platform mobile applications for iOS and Android.', f: ['iOS & Android', 'Modern UI/UX', 'Cloud Integration', 'Maintenance'] }, repair: { t: 'IT Repair', i: 'fas fa-tools', d: 'Expert hardware diagnostics and repair for laptops, desktops, and mobile devices.', f: ['Hardware Repair', 'Software Fixes', 'Virus Removal', 'Data Recovery'] }, domain: { t: 'Domain Registration', i: 'fas fa-link', d: 'Secure your digital identity with our vast selection of TLDs and domain tools.', f: ['.com / .co.ke', 'DNS Management', 'Privacy Protection', 'Auto-Renewal'] } };
+            const modal = document.getElementById('service-modal');
+            document.querySelectorAll('[data-service]').forEach(c => { c.addEventListener('click', () => { const d = sd[c.dataset.service]; if (!d) return; document.getElementById('modal-icon').className = d.i + ' text-blue-500 text-2xl'; document.getElementById('modal-title').textContent = d.t; document.getElementById('modal-desc').textContent = d.d; const dk = document.documentElement.classList.contains('dark'); document.getElementById('modal-features').innerHTML = d.f.map(f => `<span class="text-xs px-3 py-1 ${dk ? 'bg-white/5 border-white/10 text-gray-400' : 'bg-gray-100 border-gray-200 text-gray-600'} rounded-full border">${f}</span>`).join(''); modal.classList.remove('hidden'); modal.classList.add('flex'); }); });
+            document.querySelector('.close-modal')?.addEventListener('click', () => { modal.classList.add('hidden'); modal.classList.remove('flex'); });
+            modal?.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); } });
+
+            // ===== SMOOTH SCROLL =====
+            document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', (e) => { const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); document.getElementById('mobile-menu')?.classList.add('hidden'); } }); });
+        </script>
+        <!-- SECURITY RESTRICTIONS -->
+        <script>
+            document.addEventListener('contextmenu', event => event.preventDefault());
+            document.onkeydown = function (e) {
+                if (e.keyCode == 123) { return false; }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+                if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+            }
+        </script>
 </body>
 
 </html>

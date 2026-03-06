@@ -1,323 +1,619 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth dark" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHARL-TECH | Pricing & Custom Quotes</title>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Pricing & Custom Calculator | SHARL-TECH</title>
 
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Choose the perfect web design and hosting package. From startup launchpads to enterprise e-commerce suites. Build your custom quote instantly.">
-    <meta name="keywords"
-        content="Web Design Pricing Kenya, Hosting Plans, Custom Website Quote, Cheap Domains Kenya, Sharl-Tech Pricing">
-    <meta name="author" content="Sharl-Tech">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- CSS -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap"
+    rel="stylesheet" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
-    <link rel="apple-touch-icon" href="images/logo.jpg">
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
-    <style>
-        /* PDF Print Styles override */
-        @media print {
-            body * {
-                visibility: hidden;
-            }
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-            #calculator-section,
-            #calculator-section * {
-                visibility: visible;
-            }
-
-            #calculator-section {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                background: white;
-                color: black;
-            }
-
-            .no-print {
-                display: none !important;
-            }
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#050505', 800: '#0a0a0a', 700: '#111111', 600: '#1a1a1a' },
+            accent: { blue: '#3b82f6', cyan: '#06b6d4', green: '#4ade80' }
+          },
+          fontFamily: {
+            heading: ['Syncopate', 'sans-serif'],
+            body: ['Space Grotesk', 'sans-serif'],
+          }
         }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    /* Theme Setup */
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #050505;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Syncopate', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+    }
+
+    .glass-strong {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+    }
+
+    /* Glowing Effects */
+    .glow-border {
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .glow-border:hover {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-shine::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      transition: 0.6s;
+    }
+
+    .btn-shine:hover::before {
+      left: 100%;
+    }
+
+    /* Selectable Cards */
+    .selectable-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .selectable-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .selectable-card.active {
+      border-color: #3b82f6;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    /* Input & Dropdown */
+    .dark-input {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: border-color 0.3s;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .dark-input:focus {
+      outline: none;
+      border-color: #3b82f6;
+    }
+
+    /* Background Canvas */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      opacity: 0.4;
+      background-image: url('images/pricing_blue_space_bg_1772799796827.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at center, transparent 0%, #050505 80%);
+    }
+
+    /* Glowing Divider */
+    .glow-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+      margin: 2rem 0;
+    }
+  </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WS107WYBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WS107WYBZ');
+    </script>
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_IF_ANY" />
+    <style>html { scroll-behavior: smooth; }</style>
 </head>
 
-<body>
-    <!-- 3D Background Canvas -->
-    <div id="canvas-container"></div>
+<body class="antialiased relative selection:bg-blue-500/20 transition-colors duration-500">
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="index.html" style="color:white; display:flex; align-items:center; gap:10px;">
-                <img src="images/logo.jpg" alt="SHARL-TECH Logo" class="logo-img">
-                <span>SHARL-TECH</span>
-            </a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="pricing.html" class="active">Pricing</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html#contact" class="btn-nav">Contact Us</a></li>
-        </ul>
-        <div class="hamburger"><i class="fas fa-bars"></i></div>
-    </nav>
+  <!-- Background Components -->
+  <div id="particles-js"></div>
+  <div class="hero-gradient"></div>
 
-    <!-- Header -->
-    <header class="section" style="padding-top: 150px; padding-bottom: 50px; min-height: auto;">
-        <div class="container" style="text-align: center;">
-            <h1 class="glitch" data-text="PRICING & PLANS" style="font-size: 3.5rem;">PRICING & PLANS</h1>
-            <p class="hero-sub">Transparent Solutions for Every Scale</p>
-        </div>
-    </header>
+  <nav
+    class="fixed top-0 w-full z-50 transition-all duration-300 dark:bg-dark-900/80 bg-white/80 backdrop-blur-xl border-b dark:border-white/5 border-gray-200/50"
+    id="navbar">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg" alt="SHARL-TECH Logo"
+          width="40" height="40" fetchpriority="high"
+          class="w-10 h-10 rounded-lg object-cover ring-1 dark:ring-white/10 ring-gray-200 group-hover:ring-blue-500/50 transition-all" />
+        <span class="font-heading font-bold text-lg tracking-widest dark:text-white text-gray-900">SHARL<span
+            class="text-blue-500">-TECH</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium dark:text-gray-400 text-gray-600">
+        <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+          href="index.html">Home</a>
+        <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+          href="services.html">Services</a>
+        <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+          href="hosting.html">Hosting</a>
+        <a class="text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[1px] after:bg-blue-500"
+          href="#">Pricing</a>
+        <a class="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20 btn-shine"
+          href="index.html#contact">Contact Us</a>
+      </div>
+      <div class="flex items-center gap-3 md:hidden">
+        <button class="dark:text-white text-gray-900" id="mobile-menu-btn"><span
+            class="material-symbols-outlined text-3xl">menu</span></button>
+      </div>
+    </div>
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div
+        class="px-6 py-6 space-y-4 text-center dark:bg-dark-900/95 bg-white/95 backdrop-blur-xl border-t dark:border-white/5 border-gray-200">
+        <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2" href="index.html">Home</a>
+        <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2"
+          href="services.html">Services</a>
+        <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2"
+          href="hosting.html">Hosting</a>
+        <a class="block text-blue-500 py-2" href="#">Pricing</a>
+        <a class="block py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-all"
+          href="index.html#contact">Contact Us</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- SECTION 1: BUILD YOUR OWN QUOTE CALCULATOR -->
-    <section id="calculator-section" class="section contrast-section" style="padding-top: 0;">
-        <div class="container">
-            <h3 class="section-title">TAILOR YOUR SOLUTION</h3>
+  <!-- Main Content -->
+  <main class="relative pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
 
-            <div class="calculator-wrapper glass-card">
-                <form id="quote-form">
-                    <!-- Option 1: Website Type -->
-                    <div class="calc-step">
-                        <h5>1. WE TYPE OF WEBSITE NEEDED</h5>
-                        <div class="select-group">
-                            <select id="site-type" class="tech-select">
-                                <option value="0" disabled selected>Select Architecture...</option>
-                                <option value="10000">Landing Page (Single Page) - KES 10,000</option>
-                                <option value="15000">Corporate Site (Multi-page) - KES 15,000</option>
-                                <option value="20000">E-Commerce Store - KES 20,000</option>
-                            </select>
-                        </div>
-                    </div>
+    <!-- Hero Titles -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-6xl font-bold font-heading mb-4 tracking-tighter text-white">
+        PRICING & <span class="text-gradient">PLANS</span>
+      </h1>
+      <p class="text-blue-400 font-heading tracking-[0.3em] text-xs md:text-sm uppercase mb-6 opacity-80">
+        Transparent Solutions For Every Scale
+      </p>
+      <h2 class="text-2xl md:text-4xl font-bold font-heading mb-8 tracking-wide text-white">
+        TAILOR YOUR SOLUTION
+      </h2>
+      <div class="w-48 glow-divider mx-auto"></div>
+    </div>
 
-                    <!-- Option 2: Hosting Tier -->
-                    <div class="calc-step">
-                        <h5>2. HOSTING POWER</h5>
-                        <div class="radio-group">
-                            <label class="tech-radio">
-                                <input type="radio" name="hosting" value="3000">
-                                <span class="radio-box">
-                                    <span class="r-title">Starter</span>
-                                    <span class="r-price">KES 3,000/yr</span>
-                                </span>
-                            </label>
-                            <label class="tech-radio">
-                                <input type="radio" name="hosting" value="5000" checked>
-                                <span class="radio-box">
-                                    <span class="r-title">Standard</span>
-                                    <span class="r-price">KES 5,000/yr</span>
-                                </span>
-                            </label>
-                            <label class="tech-radio">
-                                <input type="radio" name="hosting" value="9500">
-                                <span class="radio-box">
-                                    <span class="r-title">Enterprise</span>
-                                    <span class="r-price">KES 9,500/yr</span>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
+    <!-- CALCULATOR CONTAINER -->
+    <div class="glass-strong rounded-3xl p-6 md:p-10 lg:p-12 mb-20 max-w-5xl mx-auto glow-border">
 
-                    <!-- Option 3: Domain -->
-                    <div class="calc-step">
-                        <h5>3. CHECK AVAILABILITY & SELECT EXTENSION</h5>
-                        <!-- Integrated Dark Theme Domain Search -->
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #aaa;">Search
-                                availability first (Optional)</label>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <input type="text" id="domain-search-input" placeholder="e.g. sharltech"
-                                    style="flex: 1; min-width: 200px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 4px; outline: none;">
-                                <button type="button" onclick="checkDomain()" class="btn btn-primary"
-                                    style="padding: 12px 25px; border: none; min-width: 120px;">
-                                    Check
-                                </button>
-                            </div>
-                            <div id="domain-result" style="margin-top: 10px; font-size: 0.9rem; min-height: 20px;">
-                            </div>
-                        </div>
+      <!-- Step 1: Website Type -->
+      <div class="mb-12">
+        <h3 class="font-heading font-bold text-sm tracking-[0.2em] text-blue-400 mb-6 flex items-center gap-3">
+          <span
+            class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-xs border border-blue-500/m50">1</span>
+          Website Type Needed
+        </h3>
+        <select id="calc-website-type"
+          class="w-full p-4 rounded-xl dark-input cursor-pointer font-bold tracking-wide appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%233b82f6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_1.5rem_center] bg-no-repeat">
+          <option value="25000">Corporate / Business Website (KES 25,000)</option>
+          <option value="45000">E-Commerce Portfolio (KES 45,000)</option>
+          <option value="75000">Custom Web Application (KES 75,000)</option>
+          <option value="15000">Landing Page / Promo (KES 15,000)</option>
+        </select>
+      </div>
 
-                        <div class="select-group">
-                            <select id="domain-select" class="tech-select">
-                                <option value="0" disabled selected>Select Domain Extension...</option>
-                                <option value="0">.co.ke - FREE</option>
-                                <option value="2050">.com - KES 2,050</option>
-                                <option value="2850">.net - KES 2,850</option>
-                                <option value="2050">.org - KES 2,050</option>
-                                <option value="1250">.info - KES 1,250</option>
-                                <option value="1800">.biz - KES 1,800</option>
-                                <option value="750">.xyz - KES 750</option>
-                                <option value="4300">.online - KES 4,300</option>
-                                <option value="1880">.me - KES 1,880</option>
-                                <option value="6700">.io - KES 6,700</option>
-                                <option value="1200">.blog - KES 1,200</option>
-                                <option value="700">.club - KES 700</option>
-                                <option value="700">.site - KES 700</option>
-                                <option value="1000">.top - KES 1,000</option>
-                            </select>
-                        </div>
-                    </div>
+      <div class="h-px bg-white/10 w-full mb-12"></div>
 
-                    <!-- Option 4: Add-ons -->
-                    <div class="calc-step">
-                        <h5>4. TACTICAL UPGRADES</h5>
-                        <div class="checkbox-group">
-                            <label class="tech-checkbox">
-                                <input type="checkbox" name="addon" value="1000">
-                                <span class="check-box">
-                                    <i class="fas fa-pen-nib"></i>
-                                    <span>Logo Design (+1k)</span>
-                                </span>
-                            </label>
-                            <label class="tech-checkbox">
-                                <input type="checkbox" name="addon" value="7000">
-                                <span class="check-box">
-                                    <i class="fas fa-keyboard"></i>
-                                    <span>Pro Copywriting (+7k)</span>
-                                </span>
-                            </label>
-                            <label class="tech-checkbox">
-                                <input type="checkbox" name="maintenance" value="2000">
-                                <span class="check-box">
-                                    <i class="fas fa-tools"></i>
-                                    <span>Monthly Maint. (+2k/mo)</span>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                </form>
+      <!-- Step 2: Hosting -->
+      <div class="mb-12">
+        <h3 class="font-heading font-bold text-sm tracking-[0.2em] text-blue-400 mb-6 flex items-center gap-3">
+          <span
+            class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-xs border border-blue-500/50">2</span>
+          Hosting Power
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                <!-- Result Display -->
-                <div class="calc-result">
-                    <div class="result-label">ESTIMATED TOTAL</div>
-                    <div class="result-value" id="total-display">KES 0</div>
-                    <div class="result-actions no-print">
-                        <button onclick="window.print()" class="btn btn-outline" style="font-size: 0.8rem;">
-                            <i class="fas fa-file-pdf"></i> Download PDF
-                        </button>
-                        <button id="btn-proceed-quote" class="btn btn-primary">Proceed with Quote</button>
-                    </div>
-                </div>
+          <div class="selectable-card active rounded-2xl p-6" data-price="0" onclick="selectHosting(this)">
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-xs font-bold font-heading tracking-widest text-slate-400 uppercase">Starter</span>
+              <i class="fas fa-server text-blue-400 text-xl"></i>
             </div>
-        </div>
-    </section>
+            <div class="text-2xl font-bold font-heading text-white mb-2">Included</div>
+            <p class="text-sm text-slate-400">Basic shared resources, perfect for new sites.</p>
+          </div>
 
-    <!-- SECTION 2: HERO BUNDLES -->
-    <section class="section">
-        <div class="container">
-            <h3 class="section-title">FIXED PACKAGES</h3>
-            <div class="pricing-grid">
-                <!-- The Launchpad -->
-                <div class="pricing-card tilt-card" data-tilt>
-                    <div class="card-header">
-                        <h4>The Launchpad</h4>
-                        <div class="price">KES 13,500</div>
-                        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Best for Startups</p>
-                    </div>
-                    <ul class="features">
-                        <li><i class="fas fa-layer-group"></i> Single Page Design</li>
-                        <li><i class="fas fa-server"></i> 1yr Basic Hosting</li>
-                        <li><i class="fas fa-globe"></i> Free .co.ke Domain</li>
-                        <li><i class="fas fa-lock"></i> SSL Certificate</li>
-                        <li><i class="fas fa-mobile-alt"></i> Mobile Responsive</li>
-                    </ul>
-                    <a href="index.html#contact" class="btn btn-block">Get Started Now</a>
-                </div>
-
-                <!-- Business Professional -->
-                <div class="pricing-card tilt-card featured" data-tilt>
-                    <div class="featured-badge">RECOMMENDED</div>
-                    <div class="card-header">
-                        <h4>Business Pro</h4>
-                        <div class="price">KES 19,500 - 25,000</div>
-                        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">For Growing Brands</p>
-                    </div>
-                    <ul class="features">
-                        <li><i class="fas fa-file-alt"></i> Up to 10 Pages</li>
-                        <li><i class="fas fa-rocket"></i> 1yr Business Hosting</li>
-                        <li><i class="fas fa-globe"></i> Free .co.ke Domain</li>
-                        <li><i class="fas fa-briefcase"></i> 5 Corporate Emails</li>
-                        <li><i class="fab fa-google"></i> Basic SEO Foundation</li>
-                        <li><i class="fas fa-life-ring"></i> Priority Support</li>
-                    </ul>
-                    <a href="index.html#contact" class="btn btn-block btn-primary">Get Started Now</a>
-                </div>
-
-                <!-- E-Commerce Suite -->
-                <div class="pricing-card tilt-card" data-tilt>
-                    <div class="card-header">
-                        <h4>E-Commerce</h4>
-                        <div class="price">KES 40,000+</div>
-                        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Online Stores</p>
-                    </div>
-                    <ul class="features">
-                        <li><i class="fas fa-shopping-cart"></i> Full Product Catalog</li>
-                        <li><i class="fas fa-money-bill-wave"></i> M-Pesa/Card Integration</li>
-                        <li><i class="fas fa-globe"></i> Free .co.ke Domain</li>
-                        <li><i class="fas fa-boxes"></i> Inventory Management</li>
-                        <li><i class="fas fa-tachometer-alt"></i> 1yr Premium Hosting</li>
-                        <li><i class="fas fa-chalkboard-teacher"></i> Training Session</li>
-                    </ul>
-                    <a href="index.html#contact" class="btn btn-block">Get Started Now</a>
-                </div>
+          <div class="selectable-card rounded-2xl p-6 relative overflow-hidden" data-price="5000"
+            onclick="selectHosting(this)">
+            <div class="absolute -right-6 -top-2 bg-blue-600 text-white text-[10px] font-bold py-1 px-8 rotate-45">
+              POPULAR</div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-xs font-bold font-heading tracking-widest text-blue-400 uppercase">Standard</span>
+              <i class="fas fa-bolt text-blue-400 text-xl"></i>
             </div>
-        </div>
-    </section>
+            <div class="text-2xl font-bold font-heading text-white mb-2">+ KES 5K <span
+                class="text-sm text-slate-500 font-sans">/yr</span></div>
+            <p class="text-sm text-slate-400">Dedicated resources & advanced security.</p>
+          </div>
 
-    <!-- SECTION 3: INDIVIDUAL SERVICES -->
-    <section class="section">
-        <div class="container">
-            <h3 class="section-title">INDIVIDUAL SERVICES</h3>
-            <div class="services-list-grid">
-                <div class="service-item">
-                    <i class="fas fa-globe"></i>
-                    <div class="s-info">
-                        <h5>Domain Registration</h5>
-                        <p>Starting from KES 700/yr</p>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-server"></i>
-                    <div class="s-info">
-                        <h5>High-Speed Hosting</h5>
-                        <p>Starting from KES 3,000/yr</p>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-pencil-ruler"></i>
-                    <div class="s-info">
-                        <h5>UI/UX Mockups</h5>
-                        <p>Starting from KES 10,000</p>
-                    </div>
-                </div>
+          <div class="selectable-card rounded-2xl p-6" data-price="15000" onclick="selectHosting(this)">
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-xs font-bold font-heading tracking-widest text-cyan-400 uppercase">Enterprise</span>
+              <i class="fas fa-network-wired text-blue-400 text-xl"></i>
             </div>
+            <div class="text-2xl font-bold font-heading text-white mb-2">+ KES 15K <span
+                class="text-sm text-slate-500 font-sans">/yr</span></div>
+            <p class="text-sm text-slate-400">High traffic cloud cluster. Maximum performance.</p>
+          </div>
+
         </div>
-    </section>
+      </div>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/254707575397" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+      <div class="h-px bg-white/10 w-full mb-12"></div>
 
-    <!-- Footer -->
-    <footer class="footer-bottom" style="margin-top: 50px;">
-        &copy; 2025 SHARL-TECH. All Rights Reserved. SYSTEM ACTIVE.
-    </footer>
+      <!-- Step 3: Domain -->
+      <div class="mb-12">
+        <h3 class="font-heading font-bold text-sm tracking-[0.2em] text-blue-400 mb-6 flex items-center gap-3">
+          <span
+            class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-xs border border-blue-500/50">3</span>
+          Domain Bundle
+        </h3>
+        <div class="flex flex-col md:flex-row gap-4">
+          <input type="text" placeholder="Search desired domain name..." class="dark-input p-4 rounded-xl flex-grow" />
+          <select id="calc-domain"
+            class="p-4 rounded-xl dark-input cursor-pointer font-bold tracking-wide w-full md:w-auto appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%233b82f6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_1.5rem_center] bg-no-repeat pr-12">
+            <option value="0">.co.ke - FREE</option>
+            <option value="2050">.com - KES 2,050</option>
+            <option value="2850">.net - KES 2,850</option>
+            <option value="2050">.org - KES 2,050</option>
+            <option value="1250">.info - KES 1,250</option>
+            <option value="1800">.biz - KES 1,800</option>
+            <option value="750">.xyz - KES 750</option>
+            <option value="4300">.online - KES 4,300</option>
+            <option value="1880">.me - KES 1,880</option>
+            <option value="6700">.io - KES 6,700</option>
+            <option value="1200">.blog - KES 1,200</option>
+            <option value="700">.club - KES 700</option>
+            <option value="700">.site - KES 700</option>
+            <option value="1000">.top - KES 1,000</option>
+            <option value="0">I already have a domain</option>
+          </select>
+        </div>
+      </div>
 
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+      <div class="h-px bg-white/10 w-full mb-12"></div>
+
+      <!-- Step 4: Add-ons -->
+      <div class="mb-12">
+        <h3 class="font-heading font-bold text-sm tracking-[0.2em] text-blue-400 mb-6 flex items-center gap-3">
+          <span
+            class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-xs border border-blue-500/50">4</span>
+          Tactical Upgrades
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label class="selectable-card rounded-xl p-4 flex items-center gap-4">
+            <input type="checkbox"
+              class="w-5 h-5 rounded border-gray-600 text-blue-500 focus:ring-blue-500 bg-gray-900 addon-checkbox"
+              value="5000">
+            <div>
+              <div class="font-bold text-white tracking-wide">Logo & Brand Identity</div>
+              <div class="text-sm text-slate-400">+ KES 5,000 one-time</div>
+            </div>
+          </label>
+          <label class="selectable-card rounded-xl p-4 flex items-center gap-4">
+            <input type="checkbox"
+              class="w-5 h-5 rounded border-gray-600 text-blue-500 focus:ring-blue-500 bg-gray-900 addon-checkbox"
+              value="8000">
+            <div>
+              <div class="font-bold text-white tracking-wide">SEO Copywriting (5 Pages)</div>
+              <div class="text-sm text-slate-400">+ KES 8,000 one-time</div>
+            </div>
+          </label>
+          <label class="selectable-card rounded-xl p-4 flex items-center gap-4">
+            <input type="checkbox"
+              class="w-5 h-5 rounded border-gray-600 text-blue-500 focus:ring-blue-500 bg-gray-900 addon-checkbox"
+              value="3000">
+            <div>
+              <div class="font-bold text-white tracking-wide">Monthly Maintenance Plan</div>
+              <div class="text-sm text-slate-400">+ KES 3,000 / month</div>
+            </div>
+          </label>
+          <label class="selectable-card rounded-xl p-4 flex items-center gap-4">
+            <input type="checkbox"
+              class="w-5 h-5 rounded border-gray-600 text-blue-500 focus:ring-blue-500 bg-gray-900 addon-checkbox"
+              value="12000">
+            <div>
+              <div class="font-bold text-white tracking-wide">Custom Analytics Dashboard</div>
+              <div class="text-sm text-slate-400">+ KES 12,000 one-time</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Calculator Summary Box -->
+      <div
+        class="bg-[#050505] border border-blue-500/30 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_30px_rgba(59,130,246,0.15)] glow-border relative overflow-hidden">
+        <!-- Decoration -->
+        <div
+          class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl mix-blend-screen pointer-events-none">
+        </div>
+
+        <div>
+          <p class="font-heading font-bold text-sm tracking-[0.2em] text-slate-400 mb-2 uppercase">Estimated Total</p>
+          <p class="font-heading font-bold text-4xl md:text-5xl text-gradient" id="display-total">KES 26,500</p>
+          <p class="text-xs text-slate-500 mt-2">*Final quote may vary based on specific feature requirements.</p>
+        </div>
+
+        <div class="flex flex-col gap-4 w-full md:w-auto">
+          <button
+            class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold tracking-widest font-heading transition-all text-sm w-full md:w-auto btn-shine shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+            Proceed with Quote <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+          <button
+            class="px-8 py-3 border border-white/20 text-white hover:border-blue-500 hover:text-blue-500 rounded-xl font-bold tracking-widest font-heading transition-all text-xs w-full md:w-auto uppercase">
+            Download PDF Breakdown
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-16 border-t dark:border-white/5 border-gray-200 dark:bg-dark-900 bg-white relative z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-4"><img
+              src="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg" alt="SHARL-TECH"
+              class="w-8 h-8 rounded-lg object-cover dark:ring-1 dark:ring-white/10 ring-1 ring-gray-200" /><span
+              class="font-heading font-bold text-sm tracking-widest dark:text-white text-gray-900">SHARL<span
+                class="text-blue-500">-TECH</span></span></div>
+          <p class="text-sm dark:text-gray-500 text-gray-500 leading-relaxed">Leading the digital frontier
+            with high-end web design and hosting solutions.</p>
+          <div class="flex gap-3 mt-4"><a href="https://wa.me/254707575397"
+              class="dark:text-gray-600 text-gray-400 hover:text-green-500 transition-colors"><i
+                class="fab fa-whatsapp"></i></a><a href="#"
+              class="dark:text-gray-600 text-gray-400 dark:hover:text-white hover:text-gray-900 transition-colors"><i
+                class="fab fa-x-twitter"></i></a><a href="#"
+              class="dark:text-gray-600 text-gray-400 hover:text-pink-500 transition-colors"><i
+                class="fab fa-instagram"></i></a></div>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4 font-body">
+            Solutions</h4>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li><a href="services.html" class="hover:text-blue-500 transition-colors">Web
+                Design</a>
+            </li>
+            <li><a href="hosting.html" class="hover:text-blue-500 transition-colors">Web
+                Hosting</a>
+            </li>
+            <li><a href="services.html" class="hover:text-blue-500 transition-colors">App
+                Development</a></li>
+            <li><a href="services.html" class="hover:text-blue-500 transition-colors">SEO &
+                Marketing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4 font-body">
+            Company</h4>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li><a href="index.html#about" class="hover:text-blue-500 transition-colors">About Us</a></li>
+            <li><a href="#" class="text-blue-500 transition-colors">Pricing</a>
+            </li>
+            <li><a href="index.html#contact" class="hover:text-blue-500 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold dark:text-white text-gray-900 uppercase tracking-widest mb-4 font-body">
+            Contact</h4>
+          <ul class="space-y-2 text-sm dark:text-gray-500 text-gray-500">
+            <li><a href="mailto:sharlmon19@gmail.com" class="hover:text-blue-500 transition-colors"><i
+                  class="fas fa-envelope mr-2 text-xs"></i>sharlmon19@gmail.com</a></li>
+            <li><a href="tel:+254707575397" class="hover:text-blue-500 transition-colors"><i
+                  class="fas fa-phone mr-2 text-xs"></i>+254 707 575 397</a></li>
+            <li class="dark:text-gray-600 text-gray-400"><i class="fas fa-map-marker-alt mr-2 text-xs"></i>Nairobi,
+              Kenya</li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="pt-8 border-t dark:border-white/5 border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs dark:text-gray-600 text-gray-400">© 2026 SHARL-TECH. All Rights Reserved.</p>
+        <div class="flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span><span
+            class="text-xs dark:text-gray-600 text-gray-400 uppercase tracking-wider">Systems:
+            Operational</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FAB -->
+  <a class="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 hover:scale-110 transition-transform z-50 animate-pulse-glow"
+    href="https://wa.me/254707575397" target="_blank" aria-label="WhatsApp"><i
+      class="fab fa-whatsapp text-white text-2xl"></i></a>
+
+  <script>
+    // ===== NAVBAR SCROLL =====
+    window.addEventListener('scroll', () => { const n = document.getElementById('navbar'); n.classList.toggle('shadow-lg', window.scrollY > 50); });
+
+    // ===== MOBILE MENU =====
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', (e) => { const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); document.getElementById('mobile-menu')?.classList.add('hidden'); } }); });
+  </script>
+
+  <!-- Calculator Logic & Particles -->
+  <script>
+    // Selected Values State
+    let currentPricing = {
+      base: 25000,
+      hosting: 0,
+      domain: 1500,
+      addons: 0
+    };
+
+    // Elements
+    const elBase = document.getElementById('calc-website-type');
+    const elDomain = document.getElementById('calc-domain');
+    const elAddons = document.querySelectorAll('.addon-checkbox');
+    const elTotal = document.getElementById('display-total');
+
+    // Number formatter
+    const formatter = new Intl.NumberFormat('en-KE', {
+      style: 'currency',
+      currency: 'KES',
+      minimumFractionDigits: 0
+    });
+
+    // Update Total DOM
+    function updateTotal() {
+      const grandTotal = currentPricing.base + currentPricing.hosting + currentPricing.domain + currentPricing.addons;
+      elTotal.textContent = formatter.format(grandTotal);
+    }
+
+    // Hosting Select Logic
+    window.selectHosting = function (element) {
+      // Remove active from all
+      document.querySelectorAll('.selectable-card[onclick]').forEach(el => el.classList.remove('active'));
+      // Add active to clicked
+      element.classList.add('active');
+      // Update hosting price
+      currentPricing.hosting = parseInt(element.getAttribute('data-price'));
+      updateTotal();
+    }
+
+    // Base Type Change
+    elBase.addEventListener('change', (e) => {
+      currentPricing.base = parseInt(e.target.value);
+      updateTotal();
+    });
+
+    // Domain Change
+    elDomain.addEventListener('change', (e) => {
+      currentPricing.domain = parseInt(e.target.value);
+      updateTotal();
+    });
+
+    // Addons Change
+    elAddons.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        let addonsTotal = 0;
+        document.querySelectorAll('.addon-checkbox:checked').forEach(checkedBox => {
+          addonsTotal += parseInt(checkedBox.value);
+        });
+        currentPricing.addons = addonsTotal;
+        updateTotal();
+      });
+    });
+
+    // Init Particles background over the custom image
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#3b82f6" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.4, "random": false },
+        "size": { "value": 2, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#3b82f6", "opacity": 0.3, "width": 1 },
+        "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+  <!-- SECURITY RESTRICTIONS -->
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function (e) {
+      if (e.keyCode == 123) { return false; }
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+      if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+    }
+  </script>
 </body>
 
 </html>

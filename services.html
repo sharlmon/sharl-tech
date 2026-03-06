@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Services | SHARL-TECH</title>
+    <meta name="description"
+        content="Professional Web Design, SEO, App Development and IT Solutions in Nairobi, Kenya. Elevate your brand with Sharl-Tech's premium services." />
+    <meta name="keywords" content="web design, SEO, app development, IT repair, Nairobi, Kenya, Sharl-Tech" />
+    <meta property="og:title" content="Our Services | SHARL-TECH" />
+    <meta property="og:description"
+        content="High-end web design, SEO, and application development services for forward-thinking brands." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#050505" />
+    <link rel="icon" href="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg"
+        type="image/jpeg" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 900: '#050505', 800: '#0a0a0a', 700: '#111111', 600: '#1a1a1a' },
+                        accent: { blue: '#3b82f6', cyan: '#06b6d4', green: '#4ade80' }
+                    },
+                    fontFamily: {
+                        heading: ['Syncopate', 'sans-serif'],
+                        body: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #050505;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Syncopate', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+        }
+
+        .glow-border {
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glow-border:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: 0.6s;
+        }
+
+        .btn-shine:hover::before {
+            left: 100%;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Background Hero */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('images/services_blue_space_bg_1772799697987.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            mix-blend-mode: screen;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, transparent, #050505);
+        }
+
+        .blue-gradient-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(40px);
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WS107WYBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WS107WYBZ');
+    </script>
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_IF_ANY" />
+    <style>html { scroll-behavior: smooth; }</style>
+</head>
+
+<body class="selection:bg-blue-500/20 transition-colors duration-500 relative">
+
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 dark:bg-dark-900/80 bg-white/80 backdrop-blur-xl border-b dark:border-white/5 border-gray-200/50"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg"
+                    alt="SHARL-TECH Logo" width="40" height="40" fetchpriority="high"
+                    class="w-10 h-10 rounded-lg object-cover ring-1 dark:ring-white/10 ring-gray-200 group-hover:ring-blue-500/50 transition-all" />
+                <span class="font-heading font-bold text-lg tracking-widest dark:text-white text-gray-900">SHARL<span
+                        class="text-blue-500">-TECH</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium dark:text-gray-400 text-gray-600">
+                <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+                    href="index.html">Home</a>
+                <a class="text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[1px] after:bg-blue-500"
+                    href="#">Services</a>
+                <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+                    href="hosting.html">Hosting</a>
+                <a class="hover:text-blue-500 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all hover:after:w-full"
+                    href="pricing.html">Pricing</a>
+                <a class="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20 btn-shine"
+                    href="index.html#contact">Contact Us</a>
+            </div>
+            <div class="flex items-center gap-3 md:hidden">
+                <button class="dark:text-white text-gray-900" id="mobile-menu-btn"><span
+                        class="material-symbols-outlined text-3xl">menu</span></button>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div
+                class="px-6 py-6 space-y-4 text-center dark:bg-dark-900/95 bg-white/95 backdrop-blur-xl border-t dark:border-white/5 border-gray-200">
+                <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2"
+                    href="index.html">Home</a>
+                <a class="block text-blue-500 py-2" href="#">Services</a>
+                <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2"
+                    href="hosting.html">Hosting</a>
+                <a class="block dark:text-gray-300 text-gray-700 hover:text-blue-500 py-2"
+                    href="pricing.html">Pricing</a>
+                <a class="block py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-all"
+                    href="index.html#contact">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Background Elements -->
+        <div class="blue-gradient-orb top-[40%] right-[-100px]"></div>
+
+        <!-- Hero Section -->
+        <section
+            class="relative pt-40 pb-32 px-6 flex flex-col items-center justify-center min-h-[60vh] text-center overflow-hidden border-b border-white/5">
+            <div class="hero-bg"></div>
+            <div class="hero-gradient"></div>
+
+            <div class="relative z-10 w-full max-w-4xl mx-auto">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-bold tracking-[0.2em] mb-8 font-heading">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    ENTERPRISE EXPERTISE
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+                    OUR CORE <br /> <span class="text-gradient">SERVICES</span>
+                </h1>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10 font-body">
+                    SHARL-TECH delivers robust, scalable, and secure digital infrastructure. We bridge the gap between
+                    complex technology and explosive business growth.
+                </p>
+                <a href="#services-grid"
+                    class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white hover:text-blue-400 hover:border-blue-400 transition-colors">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section id="services-grid" class="py-24 px-6 relative z-10">
+            <div class="max-w-7xl mx-auto">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Service 1 -->
+                    <div class="glass p-8 rounded-3xl glow-border">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-white mb-4">Web Development</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6 font-body">
+                            Custom-built, high-performance websites and web applications. We utilize modern frameworks
+                            to ensure your digital presence is fast, secure, and scalable.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300 font-body">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                Corporate Websites</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                E-Commerce Platforms</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                Custom Web Apps</li>
+                        </ul>
+                        <a href="pricing.html"
+                            class="text-xs font-bold text-blue-400 font-heading tracking-widest hover:text-white transition-colors">View
+                            Pricing <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass p-8 rounded-3xl glow-border">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-white mb-4">Cloud Hosting</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6 font-body">
+                            Enterprise-grade cloud infrastructure providing 99.9% uptime. Our servers are optimized for
+                            speed, security, and seamless resource scaling.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300 font-body">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i>
+                                Dedicated Servers</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> SSL
+                                Certificates</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> Daily
+                                Backups</li>
+                        </ul>
+                        <a href="hosting.html"
+                            class="text-xs font-bold text-cyan-400 font-heading tracking-widest hover:text-white transition-colors">Explore
+                            Hosting <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass p-8 rounded-3xl glow-border">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-white mb-4">SEO & Analytics</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6 font-body">
+                            Data-driven strategies to organically boost your search rankings. We optimize structure,
+                            speed, and content for maximum visibility.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300 font-body">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                Keyword Research</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                Technical SEO</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                Performance Tracking</li>
+                        </ul>
+                        <a href="index.html#contact"
+                            class="text-xs font-bold text-blue-400 font-heading tracking-widest hover:text-white transition-colors">Get
+                            Strategy <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="glass p-8 rounded-3xl glow-border">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-white mb-4">App & UI Design</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6 font-body">
+                            We architect intuitive, stunning user interfaces for mobile and web. Focusing on
+                            pixel-perfect details and user psychology.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300 font-body">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i>
+                                Wireframing</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i>
+                                Interactive Prototypes</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i>
+                                Design Systems</li>
+                        </ul>
+                        <a href="index.html#contact"
+                            class="text-xs font-bold text-cyan-400 font-heading tracking-widest hover:text-white transition-colors">Consult
+                            Team <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="glass p-8 rounded-3xl glow-border">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-white mb-4">Cyber Security</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6 font-body">
+                            Proactive protection for your digital assets. We deploy comprehensive firewalls, DDoS
+                            mitigation, and vulnerability assessments.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300 font-body">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                Threat Monitoring</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i>
+                                Security Audits</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i> Data
+                                Encryption</li>
+                        </ul>
+                        <a href="index.html#contact"
+                            class="text-xs font-bold text-blue-400 font-heading tracking-widest hover:text-white transition-colors">Secure
+                            Now <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- CTA Panel -->
+                    <div
+                        class="glass p-8 rounded-3xl glow-border flex flex-col justify-center text-center items-center shadow-[0_0_30px_rgba(59,130,246,0.15)] border-blue-500/50">
+                        <h3 class="font-bold text-2xl text-white mb-4">Ready to Deploy?</h3>
+                        <p class="text-sm text-gray-300 mb-8 max-w-xs font-body">
+                            Start building your enterprise digital infrastructure today.
+                        </p>
+                        <button
+                            class="px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold tracking-wider font-heading btn-shine shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+                            onclick="window.location.href='index.html#contact'">
+                            Initialize Project
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-16 border-t dark:border-white/5 border-gray-200 dark:bg-dark-900 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4"><img
+                            src="https://raw.githubusercontent.com/sharlmon/sharl-tech/main/images/logo.jpg"
+                            alt="SHARL-TECH"
+                            class="w-8 h-8 rounded-lg object-cover dark:ring-1 dark:ring-white/10 ring-1 ring-gray-200" /><span
+                            class="font-heading font-bold text-sm tracking-widest dark:text-white text-gray-900">SHARL<span
+                                class="text-blue-500">-TECH</span></span></div>
+                    <p class="text-sm dark:text-gray-500 text-gray-500 leading-relaxed">Leading the digital frontier
+                        with high-end web design and hosting solutions.</p>
+                    <div class="flex gap-3 mt-4"><a href="https://wa.me/254707575397"
+                            class="dark:text-gray-600 text-gray-400 hover:text-green-500 transition-colors"><i
+                                class="fab fa-whatsapp"></i></a><a href="#"
+                            class="dark:text-gray-600 text-gray-400 dark:hover:text-white hover:text-gray-900 transition-colors"><i
+                                class="fab fa-x-twitter"></i></a><a href="#"
+                            class="dark:text-gray-600 text-gray-400 hover:text-pink-500 transition-colors"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4 font-body">
+                        Solutions</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="text-blue-500 transition-colors">Web
+                                Design</a>
+                        </li>
+                        <li><a href="hosting.html" class="hover:text-blue-500 transition-colors">Web
+                                Hosting</a>
+                        </li>
+                        <li><a href="#" class="text-blue-500 transition-colors">App
+                                Development</a></li>
+                        <li><a href="#" class="text-blue-500 transition-colors">SEO &
+                                Marketing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-4 font-body">
+                        Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="index.html#about" class="hover:text-blue-500 transition-colors">About
+                                Us</a></li>
+                        <li><a href="pricing.html" class="hover:text-blue-500 transition-colors">Pricing</a>
+                        </li>
+                        <li><a href="index.html#contact"
+                                class="hover:text-blue-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4
+                        class="text-xs font-bold dark:text-white text-gray-900 uppercase tracking-widest mb-4 font-body">
+                        Contact</h4>
+                    <ul class="space-y-2 text-sm dark:text-gray-500 text-gray-500">
+                        <li><a href="mailto:sharlmon19@gmail.com" class="hover:text-blue-500 transition-colors"><i
+                                    class="fas fa-envelope mr-2 text-xs"></i>sharlmon19@gmail.com</a></li>
+                        <li><a href="tel:+254707575397" class="hover:text-blue-500 transition-colors"><i
+                                    class="fas fa-phone mr-2 text-xs"></i>+254 707 575 397</a></li>
+                        <li class="dark:text-gray-600 text-gray-400"><i
+                                class="fas fa-map-marker-alt mr-2 text-xs"></i>Nairobi, Kenya</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t dark:border-white/5 border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs dark:text-gray-600 text-gray-400">© 2026 SHARL-TECH. All Rights Reserved.</p>
+                <div class="flex items-center gap-2"><span
+                        class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span><span
+                        class="text-xs dark:text-gray-600 text-gray-400 uppercase tracking-wider">Systems:
+                        Operational</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FAB -->
+    <a class="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 hover:scale-110 transition-transform z-50 animate-pulse-glow"
+        href="https://wa.me/254707575397" target="_blank" aria-label="WhatsApp"><i
+            class="fab fa-whatsapp text-white text-2xl"></i></a>
+
+    <script>
+        // ===== NAVBAR SCROLL =====
+        window.addEventListener('scroll', () => { const n = document.getElementById('navbar'); n.classList.toggle('shadow-lg', window.scrollY > 50); });
+
+        // ===== MOBILE MENU =====
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', (e) => { const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); document.getElementById('mobile-menu')?.classList.add('hidden'); } }); });
+    </script>
+    <!-- SECURITY RESTRICTIONS -->
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function (e) {
+            if (e.keyCode == 123) { return false; }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+        }
+    </script>
+</body>
+if (e.keyCode == 123) { return false; }
+if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+}
+</script>
+</body>
+
+</html>

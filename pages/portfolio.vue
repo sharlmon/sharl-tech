@@ -20,18 +20,69 @@ definePageMeta({
 })
 
 const route = useRoute()
-const requestUrl = useRequestURL()
-const socialImage = new URL('/portfolio-og-white.png', requestUrl.origin).toString()
+const siteUrl = 'https://sharl-tech.co.ke'
+const canonicalUrl = `${siteUrl}/portfolio`
+const socialImage = `${siteUrl}/portfolio-og-white.png`
+const description = 'Explore Sharlmon’s engineering background, technology stack and featured SaaS, AI, commerce and infrastructure projects built in Nairobi.'
 
 useSeoMeta({
-  title: 'Sharlmon — Full-Stack Engineer & AI Systems Builder | SharlTech',
-  description: 'Explore Sharlmon’s engineering background, preferred technology stack and featured SaaS, AI, commerce and infrastructure projects.',
-  ogTitle: 'Sharlmon — Architecting Scalable SaaS & AI Ecosystems',
-  ogDescription: 'Full-Stack Software Engineer, AI Systems Builder and founder of SharlTech in Nairobi.',
+  title: 'Sharlmon | Full-Stack Engineer & AI Systems Builder at SharlTech',
+  description,
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  ogTitle: 'Sharlmon | Full-Stack Engineer & AI Systems Builder',
+  ogDescription: description,
+  ogType: 'profile',
+  ogUrl: canonicalUrl,
+  ogSiteName: 'SharlTech',
+  ogLocale: 'en_KE',
   ogImage: socialImage,
+  ogImageWidth: 1731,
+  ogImageHeight: 909,
   ogImageAlt: 'Sharlmon, Full-Stack Engineer and AI Systems Builder at SharlTech',
   twitterCard: 'summary_large_image',
+  twitterTitle: 'Sharlmon | Full-Stack Engineer & AI Systems Builder',
+  twitterDescription: description,
   twitterImage: socialImage,
+  twitterImageAlt: 'Sharlmon, Full-Stack Engineer and AI Systems Builder at SharlTech',
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: canonicalUrl }],
+  script: [
+    {
+      key: 'sharlmon-profile-structured-data',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        '@id': `${canonicalUrl}#profilepage`,
+        url: canonicalUrl,
+        name: 'Sharlmon | Full-Stack Engineer & AI Systems Builder at SharlTech',
+        description,
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        inLanguage: 'en-KE',
+        mainEntity: {
+          '@type': 'Person',
+          '@id': `${canonicalUrl}#sharlmon`,
+          name: 'Sharlmon',
+          jobTitle: 'Full-Stack Software Engineer and AI Systems Builder',
+          description: 'Founder of SharlTech, building scalable SaaS products, multi-agent AI systems and resilient digital infrastructure in Nairobi.',
+          worksFor: {
+            '@type': 'Organization',
+            '@id': `${siteUrl}/#organization`,
+            name: 'SharlTech',
+            url: `${siteUrl}/`,
+          },
+          homeLocation: {
+            '@type': 'Place',
+            name: 'Westlands, Nairobi, Kenya',
+          },
+          sameAs: ['https://www.linkedin.com/in/sharlmon-junior-701746281'],
+          knowsAbout: ['Full-stack software engineering', 'SaaS architecture', 'Artificial intelligence systems', 'Cloud infrastructure', 'E-commerce platforms'],
+        },
+      }),
+    },
+  ],
 })
 
 const stackGroups = [

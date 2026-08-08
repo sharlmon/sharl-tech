@@ -1,28 +1,96 @@
 <script setup lang="ts">
 import { ArrowRight, Check, ChevronRight, Sparkles } from 'lucide-vue-next'
 
-definePageMeta({
-  alias: ['/services', '/about'],
-})
-
-const route = useRoute()
-const requestUrl = useRequestURL()
-const socialImage = new URL('/og-white.png', requestUrl.origin).toString()
+const siteUrl = 'https://sharl-tech.co.ke'
+const canonicalUrl = `${siteUrl}/`
+const socialImage = `${siteUrl}/og-white.png`
+const description = 'SharlTech is a Nairobi technology company building custom web applications, e-commerce platforms, cloud infrastructure, SEO and AI automation.'
 
 useSeoMeta({
+  title: 'SharlTech | Custom Software, Web Design & Cloud Hosting Kenya',
+  description,
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  ogTitle: 'SharlTech | Custom Software & Technology Solutions in Kenya',
+  ogDescription: description,
+  ogType: 'website',
+  ogUrl: canonicalUrl,
+  ogSiteName: 'SharlTech',
+  ogLocale: 'en_KE',
   ogImage: socialImage,
+  ogImageWidth: 1730,
+  ogImageHeight: 909,
   ogImageAlt: 'SharlTech high-end web design and technology solutions',
   twitterCard: 'summary_large_image',
+  twitterTitle: 'SharlTech | Custom Software & Technology Solutions in Kenya',
+  twitterDescription: description,
   twitterImage: socialImage,
+  twitterImageAlt: 'SharlTech high-end web design and technology solutions',
 })
 
-function scrollToRouteSection(path: string) {
-  const sectionId = path === '/services' ? 'services' : path === '/about' ? 'about' : 'top'
-  nextTick(() => document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
-}
-
-onMounted(() => scrollToRouteSection(route.path))
-watch(() => route.path, scrollToRouteSection)
+useHead({
+  link: [{ rel: 'canonical', href: canonicalUrl }],
+  script: [
+    {
+      key: 'sharltech-home-structured-data',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'WebSite',
+            '@id': `${siteUrl}/#website`,
+            url: canonicalUrl,
+            name: 'SharlTech',
+            alternateName: ['Sharl-Tech', 'sharl-tech.co.ke'],
+            publisher: { '@id': `${siteUrl}/#organization` },
+            inLanguage: 'en-KE',
+          },
+          {
+            '@type': 'Organization',
+            '@id': `${siteUrl}/#organization`,
+            name: 'SharlTech',
+            alternateName: 'Sharl-Tech',
+            url: canonicalUrl,
+            logo: {
+              '@type': 'ImageObject',
+              url: `${siteUrl}/sharltech-logo.png`,
+              width: 915,
+              height: 521,
+            },
+            image: socialImage,
+            description,
+            email: 'mailto:sharlmon19@gmail.com',
+            telephone: '+254707575397',
+            founder: {
+              '@type': 'Person',
+              name: 'Sharlmon',
+              jobTitle: 'Full-Stack Software Engineer and AI Systems Builder',
+            },
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Westlands',
+              addressRegion: 'Nairobi',
+              addressCountry: 'KE',
+            },
+            areaServed: [{ '@type': 'Country', name: 'Kenya' }, 'Worldwide'],
+            sameAs: ['https://www.linkedin.com/in/sharlmon-junior-701746281'],
+            knowsAbout: ['Custom software development', 'Web application development', 'Cloud hosting', 'E-commerce', 'Search engine optimization', 'Artificial intelligence automation'],
+          },
+          {
+            '@type': 'WebPage',
+            '@id': `${canonicalUrl}#webpage`,
+            url: canonicalUrl,
+            name: 'SharlTech | Custom Software, Web Design & Cloud Hosting Kenya',
+            description,
+            isPartOf: { '@id': `${siteUrl}/#website` },
+            about: { '@id': `${siteUrl}/#organization` },
+            inLanguage: 'en-KE',
+          },
+        ],
+      }),
+    },
+  ],
+})
 </script>
 
 <template>

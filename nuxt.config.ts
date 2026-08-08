@@ -11,26 +11,24 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      htmlAttrs: { lang: 'en' },
-      title: 'SharlTech — High-End Web Design & Technology Solutions',
+      htmlAttrs: { lang: 'en-KE' },
+      title: 'SharlTech | Custom Software & Technology Solutions Kenya',
       meta: [
         {
           name: 'description',
           content:
-            'SharlTech delivers premium web design, custom software, cloud hosting, SEO and AI integrations for ambitious businesses.',
+            'SharlTech builds custom software, web applications, cloud infrastructure, e-commerce platforms and AI automation for businesses in Kenya and beyond.',
         },
+        { name: 'author', content: 'SharlTech' },
+        { name: 'application-name', content: 'SharlTech' },
+        { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
         { name: 'theme-color', content: '#ffffff' },
-        { property: 'og:title', content: 'SharlTech — Built Beyond the Brief' },
-        {
-          property: 'og:description',
-          content: 'Premium digital products, dependable cloud infrastructure and AI-powered growth systems.',
-        },
-        { property: 'og:type', content: 'website' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=1' },
         { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/favicon.png?v=1' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png?v=1' },
+        { rel: 'manifest', href: '/site.webmanifest' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {

@@ -5,13 +5,14 @@ const route = useRoute()
 const mobileMenuOpen = ref(false)
 
 const navigation = [
-  { label: 'Services', to: '/#services' },
-  { label: 'About', to: '/#about' },
+  { label: 'Services', to: '/services' },
+  { label: 'About', to: '/about' },
   { label: 'Portfolio', to: '/portfolio' },
 ]
 
 function isActive(to: string) {
-  return to === '/portfolio' && route.path === '/portfolio'
+  if (to === '/portfolio') return route.path.startsWith('/portfolio')
+  return route.path === to
 }
 
 </script>
@@ -37,7 +38,7 @@ function isActive(to: string) {
     </div>
 
     <div class="flex items-center gap-2">
-      <NuxtLink to="/#services" class="button-primary hidden min-h-10 px-5 py-2.5 sm:inline-flex">
+      <NuxtLink to="/services" class="button-primary hidden min-h-10 px-5 py-2.5 sm:inline-flex">
         Start Project
         <ArrowRight :size="15" />
       </NuxtLink>
@@ -64,7 +65,7 @@ function isActive(to: string) {
       >
         {{ item.label }}
       </NuxtLink>
-      <NuxtLink to="/#services" class="button-primary mt-3 w-full sm:hidden" @click="mobileMenuOpen = false">
+      <NuxtLink to="/services" class="button-primary mt-3 w-full sm:hidden" @click="mobileMenuOpen = false">
         Start Project
         <ArrowRight :size="15" />
       </NuxtLink>

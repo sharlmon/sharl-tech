@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   nitro: {
     preset: 'github_pages',
+    prerender: {
+      routes: ['/services', '/about', '/portfolio/projects', '/portfolio/stack'],
+    },
   },
   modules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],

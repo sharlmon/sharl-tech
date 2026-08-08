@@ -15,6 +15,11 @@ import {
   ShoppingBag,
 } from 'lucide-vue-next'
 
+definePageMeta({
+  alias: ['/portfolio/projects', '/portfolio/stack'],
+})
+
+const route = useRoute()
 const requestUrl = useRequestURL()
 const socialImage = new URL('/portfolio-og-white.png', requestUrl.origin).toString()
 
@@ -103,6 +108,17 @@ const projects = [
     layout: 'lg:col-span-2',
   },
 ]
+
+function scrollToPortfolioSection(path: string) {
+  const sectionId = path === '/portfolio/projects' ? 'projects' : path === '/portfolio/stack' ? 'stack' : null
+  nextTick(() => {
+    if (sectionId) document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    else window.scrollTo({ top: 0, behavior: 'smooth' })
+  })
+}
+
+onMounted(() => scrollToPortfolioSection(route.path))
+watch(() => route.path, scrollToPortfolioSection)
 </script>
 
 <template>
@@ -125,8 +141,8 @@ const projects = [
         </p>
 
         <div class="mt-10 flex animate-fade-in-up flex-col gap-3 [animation-delay:300ms] sm:flex-row">
-          <a href="#projects" class="button-primary">Explore selected work <ArrowRight :size="17" /></a>
-          <a href="#stack" class="button-glass">View technology stack <Layers3 :size="17" /></a>
+          <NuxtLink to="/portfolio/projects" class="button-primary">Explore selected work <ArrowRight :size="17" /></NuxtLink>
+          <NuxtLink to="/portfolio/stack" class="button-glass">View technology stack <Layers3 :size="17" /></NuxtLink>
         </div>
 
         <div class="glass-panel mt-16 grid w-full max-w-4xl animate-fade-in-up grid-cols-1 divide-y divide-zinc-200/70 overflow-hidden rounded-3xl [animation-delay:400ms] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -187,7 +203,7 @@ const projects = [
         <div class="mx-auto max-w-7xl rounded-[2rem] bg-zinc-950 px-7 py-16 text-white sm:px-12 sm:py-20 lg:px-20">
           <div class="grid items-end gap-10 lg:grid-cols-[1fr_auto]">
             <div><p class="text-xs font-extrabold uppercase tracking-[0.22em] text-zinc-400">Have a hard problem?</p><h2 class="mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[0.95] tracking-[-0.055em] sm:text-7xl lg:text-8xl">Let’s engineer the answer.</h2><p class="mt-6 max-w-2xl text-lg text-zinc-400">Choose the services you need, share the brief and continue directly to a focused WhatsApp consultation.</p></div>
-            <NuxtLink to="/#services" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">Start a project <ArrowRight :size="19" /></NuxtLink>
+            <NuxtLink to="/services" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">Start a project <ArrowRight :size="19" /></NuxtLink>
           </div>
         </div>
       </section>

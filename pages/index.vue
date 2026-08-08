@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ArrowRight, Check, ChevronRight, Sparkles } from 'lucide-vue-next'
 
+definePageMeta({
+  alias: ['/services', '/about'],
+})
+
+const route = useRoute()
 const requestUrl = useRequestURL()
 const socialImage = new URL('/og-white.png', requestUrl.origin).toString()
 
@@ -10,6 +15,14 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterImage: socialImage,
 })
+
+function scrollToRouteSection(path: string) {
+  const sectionId = path === '/services' ? 'services' : path === '/about' ? 'about' : 'top'
+  nextTick(() => document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+}
+
+onMounted(() => scrollToRouteSection(route.path))
+watch(() => route.path, scrollToRouteSection)
 </script>
 
 <template>
@@ -26,8 +39,8 @@ useSeoMeta({
           <div class="animate-fade-in-up pb-1 [animation-delay:200ms] lg:pb-3">
             <p class="max-w-xl text-balance text-lg leading-relaxed text-zinc-600 lg:text-xl">Elevate your online presence with SHARL-TECH's premium digital services. Security, performance, and innovation integrated.</p>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#services" class="button-primary">Start Project <ArrowRight :size="17" /></a>
-              <a href="#services" class="button-glass">Explore Services <ChevronRight :size="17" /></a>
+              <NuxtLink to="/services" class="button-primary">Start Project <ArrowRight :size="17" /></NuxtLink>
+              <NuxtLink to="/services" class="button-glass">Explore Services <ChevronRight :size="17" /></NuxtLink>
             </div>
           </div>
         </div>
@@ -74,7 +87,7 @@ useSeoMeta({
         <div class="mx-auto max-w-7xl rounded-[2rem] bg-zinc-950 px-7 py-16 text-white sm:px-12 sm:py-20 lg:px-20">
           <div class="grid items-end gap-10 lg:grid-cols-[1fr_auto]">
             <div><p class="text-xs font-extrabold uppercase tracking-[0.22em] text-zinc-400">Your next move</p><h2 class="mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[0.95] tracking-[-0.055em] sm:text-7xl lg:text-8xl">Let’s build what’s next.</h2><p class="mt-6 max-w-2xl text-lg text-zinc-400">Choose the services you need, share the brief and start a focused WhatsApp consultation with SharlTech.</p></div>
-            <a href="#services" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">Build your scope <ArrowRight :size="19" /></a>
+            <NuxtLink to="/services" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">Build your scope <ArrowRight :size="19" /></NuxtLink>
           </div>
         </div>
       </section>
@@ -82,7 +95,7 @@ useSeoMeta({
 
     <footer class="relative z-10 px-5 py-10 sm:px-8">
       <div class="mx-auto flex max-w-7xl flex-col gap-6 border-t border-zinc-200 pt-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-        <a href="#top" class="flex items-center gap-2 font-extrabold text-zinc-950"><span class="text-emerald-500">●</span> SHARLTECH</a>
+        <NuxtLink to="/" class="flex items-center gap-2 font-extrabold text-zinc-950"><span class="text-emerald-500">●</span> SHARLTECH</NuxtLink>
         <p>© {{ new Date().getFullYear() }} SharlTech. Technology, thoughtfully delivered.</p>
         <div class="flex gap-5 font-semibold"><a href="mailto:sharlmon19@gmail.com" class="transition hover:text-emerald-500">Email</a><a href="https://www.linkedin.com/in/sharlmon-junior-701746281" target="_blank" rel="noopener noreferrer" class="transition hover:text-emerald-500">LinkedIn</a></div>
       </div>

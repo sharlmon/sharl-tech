@@ -19,7 +19,7 @@ function isActive(to: string) {
 
 <template>
   <nav class="fixed top-4 left-0 right-0 z-50 mx-auto max-w-6xl w-[95%] rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-sm flex items-center justify-between px-6 py-3.5" aria-label="Main navigation">
-    <NuxtLink to="/" class="flex items-center gap-2.5 focus:outline-none transition-opacity hover:opacity-75">
+    <NuxtLink external to="/" class="flex items-center gap-2.5 rounded-full transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2">
       <img src="/sharltech-logo.png?v=2" alt="SharlTech Icon" class="h-8 w-auto object-contain">
       <span class="text-lg font-extrabold tracking-tight text-zinc-950">SHARLTECH</span>
     </NuxtLink>
@@ -28,6 +28,7 @@ function isActive(to: string) {
       <NuxtLink
         v-for="item in navigation"
         :key="item.label"
+        external
         :to="item.to"
         class="text-sm font-semibold transition-colors"
         :class="isActive(item.to) ? 'text-zinc-950' : 'text-zinc-500 hover:text-zinc-950'"
@@ -38,7 +39,7 @@ function isActive(to: string) {
     </div>
 
     <div class="flex items-center gap-2">
-      <NuxtLink to="/services" class="button-primary hidden min-h-10 px-5 py-2.5 sm:inline-flex">
+      <NuxtLink external to="/services" class="button-primary hidden min-h-10 px-5 py-2.5 sm:inline-flex">
         Start Project
         <ArrowRight :size="15" />
       </NuxtLink>
@@ -59,13 +60,14 @@ function isActive(to: string) {
       <NuxtLink
         v-for="item in navigation"
         :key="item.label"
+        external
         :to="item.to"
         class="block rounded-lg px-3 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-zinc-950"
         @click="mobileMenuOpen = false"
       >
         {{ item.label }}
       </NuxtLink>
-      <NuxtLink to="/services" class="button-primary mt-3 w-full sm:hidden" @click="mobileMenuOpen = false">
+      <NuxtLink external to="/services" class="button-primary mt-3 w-full sm:hidden" @click="mobileMenuOpen = false">
         Start Project
         <ArrowRight :size="15" />
       </NuxtLink>

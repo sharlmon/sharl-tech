@@ -141,8 +141,8 @@ watch(() => route.path, scrollToPortfolioSection)
         </p>
 
         <div class="mt-10 flex animate-fade-in-up flex-col gap-3 [animation-delay:300ms] sm:flex-row">
-          <NuxtLink to="/portfolio/projects" class="button-primary">Explore selected work <ArrowRight :size="17" /></NuxtLink>
-          <NuxtLink to="/portfolio/stack" class="button-glass">View technology stack <Layers3 :size="17" /></NuxtLink>
+          <NuxtLink external to="/portfolio/projects" class="button-primary">Explore selected work <ArrowRight :size="17" /></NuxtLink>
+          <NuxtLink external to="/portfolio/stack" class="button-glass">View technology stack <Layers3 :size="17" /></NuxtLink>
         </div>
 
         <div class="glass-panel mt-16 grid w-full max-w-4xl animate-fade-in-up grid-cols-1 divide-y divide-zinc-200/70 overflow-hidden rounded-3xl [animation-delay:400ms] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -203,7 +203,7 @@ watch(() => route.path, scrollToPortfolioSection)
         <div class="mx-auto max-w-7xl rounded-[2rem] bg-zinc-950 px-7 py-16 text-white sm:px-12 sm:py-20 lg:px-20">
           <div class="grid items-end gap-10 lg:grid-cols-[1fr_auto]">
             <div><p class="text-xs font-extrabold uppercase tracking-[0.22em] text-zinc-400">Have a hard problem?</p><h2 class="mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[0.95] tracking-[-0.055em] sm:text-7xl lg:text-8xl">Let’s engineer the answer.</h2><p class="mt-6 max-w-2xl text-lg text-zinc-400">Choose the services you need, share the brief and continue directly to a focused WhatsApp consultation.</p></div>
-            <NuxtLink to="/services" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">Start a project <ArrowRight :size="19" /></NuxtLink>
+            <NuxtLink external to="/services" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">Start a project <ArrowRight :size="19" /></NuxtLink>
           </div>
         </div>
       </section>
@@ -211,7 +211,7 @@ watch(() => route.path, scrollToPortfolioSection)
 
     <footer class="relative z-10 px-5 py-10 sm:px-8">
       <div class="mx-auto flex max-w-7xl flex-col gap-6 border-t border-zinc-200 pt-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-        <NuxtLink to="/" class="flex items-center gap-2 font-extrabold text-zinc-950"><span class="text-emerald-500">●</span> SHARLTECH</NuxtLink>
+        <NuxtLink external to="/" class="flex items-center gap-2 rounded-full font-extrabold text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2"><span class="text-emerald-500">●</span> SHARLTECH</NuxtLink>
         <p>© {{ new Date().getFullYear() }} SharlTech. Engineered in Nairobi.</p>
         <div class="flex gap-5 font-semibold"><a href="mailto:sharlmon19@gmail.com" class="transition hover:text-emerald-500">Email</a><a href="https://www.linkedin.com/in/sharlmon-junior-701746281" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 transition hover:text-emerald-500">LinkedIn <ExternalLink :size="12" /></a></div>
       </div>

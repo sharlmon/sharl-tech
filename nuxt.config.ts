@@ -13,7 +13,7 @@ export default defineNuxtConfig({
           content:
             'SharlTech delivers premium web design, custom software, cloud hosting, SEO and AI integrations for ambitious businesses.',
         },
-        { name: 'theme-color', content: '#09090b' },
+        { name: 'theme-color', content: '#ffffff' },
         { property: 'og:title', content: 'SharlTech — Built Beyond the Brief' },
         {
           property: 'og:description',
@@ -29,21 +29,6 @@ export default defineNuxtConfig({
           href: 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap',
         },
       ],
-      script: [
-        {
-          innerHTML:
-            "try{const t=localStorage.getItem('sharltech-theme');const d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}",
-          tagPosition: 'head',
-        },
-      ],
     },
-  },
-  runtimeConfig: {
-    mpesaConsumerKey: process.env.MPESA_CONSUMER_KEY,
-    mpesaConsumerSecret: process.env.MPESA_CONSUMER_SECRET,
-    mpesaShortcode: process.env.MPESA_SHORTCODE,
-    mpesaPasskey: process.env.MPESA_PASSKEY,
-    mpesaCallbackUrl: process.env.MPESA_CALLBACK_URL,
-    mpesaEnvironment: process.env.MPESA_ENVIRONMENT || 'sandbox',
   },
 })

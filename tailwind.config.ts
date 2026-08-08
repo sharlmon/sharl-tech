@@ -7,7 +7,6 @@ export default <Partial<Config>>{
     './pages/**/*.vue',
     './app.vue',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -22,9 +21,6 @@ export default <Partial<Config>>{
       },
       fontFamily: {
         sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        glow: '0 24px 80px -32px rgba(16, 185, 129, 0.42)',
       },
       keyframes: {
         'fade-in-up': {

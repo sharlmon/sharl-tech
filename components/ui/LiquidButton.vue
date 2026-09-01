@@ -164,6 +164,20 @@ const props = withDefaults(defineProps<{
   box-shadow: inset 0 1px 0 #ffffff, 0 0 24px rgba(148, 163, 184, 0.2), 0 12px 28px rgba(24, 24, 27, 0.1);
 }
 
+:global(.dark .liquid-button--metal) {
+  border-color: rgba(255, 255, 255, 0.72);
+  background: linear-gradient(105deg, #ffffff 0%, #e4e4e7 50%, #a1a1aa 100%);
+  color: #18181b;
+  box-shadow: inset 0 1px 0 #ffffff, 0 5px 18px rgba(0, 0, 0, 0.28);
+}
+
+:global(.dark .liquid-button--light) {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(39, 39, 42, 0.78);
+  color: #fafafa;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
 .liquid-button--sm { min-height: 2.35rem; padding: 0 1rem; font-size: 0.8rem; }
 .liquid-button--md { min-height: 2.75rem; padding: 0 1.2rem; font-size: 0.875rem; }
 .liquid-button--lg { min-height: 3rem; padding: 0 1.35rem; font-size: 0.94rem; }

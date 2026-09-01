@@ -24,6 +24,12 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
         { name: 'theme-color', content: '#ffffff' },
       ],
+      script: [
+        {
+          key: 'theme-init',
+          innerHTML: "(() => { try { const saved = localStorage.getItem('sharltech-theme'); const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches; document.documentElement.classList.toggle('dark', dark); document.documentElement.style.colorScheme = dark ? 'dark' : 'light'; document.querySelector('meta[name=theme-color]')?.setAttribute('content', dark ? '#09090b' : '#ffffff'); } catch (_) {} })();",
+        },
+      ],
       link: [
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=1' },
         { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/favicon.png?v=1' },

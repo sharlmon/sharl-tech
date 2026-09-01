@@ -94,7 +94,7 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen overflow-x-hidden bg-white text-zinc-950">
+  <div class="min-h-screen overflow-x-hidden bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
     <AppNavbar />
 
     <main id="top" class="relative z-10">
@@ -146,6 +146,11 @@ useHead({
   color: #18181b;
 }
 
+:global(.dark .home-hero) {
+  background: #09090b;
+  color: #fafafa;
+}
+
 .wave-field {
   position: absolute;
   inset: 0;
@@ -153,6 +158,10 @@ useHead({
   overflow: hidden;
   background: #ffffff;
   pointer-events: none;
+}
+
+:global(.dark .wave-field) {
+  background: #09090b;
 }
 
 .wave {
@@ -163,6 +172,10 @@ useHead({
   border: 1px solid rgba(24, 24, 27, 0.075);
   border-radius: 46% 54% 50% 50% / 55% 48% 52% 45%;
   will-change: transform;
+}
+
+:global(.dark .wave) {
+  border-color: rgba(255, 255, 255, 0.075);
 }
 
 .wave--1 { top: 18%; animation: wave-drift-a 18s ease-in-out infinite alternate; }
@@ -202,6 +215,10 @@ useHead({
   letter-spacing: -0.02em;
   line-height: 1.5;
   text-wrap: balance;
+}
+
+:global(.dark .hero-lede) {
+  color: #a1a1aa;
 }
 
 .hero-action { margin-top: 2rem; }

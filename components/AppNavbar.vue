@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ArrowRight } from 'lucide-vue-next'
+import { ArrowRight, Moon, Sun } from 'lucide-vue-next'
 
 const route = useRoute()
 const mobileMenuOpen = ref(false)
+const isDark = ref(false)
 
 const navigation = [
   { label: 'Services', to: '/services', motion: 'appear--scale', delay: '0.16s' },
@@ -23,6 +24,14 @@ function toggleMenu() {
   mobileMenuOpen.value = !mobileMenuOpen.value
 }
 
+function toggleTheme() {
+  isDark.value = !isDark.value
+  document.documentElement.classList.toggle('dark', isDark.value)
+  document.documentElement.style.colorScheme = isDark.value ? 'dark' : 'light'
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark.value ? '#09090b' : '#ffffff')
+  localStorage.setItem('sharltech-theme', isDark.value ? 'dark' : 'light')
+}
+
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape') closeMenu()
 }
@@ -38,6 +47,7 @@ watch(mobileMenuOpen, (isOpen) => {
 watch(() => route.fullPath, closeMenu)
 
 onMounted(() => {
+  isDark.value = document.documentElement.classList.contains('dark')
   window.addEventListener('keydown', handleKeydown)
   window.addEventListener('resize', handleResize)
 })
@@ -73,6 +83,18 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="header-actions">
+        <button
+          type="button"
+          class="theme-toggle appear appear--scale"
+          style="--d: 0.3s"
+          :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+          :title="isDark ? 'Light mode' : 'Dark mode'"
+          @click="toggleTheme"
+        >
+          <Sun v-if="isDark" :size="16" aria-hidden="true" />
+          <Moon v-else :size="16" aria-hidden="true" />
+        </button>
+
         <UiLiquidButton to="/services" external variant="metal" size="sm" class="header-cta appear appear--scale" style="--d: 0.34s">
           Start project
           <ArrowRight :size="15" aria-hidden="true" />
@@ -163,6 +185,7 @@ onBeforeUnmount(() => {
 .brand:focus-visible,
 .nav-pill:focus-visible,
 .mobile-nav-link:focus-visible,
+.theme-toggle:focus-visible,
 .menu-toggle:focus-visible {
   outline: 2px solid #18181b;
   outline-offset: 3px;
@@ -223,6 +246,23 @@ onBeforeUnmount(() => {
   gap: 0.5rem;
 }
 
+.theme-toggle {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid rgba(24, 24, 27, 0.13);
+  border-radius: 0.55rem;
+  background: rgba(255, 255, 255, 0.56);
+  color: #3f3f46;
+  transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: rgba(24, 24, 27, 0.3);
+  color: #18181b;
+}
+
 .menu-toggle {
   display: none;
   width: 2.75rem;
@@ -249,13 +289,60 @@ onBeforeUnmount(() => {
   transition: transform 250ms ease, opacity 200ms ease;
 }
 
-:global(body.menu-open) .menu-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-:global(body.menu-open) .menu-toggle span:nth-child(2) { opacity: 0; }
-:global(body.menu-open) .menu-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+:global(body.menu-open .menu-toggle span:nth-child(1)) { transform: translateY(6px) rotate(45deg); }
+:global(body.menu-open .menu-toggle span:nth-child(2)) { opacity: 0; }
+:global(body.menu-open .menu-toggle span:nth-child(3)) { transform: translateY(-6px) rotate(-45deg); }
 
 .menu-backdrop,
 .mobile-navigation {
   display: none;
+}
+
+:global(.dark .navbar-shell) {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(24, 24, 27, 0.8);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.22);
+}
+
+:global(.dark .brand),
+:global(.dark .nav-pill:hover),
+:global(.dark .nav-pill.is-active) {
+  color: #fafafa;
+}
+
+:global(.dark .brand-mark) {
+  background: #ffffff;
+}
+
+:global(.dark .brand-muted),
+:global(.dark .nav-pill) {
+  color: #a1a1aa;
+}
+
+:global(.dark .theme-toggle),
+:global(.dark .menu-toggle) {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e4e4e7;
+}
+
+:global(.dark .theme-toggle:hover),
+:global(.dark .menu-toggle:hover) {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+:global(.dark .menu-toggle span) {
+  background: #fafafa;
+}
+
+:global(.dark .brand:focus-visible),
+:global(.dark .nav-pill:focus-visible),
+:global(.dark .mobile-nav-link:focus-visible),
+:global(.dark .theme-toggle:focus-visible),
+:global(.dark .menu-toggle:focus-visible) {
+  outline-color: #fafafa;
 }
 
 @media (min-width: 1280px) {
@@ -288,6 +375,10 @@ onBeforeUnmount(() => {
     background: rgba(255, 255, 255, 0.62);
     opacity: 0;
     transition: opacity 280ms ease, visibility 280ms ease;
+  }
+
+  :global(.dark .menu-backdrop) {
+    background: rgba(9, 9, 11, 0.72);
   }
 
   .menu-backdrop.is-open {
@@ -331,6 +422,11 @@ onBeforeUnmount(() => {
     font-size: 1.15rem;
     font-weight: 550;
     letter-spacing: -0.035em;
+  }
+
+  :global(.dark .mobile-nav-link) {
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #fafafa;
   }
 
   .mobile-nav-link[aria-current='page'] {

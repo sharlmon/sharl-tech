@@ -1,4 +1,4 @@
-html, body { background: #000000 !important; color: #ffffff; }
+html, body { background: #ffffff !important; color: #18181b; }
 
 @tailwind base;
 @tailwind components;
@@ -10,7 +10,7 @@ html, body { background: #000000 !important; color: #ffffff; }
   }
 
   body {
-    @apply bg-black font-sans text-white antialiased;
+    @apply bg-white font-sans text-zinc-950 antialiased;
     overflow-x: hidden;
     position: relative;
     -moz-osx-font-smoothing: grayscale;

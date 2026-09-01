@@ -73,7 +73,7 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="header-actions">
-        <UiLiquidButton to="/services" external variant="solid" size="sm" class="header-cta appear appear--scale" style="--d: 0.34s">
+        <UiLiquidButton to="/services" external variant="metal" size="sm" class="header-cta appear appear--scale" style="--d: 0.34s">
           Start Project
           <ArrowRight :size="15" aria-hidden="true" />
         </UiLiquidButton>
@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
           <span>{{ item.label }}</span>
           <ArrowRight :size="19" aria-hidden="true" />
         </NuxtLink>
-        <UiLiquidButton to="/services" external variant="solid" size="lg" class="mobile-project-link" @click="closeMenu">
+        <UiLiquidButton to="/services" external variant="metal" size="lg" class="mobile-project-link" @click="closeMenu">
           Start a Project
           <ArrowRight :size="17" aria-hidden="true" />
         </UiLiquidButton>
@@ -137,12 +137,12 @@ onBeforeUnmount(() => {
   min-height: 3.85rem;
   margin: 0 auto;
   padding: 0.55rem 0.65rem 0.55rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(24, 24, 27, 0.12);
   border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(0, 0, 0, 0.74) 55%, rgba(35, 42, 54, 0.78));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 14px 42px rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(20px) saturate(130%);
-  backdrop-filter: blur(20px) saturate(130%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(250, 250, 250, 0.72) 55%, rgba(241, 245, 249, 0.78));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 14px 42px rgba(24, 24, 27, 0.08);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(22px) saturate(145%);
   pointer-events: auto;
 }
 
@@ -154,7 +154,7 @@ onBeforeUnmount(() => {
   justify-self: start;
   gap: 0.65rem;
   border-radius: 0.5rem;
-  color: #ffffff;
+  color: #18181b;
   font-size: 0.9rem;
   font-weight: 750;
   letter-spacing: -0.045em;
@@ -164,7 +164,7 @@ onBeforeUnmount(() => {
 .nav-pill:focus-visible,
 .mobile-nav-link:focus-visible,
 .menu-toggle:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid #18181b;
   outline-offset: 3px;
 }
 
@@ -185,7 +185,7 @@ onBeforeUnmount(() => {
 }
 
 .brand-muted {
-  color: #a3a3a3;
+  color: #71717a;
   font-weight: 550;
 }
 
@@ -204,14 +204,14 @@ onBeforeUnmount(() => {
   justify-content: center;
   overflow: hidden;
   padding: 0 1.1rem;
-  border: 1px solid rgba(198, 198, 198, 0.46);
+  border: 1px solid rgba(24, 24, 27, 0.14);
   border-radius: 0.5rem;
-  background: linear-gradient(105deg, #050505 0%, #292929 48%, #494949 100%);
-  color: #e9e9e9;
+  background: linear-gradient(105deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 244, 245, 0.88) 48%, rgba(228, 228, 231, 0.9) 100%);
+  color: #27272a;
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: -0.02em;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 #ffffff, 0 4px 12px rgba(24, 24, 27, 0.05);
   transition: border-color 350ms ease, box-shadow 350ms ease, filter 350ms ease;
 }
 
@@ -219,16 +219,16 @@ onBeforeUnmount(() => {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.9) 50%, transparent 70%);
   transform: translateX(-120%);
   transition: transform 600ms ease;
 }
 
 .nav-pill:hover,
 .nav-pill.is-active {
-  border-color: rgba(235, 235, 235, 0.9);
-  box-shadow: 0 0 18px rgba(200, 210, 230, 0.18);
-  filter: brightness(1.16);
+  border-color: rgba(24, 24, 27, 0.34);
+  box-shadow: inset 0 1px 0 #ffffff, 0 0 20px rgba(148, 163, 184, 0.2), 0 8px 18px rgba(24, 24, 27, 0.08);
+  filter: brightness(1.03);
 }
 
 .nav-pill:hover::before {
@@ -250,15 +250,15 @@ onBeforeUnmount(() => {
   height: 2.75rem;
   place-items: center;
   gap: 0.29rem;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(24, 24, 27, 0.16);
   border-radius: 0.55rem;
-  background: rgba(8, 8, 8, 0.6);
+  background: rgba(255, 255, 255, 0.72);
   transition: border-color 250ms ease, background 250ms ease;
 }
 
 .menu-toggle:hover {
-  border-color: rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(24, 24, 27, 0.34);
+  background: rgba(244, 244, 245, 0.92);
 }
 
 .menu-toggle span {
@@ -266,7 +266,7 @@ onBeforeUnmount(() => {
   width: 1.05rem;
   height: 1.5px;
   border-radius: 1px;
-  background: #ffffff;
+  background: #18181b;
   transition: transform 250ms ease, opacity 200ms ease;
 }
 
@@ -306,7 +306,7 @@ onBeforeUnmount(() => {
     z-index: 10;
     display: block;
     visibility: hidden;
-    background: rgba(3, 3, 3, 0.55);
+    background: rgba(255, 255, 255, 0.62);
     opacity: 0;
     transition: opacity 280ms ease, visibility 280ms ease;
   }
@@ -347,17 +347,17 @@ onBeforeUnmount(() => {
     align-items: center;
     justify-content: space-between;
     padding: 0 1.15rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(24, 24, 27, 0.14);
     border-radius: 0.75rem;
-    background: linear-gradient(105deg, rgba(5, 5, 5, 0.86), rgba(62, 62, 62, 0.8));
-    color: #ffffff;
+    background: linear-gradient(105deg, rgba(255, 255, 255, 0.92), rgba(244, 244, 245, 0.78));
+    color: #18181b;
     font-size: 1.15rem;
     font-weight: 550;
     letter-spacing: -0.035em;
   }
 
   .mobile-nav-link[aria-current='page'] {
-    border-color: rgba(255, 255, 255, 0.72);
+    border-color: rgba(24, 24, 27, 0.54);
   }
 
   .mobile-project-link {

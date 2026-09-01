@@ -99,8 +99,14 @@ useHead({
 
     <main id="top" class="relative z-10">
       <section class="home-hero" aria-labelledby="home-heading">
-        <div class="hero-art" aria-hidden="true" />
-        <div class="hero-grain" aria-hidden="true" />
+        <div class="wave-field" aria-hidden="true">
+          <span class="wave wave--1" />
+          <span class="wave wave--2" />
+          <span class="wave wave--3" />
+          <span class="wave wave--4" />
+          <span class="wave wave--5" />
+          <span class="wave wave--6" />
+        </div>
 
         <div class="hero-layout">
           <div class="hero-copy">
@@ -119,11 +125,11 @@ useHead({
             </p>
 
             <div class="hero-actions">
-              <UiLiquidButton to="/services" external variant="solid" size="lg" class="appear appear--btn" style="--d: 0.96s">
+              <UiLiquidButton to="/services" external variant="metal" size="lg" class="appear appear--btn" style="--d: 0.96s">
                 Start a Project
                 <ArrowRight :size="17" aria-hidden="true" />
               </UiLiquidButton>
-              <UiLiquidButton to="/portfolio" external variant="ghost" size="lg" class="appear appear--side" style="--d: 1.1s">
+              <UiLiquidButton to="/portfolio" external variant="light" size="lg" class="appear appear--side" style="--d: 1.1s">
                 See Selected Work
                 <ArrowRight :size="17" aria-hidden="true" />
               </UiLiquidButton>
@@ -211,39 +217,41 @@ useHead({
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
-  background: #000000;
-  color: #ffffff;
+  background: #ffffff;
+  color: #18181b;
 }
 
-.hero-art {
+.wave-field {
   position: absolute;
   inset: 0;
-  z-index: -3;
-  background-image: url('/hero-bg.png');
-  background-position: center 44%;
-  background-size: cover;
-  filter: saturate(0.78) contrast(1.08);
-  transform: scale(1.035);
-  animation: hero-breathe 12s ease-out both;
-}
-
-.hero-art::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+  z-index: -2;
+  overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.14) 34%, rgba(0, 0, 0, 0.72) 78%, #000000 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.42), transparent 30%, transparent 70%, rgba(0, 0, 0, 0.42));
-}
-
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.11;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+    radial-gradient(circle at 50% 48%, rgba(99, 102, 241, 0.055), transparent 29%),
+    radial-gradient(circle at 75% 38%, rgba(14, 165, 233, 0.035), transparent 24%),
+    #ffffff;
   pointer-events: none;
 }
+
+.wave {
+  position: absolute;
+  left: -25%;
+  width: 150%;
+  height: clamp(12rem, 25vw, 24rem);
+  border: 1px solid rgba(71, 85, 105, 0.11);
+  border-right-color: rgba(14, 165, 233, 0.1);
+  border-left-color: rgba(99, 102, 241, 0.08);
+  border-radius: 46% 54% 50% 50% / 55% 48% 52% 45%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 -1px 24px rgba(99, 102, 241, 0.025);
+  will-change: transform;
+}
+
+.wave--1 { top: 15%; animation: wave-drift-a 13s ease-in-out infinite alternate; }
+.wave--2 { top: 24%; opacity: 0.85; animation: wave-drift-b 16s ease-in-out -4s infinite alternate; }
+.wave--3 { top: 36%; opacity: 0.72; animation: wave-drift-a 18s ease-in-out -8s infinite alternate-reverse; }
+.wave--4 { top: 49%; opacity: 0.62; animation: wave-drift-b 20s ease-in-out -6s infinite alternate-reverse; }
+.wave--5 { top: 62%; opacity: 0.5; animation: wave-drift-a 22s ease-in-out -12s infinite alternate; }
+.wave--6 { top: 74%; opacity: 0.4; animation: wave-drift-b 24s ease-in-out -10s infinite alternate; }
 
 .hero-layout {
   display: grid;
@@ -269,11 +277,11 @@ useHead({
   gap: 0.55rem;
   margin-bottom: 1.3rem;
   padding: 0.55rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(24, 24, 27, 0.12);
   border-radius: 0.42rem;
-  background: linear-gradient(90deg, rgba(125, 125, 125, 0.86), rgba(42, 42, 42, 0.82) 52%, rgba(10, 10, 10, 0.88));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 35px rgba(0, 0, 0, 0.28);
-  color: #f1f1f1;
+  background: linear-gradient(105deg, rgba(255, 255, 255, 0.9), rgba(244, 244, 245, 0.74) 52%, rgba(255, 255, 255, 0.84));
+  box-shadow: inset 0 1px 0 #ffffff, 0 10px 35px rgba(24, 24, 27, 0.07);
+  color: #3f3f46;
   font-size: 0.78rem;
   letter-spacing: -0.01em;
   -webkit-backdrop-filter: blur(12px);
@@ -281,7 +289,7 @@ useHead({
 }
 
 .badge-star {
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.18));
   animation: in-star 900ms cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
 }
 
@@ -307,7 +315,7 @@ useHead({
 }
 
 .hero-heading em {
-  color: #9a9a9a;
+  color: #8a8a8f;
   font-family: 'Instrument Serif', 'Times New Roman', Times, serif;
   font-size: 1.08em;
   font-weight: 400;
@@ -318,7 +326,7 @@ useHead({
 .hero-lede {
   max-width: 40rem;
   margin-top: 1.15rem;
-  color: #b4b4b4;
+  color: #5f6067;
   font-size: clamp(1rem, 1.3vw, 1.16rem);
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -341,7 +349,7 @@ useHead({
   gap: 1.5rem;
   width: 100%;
   margin-top: clamp(2.5rem, 8vh, 5.5rem);
-  color: #d8d8d8;
+  color: #52525b;
 }
 
 .hero-stat {
@@ -355,20 +363,25 @@ useHead({
 
 .hero-stat-icon {
   flex: 0 0 auto;
-  color: #ececec;
+  color: #3f3f46;
 }
 
 .hero-stat-icon--tile {
   box-sizing: content-box;
   padding: 0.18rem;
   border-radius: 0.35rem;
-  background: #ffffff;
-  color: #101010;
+  background: #18181b;
+  color: #ffffff;
 }
 
-@keyframes hero-breathe {
-  from { opacity: 0.55; transform: scale(1.08); }
-  to { opacity: 1; transform: scale(1.035); }
+@keyframes wave-drift-a {
+  from { transform: translate3d(-2.5%, -10px, 0) rotate(-2deg) scaleX(1.02); }
+  to { transform: translate3d(2.5%, 16px, 0) rotate(2deg) scaleX(0.98); }
+}
+
+@keyframes wave-drift-b {
+  from { transform: translate3d(2%, 14px, 0) rotate(1.5deg) scaleX(0.99); }
+  to { transform: translate3d(-2%, -14px, 0) rotate(-1.5deg) scaleX(1.02); }
 }
 
 @keyframes in-star {
@@ -412,7 +425,6 @@ useHead({
     line-height: 1.01;
   }
 
-  .hero-art { background-position: 62% center; }
   .hero-stats { flex-direction: column; align-items: center; gap: 0.9rem; }
   .hero-stat { white-space: normal; text-align: center; }
 }
@@ -426,7 +438,7 @@ useHead({
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-art,
+  .wave,
   .badge-star,
   .hero-heading em {
     animation: none !important;

@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         { name: 'author', content: 'SharlTech' },
         { name: 'application-name', content: 'SharlTech' },
         { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
-        { name: 'theme-color', content: '#000000' },
+        { name: 'theme-color', content: '#ffffff' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=1' },

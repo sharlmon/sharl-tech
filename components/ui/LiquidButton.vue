@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type Variant = 'solid' | 'ghost' | 'metal'
+type Variant = 'solid' | 'ghost' | 'metal' | 'light'
 type Size = 'sm' | 'md' | 'lg'
 
 const props = withDefaults(defineProps<{
@@ -89,7 +89,7 @@ const props = withDefaults(defineProps<{
 }
 
 .liquid-button:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid currentColor;
   outline-offset: 3px;
 }
 
@@ -148,6 +148,20 @@ const props = withDefaults(defineProps<{
   border-color: rgba(238, 238, 238, 0.92);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 18px rgba(200, 210, 230, 0.2);
   filter: brightness(1.12);
+}
+
+.liquid-button--light {
+  border: 1px solid rgba(24, 24, 27, 0.16);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(244, 244, 245, 0.76) 50%, rgba(255, 255, 255, 0.88));
+  color: #18181b;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98), 0 8px 24px rgba(24, 24, 27, 0.08);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+.liquid-button--light:hover {
+  border-color: rgba(24, 24, 27, 0.34);
+  box-shadow: inset 0 1px 0 #ffffff, 0 0 24px rgba(148, 163, 184, 0.2), 0 12px 28px rgba(24, 24, 27, 0.1);
 }
 
 .liquid-button--sm { min-height: 2.35rem; padding: 0 1rem; font-size: 0.8rem; }

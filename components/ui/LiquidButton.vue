@@ -77,7 +77,7 @@ const props = withDefaults(defineProps<{
 }
 
 .liquid-button:hover {
-  transform: translateY(-2px) scale(1.015);
+  transform: translateY(-1px);
 }
 
 .liquid-button:hover::after {
@@ -85,7 +85,7 @@ const props = withDefaults(defineProps<{
 }
 
 .liquid-button:active {
-  transform: translateY(1px) scale(0.985);
+  transform: translateY(1px);
 }
 
 .liquid-button:focus-visible {
@@ -146,8 +146,8 @@ const props = withDefaults(defineProps<{
 
 .liquid-button--metal:hover {
   border-color: rgba(238, 238, 238, 0.92);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 18px rgba(200, 210, 230, 0.2);
-  filter: brightness(1.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 7px 18px rgba(0, 0, 0, 0.22);
+  filter: brightness(1.06);
 }
 
 .liquid-button--light {

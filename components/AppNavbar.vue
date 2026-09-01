@@ -6,8 +6,8 @@ const mobileMenuOpen = ref(false)
 
 const navigation = [
   { label: 'Services', to: '/services', motion: 'appear--scale', delay: '0.16s' },
-  { label: 'About', to: '/about', motion: 'appear--soft', delay: '0.28s' },
-  { label: 'Portfolio', to: '/portfolio', motion: 'appear--scale', delay: '0.4s' },
+  { label: 'Work', to: '/portfolio', motion: 'appear--soft', delay: '0.28s' },
+  { label: 'About', to: '/about', motion: 'appear--scale', delay: '0.4s' },
 ]
 
 function isActive(to: string) {
@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
 
       <div class="header-actions">
         <UiLiquidButton to="/services" external variant="metal" size="sm" class="header-cta appear appear--scale" style="--d: 0.34s">
-          Start Project
+          Start project
           <ArrowRight :size="15" aria-hidden="true" />
         </UiLiquidButton>
 
@@ -133,16 +133,16 @@ onBeforeUnmount(() => {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  width: min(100%, 78rem);
-  min-height: 3.85rem;
+  width: min(100%, 72rem);
+  min-height: 3.65rem;
   margin: 0 auto;
   padding: 0.55rem 0.65rem 0.55rem 1rem;
   border: 1px solid rgba(24, 24, 27, 0.12);
   border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(250, 250, 250, 0.72) 55%, rgba(241, 245, 249, 0.78));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 14px 42px rgba(24, 24, 27, 0.08);
-  -webkit-backdrop-filter: blur(22px) saturate(145%);
-  backdrop-filter: blur(22px) saturate(145%);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 10px 32px rgba(24, 24, 27, 0.055);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   pointer-events: auto;
 }
 
@@ -193,46 +193,25 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-self: center;
-  gap: 0.45rem;
+  gap: 1.4rem;
 }
 
 .nav-pill {
-  position: relative;
   display: inline-flex;
-  min-height: 2.55rem;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  padding: 0 1.1rem;
-  border: 1px solid rgba(24, 24, 27, 0.14);
-  border-radius: 0.5rem;
-  background: linear-gradient(105deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 244, 245, 0.88) 48%, rgba(228, 228, 231, 0.9) 100%);
-  color: #27272a;
+  padding: 0.55rem 0.15rem;
+  border-radius: 0.25rem;
+  color: #71717a;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  box-shadow: inset 0 1px 0 #ffffff, 0 4px 12px rgba(24, 24, 27, 0.05);
-  transition: border-color 350ms ease, box-shadow 350ms ease, filter 350ms ease;
-}
-
-.nav-pill::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.9) 50%, transparent 70%);
-  transform: translateX(-120%);
-  transition: transform 600ms ease;
+  transition: color 200ms ease;
 }
 
 .nav-pill:hover,
 .nav-pill.is-active {
-  border-color: rgba(24, 24, 27, 0.34);
-  box-shadow: inset 0 1px 0 #ffffff, 0 0 20px rgba(148, 163, 184, 0.2), 0 8px 18px rgba(24, 24, 27, 0.08);
-  filter: brightness(1.03);
-}
-
-.nav-pill:hover::before {
-  transform: translateX(120%);
+  color: #18181b;
 }
 
 .header-actions {
@@ -281,8 +260,8 @@ onBeforeUnmount(() => {
 
 @media (min-width: 1280px) {
   .site-header { padding-top: 1.35rem; }
-  .navbar-shell { min-height: 4.15rem; }
-  .nav-pill { min-height: 2.7rem; padding-inline: 1.25rem; font-size: 0.85rem; }
+  .navbar-shell { min-height: 3.75rem; }
+  .nav-pill { font-size: 0.82rem; }
 }
 
 @media (max-width: 900px) {
@@ -347,9 +326,7 @@ onBeforeUnmount(() => {
     align-items: center;
     justify-content: space-between;
     padding: 0 1.15rem;
-    border: 1px solid rgba(24, 24, 27, 0.14);
-    border-radius: 0.75rem;
-    background: linear-gradient(105deg, rgba(255, 255, 255, 0.92), rgba(244, 244, 245, 0.78));
+    border-bottom: 1px solid rgba(24, 24, 27, 0.14);
     color: #18181b;
     font-size: 1.15rem;
     font-weight: 550;
@@ -357,7 +334,7 @@ onBeforeUnmount(() => {
   }
 
   .mobile-nav-link[aria-current='page'] {
-    border-color: rgba(24, 24, 27, 0.54);
+    color: #71717a;
   }
 
   .mobile-project-link {

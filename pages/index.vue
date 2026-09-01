@@ -106,21 +106,39 @@ useHead({
         </div>
 
         <div class="hero-layout">
-          <div class="hero-copy">
-            <h1 id="home-heading" class="hero-heading appear appear--mask" style="--d: 0.24s">
-              Websites, properly built.
-            </h1>
-
-            <p class="hero-lede appear appear--soft" style="--d: 0.46s">
-              Design and development from Nairobi.
-            </p>
-
-            <div class="hero-action appear appear--btn" style="--d: 0.62s">
-              <UiLiquidButton to="/portfolio" external variant="metal" size="lg">
-                View work
-                <ArrowRight :size="17" aria-hidden="true" />
-              </UiLiquidButton>
+          <div class="hero-grid">
+            <div class="hero-title-block">
+              <p class="hero-kicker appear appear--soft" style="--d: 0.16s">Nairobi, Kenya</p>
+              <h1 id="home-heading" class="hero-heading">
+                <span class="hero-line"><span class="appear appear--mask" style="--d: 0.24s">Custom</span></span>
+                <span class="hero-line"><span class="appear appear--mask" style="--d: 0.34s">software</span></span>
+                <span class="hero-line hero-line--muted"><span class="appear appear--mask" style="--d: 0.44s">&amp; cloud</span></span>
+                <span class="hero-line"><span class="appear appear--mask" style="--d: 0.54s">systems.</span></span>
+              </h1>
             </div>
+
+            <div class="hero-intro appear appear--soft" style="--d: 0.56s">
+              <p>
+                SharlTech designs and builds web applications, e-commerce platforms, cloud infrastructure and practical automation for organisations in Kenya and beyond.
+              </p>
+
+              <div class="hero-actions">
+                <UiLiquidButton to="/services" external variant="metal" size="lg">
+                  Start a project
+                  <ArrowRight :size="17" aria-hidden="true" />
+                </UiLiquidButton>
+                <UiLiquidButton to="/portfolio" external variant="light" size="lg">
+                  View work
+                </UiLiquidButton>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-capabilities appear appear--soft" style="--d: 0.72s" aria-label="Core capabilities">
+            <span>Web applications</span>
+            <span>E-commerce</span>
+            <span>Cloud infrastructure</span>
+            <span>Automation</span>
           </div>
         </div>
       </section>
@@ -184,44 +202,103 @@ useHead({
 
 .hero-layout {
   display: grid;
-  place-items: center;
+  grid-template-rows: 1fr auto;
+  width: min(100%, 80rem);
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 8rem clamp(1.25rem, 5vw, 4.5rem) 4rem;
+  margin: 0 auto;
+  padding: clamp(8.5rem, 15vh, 11rem) clamp(1.25rem, 4vw, 3rem) max(2rem, env(safe-area-inset-bottom));
 }
 
-.hero-copy {
-  display: flex;
-  width: min(100%, 72rem);
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.hero-grid {
+  display: grid;
+  align-self: center;
+  grid-template-columns: minmax(0, 1.32fr) minmax(18rem, 0.68fr);
+  align-items: end;
+  gap: clamp(3rem, 7vw, 7rem);
+  width: 100%;
+}
+
+.hero-kicker {
+  margin-bottom: 1.15rem;
+  color: #71717a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .hero-heading {
-  max-width: 12ch;
-  font-size: clamp(3.5rem, 8.6vw, 8.5rem);
-  font-weight: 650;
-  letter-spacing: -0.075em;
-  line-height: 0.9;
-  text-wrap: balance;
+  font-size: clamp(4.25rem, 8.2vw, 8.25rem);
+  font-weight: 750;
+  letter-spacing: -0.085em;
+  line-height: 0.78;
+  text-transform: uppercase;
 }
 
-.hero-lede {
-  margin-top: 1.5rem;
-  color: #52525b;
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.5;
-  text-wrap: balance;
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.04em 0.08em 0.08em 0;
 }
 
-:global(.dark .hero-lede) {
+.hero-line > span {
+  display: block;
+}
+
+.hero-line--muted {
   color: #a1a1aa;
 }
 
-.hero-action { margin-top: 2rem; }
+.hero-intro {
+  padding-bottom: 0.55rem;
+}
+
+.hero-intro > p {
+  color: #52525b;
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.6;
+}
+
+:global(.dark .hero-kicker),
+:global(.dark .hero-intro > p) {
+  color: #a1a1aa;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 2rem;
+}
+
+.hero-capabilities {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(3rem, 8vh, 5rem);
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(24, 24, 27, 0.1);
+  color: #71717a;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hero-capabilities span:not(:first-child) {
+  text-align: center;
+}
+
+.hero-capabilities span:last-child {
+  text-align: right;
+}
+
+:global(.dark .hero-capabilities) {
+  border-color: rgba(255, 255, 255, 0.11);
+  color: #a1a1aa;
+}
 
 @keyframes wave-drift-a {
   from { transform: translate3d(-2.5%, -10px, 0) rotate(-2deg) scaleX(1.02); }
@@ -234,24 +311,58 @@ useHead({
 }
 
 @media (min-width: 1600px) {
+  .hero-layout { width: min(100%, 91rem); }
   .hero-heading { font-size: 9rem; }
 }
 
 @media (min-width: 1920px) {
-  .hero-heading { font-size: 10rem; }
+  .hero-layout { width: min(100%, 102rem); }
+  .hero-heading { font-size: 10.5rem; }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  .hero-layout { padding-top: 7.25rem; padding-bottom: 1.4rem; }
+  .hero-heading { font-size: clamp(3.7rem, 7vw, 6rem); }
+  .hero-capabilities { margin-top: 2rem; }
 }
 
 @media (max-width: 900px) {
-  .hero-heading {
-    font-size: clamp(3.2rem, 14vw, 6rem);
-    line-height: 0.94;
+  .hero-layout {
+    display: flex;
+    min-height: 100dvh;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8rem;
   }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-heading {
+    font-size: clamp(3.8rem, 16vw, 7rem);
+    line-height: 0.8;
+  }
+
+  .hero-intro {
+    max-width: 38rem;
+  }
+
+  .hero-capabilities { width: 100%; margin-top: 3rem; }
 }
 
 @media (max-width: 560px) {
-  .hero-layout { padding-inline: 1.1rem; }
-  .hero-heading { max-width: 9ch; }
-  .hero-lede { max-width: 19rem; font-size: 0.98rem; }
+  .hero-layout { padding: 7.25rem 1rem 1.5rem; }
+  .hero-kicker { margin-bottom: 0.8rem; }
+  .hero-heading { font-size: clamp(3.35rem, 17vw, 5.25rem); }
+  .hero-grid { gap: 2rem; }
+  .hero-intro > p { font-size: 1rem; }
+  .hero-actions { width: 100%; }
+  .hero-actions > * { width: 100%; }
+  .hero-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .hero-capabilities span:not(:first-child),
+  .hero-capabilities span:last-child { text-align: left; }
 }
 
 @media (prefers-reduced-motion: reduce) {

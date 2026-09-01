@@ -142,6 +142,63 @@ useHead({
           </div>
         </div>
       </section>
+
+      <section id="services" class="home-section" aria-labelledby="home-services-heading">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-number">01 / Services</p>
+            <h2 id="home-services-heading">What we build.</h2>
+          </div>
+          <p class="section-intro">Focused technical work, from the first interface to the infrastructure behind it.</p>
+        </div>
+
+        <div class="service-list">
+          <div><span>01</span><h3>Web applications</h3><p>Custom platforms shaped around your users and operations.</p></div>
+          <div><span>02</span><h3>E-commerce</h3><p>Storefronts, payments and retail workflows built to fit the business.</p></div>
+          <div><span>03</span><h3>Cloud infrastructure</h3><p>Hosting, deployment and production systems that remain dependable.</p></div>
+          <div><span>04</span><h3>Automation</h3><p>Practical workflows that remove repetitive work and connect systems.</p></div>
+        </div>
+
+        <NuxtLink external to="/services" class="section-link">View all services <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
+      </section>
+
+      <section id="work" class="home-section home-work" aria-labelledby="home-work-heading">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-number">02 / Work</p>
+            <h2 id="home-work-heading">Selected systems.</h2>
+          </div>
+          <p class="section-intro">Products built across hiring, commerce, property, media and offline-first web.</p>
+        </div>
+
+        <div class="work-list">
+          <NuxtLink external to="/portfolio/projects" class="work-item"><span>AI hiring platform</span><strong>Kazi Smart</strong><ArrowRight :size="18" aria-hidden="true" /></NuxtLink>
+          <NuxtLink external to="/portfolio/projects" class="work-item"><span>Multi-tenant commerce</span><strong>Hodari Stores</strong><ArrowRight :size="18" aria-hidden="true" /></NuxtLink>
+          <NuxtLink external to="/portfolio/projects" class="work-item"><span>Property software</span><strong>Propflow &amp; FindYourKeja</strong><ArrowRight :size="18" aria-hidden="true" /></NuxtLink>
+        </div>
+
+        <NuxtLink external to="/portfolio" class="section-link section-link--light">View selected work <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
+      </section>
+
+      <section id="about" class="home-section home-about" aria-labelledby="home-about-heading">
+        <div>
+          <p class="section-number">03 / About</p>
+          <h2 id="home-about-heading">Built in Nairobi.<br>Ready for anywhere.</h2>
+        </div>
+        <div class="about-copy">
+          <p>SharlTech is an independent technology company led by Sharlmon. Strategy, design, engineering and deployment stay under one accountable process.</p>
+          <NuxtLink external to="/about" class="section-link">About SharlTech <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
+        </div>
+      </section>
+
+      <section class="home-contact" aria-labelledby="home-contact-heading">
+        <p class="section-number">Start a project</p>
+        <h2 id="home-contact-heading">Tell us what you need.</h2>
+        <UiLiquidButton to="/services" external variant="metal" size="lg">
+          Build your project brief
+          <ArrowRight :size="17" aria-hidden="true" />
+        </UiLiquidButton>
+      </section>
     </main>
 
     <footer class="relative z-10 px-5 py-8 sm:px-8">
@@ -229,7 +286,7 @@ useHead({
 }
 
 .hero-heading {
-  font-size: clamp(4.25rem, 8.2vw, 8.25rem);
+  font-size: clamp(3.75rem, 6.2vw, 6.5rem);
   font-weight: 750;
   letter-spacing: -0.085em;
   line-height: 0.78;
@@ -312,12 +369,12 @@ useHead({
 
 @media (min-width: 1600px) {
   .hero-layout { width: min(100%, 91rem); }
-  .hero-heading { font-size: 9rem; }
+  .hero-heading { font-size: 7.2rem; }
 }
 
 @media (min-width: 1920px) {
   .hero-layout { width: min(100%, 102rem); }
-  .hero-heading { font-size: 10.5rem; }
+  .hero-heading { font-size: 8rem; }
 }
 
 @media (min-width: 901px) and (max-height: 760px) {
@@ -341,7 +398,7 @@ useHead({
   }
 
   .hero-heading {
-    font-size: clamp(3.8rem, 16vw, 7rem);
+    font-size: clamp(3.4rem, 13vw, 5.6rem);
     line-height: 0.8;
   }
 
@@ -355,7 +412,7 @@ useHead({
 @media (max-width: 560px) {
   .hero-layout { padding: 7.25rem 1rem 1.5rem; }
   .hero-kicker { margin-bottom: 0.8rem; }
-  .hero-heading { font-size: clamp(3.35rem, 17vw, 5.25rem); }
+  .hero-heading { font-size: clamp(3rem, 14vw, 4.5rem); }
   .hero-grid { gap: 2rem; }
   .hero-intro > p { font-size: 1rem; }
   .hero-actions { width: 100%; }
@@ -363,6 +420,198 @@ useHead({
   .hero-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
   .hero-capabilities span:not(:first-child),
   .hero-capabilities span:last-child { text-align: left; }
+}
+
+.home-section {
+  width: min(100%, 80rem);
+  margin: 0 auto;
+  padding: clamp(6rem, 10vw, 9rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.section-heading-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(18rem, 0.45fr);
+  align-items: end;
+  gap: 3rem;
+}
+
+.section-number {
+  margin-bottom: 1.1rem;
+  color: #71717a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.home-section h2,
+.home-contact h2 {
+  max-width: 12ch;
+  font-size: clamp(3.25rem, 6.2vw, 6.5rem);
+  font-weight: 720;
+  letter-spacing: -0.075em;
+  line-height: 0.9;
+}
+
+.section-intro,
+.about-copy > p {
+  color: #52525b;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.service-list {
+  margin-top: 4.5rem;
+  border-top: 1px solid #e4e4e7;
+}
+
+.service-list > div {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(13rem, 0.7fr) 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.65rem 0;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.service-list span,
+.work-item > span {
+  color: #a1a1aa;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.service-list h3 {
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.service-list p {
+  color: #71717a;
+  line-height: 1.55;
+}
+
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 2.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.home-work {
+  width: min(calc(100% - 2rem), 86rem);
+  padding-inline: clamp(1.5rem, 5vw, 5rem);
+  border-radius: 2rem;
+  background: #09090b;
+  color: #fafafa;
+}
+
+.home-work .section-intro {
+  color: #a1a1aa;
+}
+
+.work-list {
+  margin-top: 4.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.work-item {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.55fr) 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  transition: color 180ms ease;
+}
+
+.work-item strong {
+  font-size: clamp(1.5rem, 2.8vw, 2.7rem);
+  letter-spacing: -0.045em;
+}
+
+.work-item:hover {
+  color: #a7f3d0;
+}
+
+.section-link--light { color: #fafafa; }
+
+.home-about {
+  display: grid;
+  grid-template-columns: 1fr minmax(18rem, 0.48fr);
+  align-items: end;
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.home-about h2 { max-width: 11ch; }
+
+.home-contact {
+  display: flex;
+  width: min(calc(100% - 2rem), 80rem);
+  margin: 0 auto 1rem;
+  padding: clamp(4rem, 8vw, 6.5rem);
+  border: 1px solid #e4e4e7;
+  border-radius: 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.home-contact > :last-child { margin-top: 2.5rem; }
+
+:global(.dark .section-number),
+:global(.dark .section-intro),
+:global(.dark .about-copy > p),
+:global(.dark .service-list p) {
+  color: #a1a1aa;
+}
+
+:global(.dark .service-list),
+:global(.dark .service-list > div),
+:global(.dark .home-contact) {
+  border-color: #3f3f46;
+}
+
+@media (max-width: 800px) {
+  .section-heading-row,
+  .home-about {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 2rem;
+  }
+
+  .service-list > div {
+    grid-template-columns: 2.25rem 1fr;
+    gap: 1rem;
+  }
+
+  .service-list p {
+    grid-column: 2;
+  }
+
+  .work-item {
+    grid-template-columns: 1fr auto;
+    gap: 0.7rem 1rem;
+  }
+
+  .work-item > span { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .home-section { padding-block: 5rem; }
+  .home-section h2,
+  .home-contact h2 { font-size: clamp(2.8rem, 14vw, 4.25rem); }
+  .service-list,
+  .work-list { margin-top: 3rem; }
+  .home-work,
+  .home-contact { width: calc(100% - 1rem); border-radius: 1.25rem; }
+  .home-contact { padding: 3.5rem 1.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

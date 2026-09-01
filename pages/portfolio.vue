@@ -109,54 +109,48 @@ const projects = [
     name: 'Kazi Smart',
     type: 'AI hiring ecosystem',
     icon: Bot,
-    description: 'A multi-agent AI job-matching ecosystem built with Next.js and Supabase during a 48-hour hackathon. Features role-based access controls and integrated transcription tools.',
-    tags: ['Multi-agent AI', 'Next.js', 'Supabase', 'RBAC'],
-    layout: 'lg:col-span-2',
+    description: 'Multi-agent job matching with role-based access and integrated transcription.',
+    tags: ['Next.js', 'Supabase', 'RBAC'],
   },
   {
     number: '02',
     name: 'Hodari Stores',
     type: 'Multi-tenant commerce',
     icon: ShoppingBag,
-    description: 'A multi-tenant e-commerce platform engineered with a headless MedusaJS architecture, deep M-Pesa automated workflows, and custom retail logic.',
+    description: 'Headless multi-tenant commerce with M-Pesa and custom retail workflows.',
     tags: ['MedusaJS', 'M-Pesa', 'Multi-tenant'],
-    layout: '',
   },
   {
     number: '03',
     name: 'Propflow & FindYourKeja',
     type: 'Dual real estate suite',
     icon: Home,
-    description: 'A dual-component real estate software suite featuring specialized microservices for B2B landlord operations and a consumer rental marketplace.',
+    description: 'Landlord operations and rental discovery split across focused services.',
     tags: ['Microservices', 'B2B SaaS', 'Marketplace'],
-    layout: 'lg:row-span-2',
   },
   {
     number: '04',
     name: 'Chat2Post AI',
     type: 'Media automation',
     icon: MessageSquareMore,
-    description: 'A backend media ingestion workflow routing video files from messaging webhooks to public cloud storage and publishing APIs.',
+    description: 'Routes incoming video from messaging webhooks to storage and publishing APIs.',
     tags: ['Webhooks', 'Cloud storage', 'Publishing APIs'],
-    layout: '',
   },
   {
     number: '05',
     name: 'Rebound',
     type: 'Offline-first PWA',
     icon: Rocket,
-    description: 'A Progressive Web App habit tracker built with custom service workers for offline web capabilities and configurable duration limits.',
+    description: 'Offline-first habit tracking powered by custom service workers.',
     tags: ['PWA', 'Service workers', 'Offline-first'],
-    layout: '',
   },
   {
     number: '06',
     name: 'Terrace Kilifi & Afrofilms',
     type: 'Hospitality & entertainment',
     icon: Film,
-    description: 'High-performance luxury hospitality and entertainment platforms featuring dynamic subpath asset mapping and Nginx caching configurations deployed via Plesk VPS.',
-    tags: ['Nginx', 'Plesk VPS', 'Asset mapping', 'Caching'],
-    layout: 'lg:col-span-2',
+    description: 'Fast hospitality and entertainment sites with tuned asset delivery and caching.',
+    tags: ['Nginx', 'Plesk VPS', 'Caching'],
   },
 ]
 
@@ -225,25 +219,28 @@ watch(() => route.path, scrollToPortfolioSection)
         </div>
       </section>
 
-      <section id="projects" class="scroll-mt-28 px-5 py-24 sm:px-8 lg:py-32">
+      <section id="projects" class="scroll-mt-40 px-5 py-24 sm:px-8 lg:py-32">
         <div class="mx-auto max-w-7xl">
           <div class="lg:flex lg:items-end lg:justify-between">
             <div><p class="section-label">Featured projects</p><h2 class="max-w-4xl text-balance text-4xl font-extrabold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">Systems built around hard problems.</h2></div>
             <p class="mt-6 max-w-md leading-relaxed text-zinc-600 lg:mt-0">Selected work spanning intelligent products, commerce, real estate, media pipelines and resilient web infrastructure.</p>
           </div>
 
-          <div class="mt-14 grid auto-rows-fr gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <article v-for="(project, index) in projects" :key="project.name" class="group flex min-h-[24rem] animate-fade-in-up flex-col rounded-3xl border border-zinc-200 bg-white p-7 transition-colors hover:border-zinc-400 sm:p-8" :class="project.layout" :style="{ animationDelay: `${index * 80}ms` }">
-              <div class="flex items-start justify-between">
-                <span class="grid h-12 w-12 place-items-center rounded-2xl border border-zinc-200 bg-zinc-50 text-zinc-950"><component :is="project.icon" :size="21" :stroke-width="1.8" /></span>
-                <span class="text-sm font-medium text-zinc-400">{{ project.number }}</span>
+          <div class="project-grid">
+            <article v-for="(project, index) in projects" :key="project.name" class="project-card animate-fade-in-up" :style="{ animationDelay: `${index * 70}ms` }">
+              <div class="project-card__top">
+                <span class="project-card__icon"><component :is="project.icon" :size="18" :stroke-width="1.8" /></span>
+                <span class="project-card__number">{{ project.number }}</span>
               </div>
 
-              <div class="mt-auto pt-12">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">{{ project.type }}</p>
-                <h3 class="mt-3 text-3xl font-extrabold tracking-tight text-zinc-950">{{ project.name }}</h3>
-                <p class="mt-4 max-w-3xl leading-relaxed text-zinc-600">{{ project.description }}</p>
-                <div class="mt-6 flex flex-wrap gap-2"><span v-for="tag in project.tags" :key="tag" class="rounded-full border border-zinc-200 bg-white px-3 py-1 text-sm text-zinc-800">{{ tag }}</span></div>
+              <div class="project-card__body">
+                <p class="project-card__type">{{ project.type }}</p>
+                <h3>{{ project.name }}</h3>
+                <p class="project-card__description">{{ project.description }}</p>
+              </div>
+
+              <div class="project-card__tags">
+                <span v-for="tag in project.tags" :key="tag">{{ tag }}</span>
               </div>
             </article>
           </div>
@@ -269,3 +266,146 @@ watch(() => route.path, scrollToPortfolioSection)
     </footer>
   </div>
 </template>
+
+<style scoped>
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 3.5rem;
+}
+
+.project-card {
+  position: relative;
+  display: flex;
+  min-height: 19rem;
+  overflow: hidden;
+  padding: 1.4rem;
+  border: 1px solid #e4e4e7;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  flex-direction: column;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 1.4rem;
+  left: 1.4rem;
+  height: 2px;
+  background: linear-gradient(90deg, #18181b 0 28%, #d4d4d8 28% 100%);
+  opacity: 0.7;
+}
+
+.project-card:hover {
+  border-color: #a1a1aa;
+  box-shadow: 0 14px 35px rgba(24, 24, 27, 0.07);
+  transform: translateY(-3px);
+}
+
+.project-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-card__icon {
+  display: grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  place-items: center;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.project-card__number,
+.project-card__type {
+  color: #a1a1aa;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-card__body {
+  margin-top: 2.25rem;
+}
+
+.project-card__body h3 {
+  margin-top: 0.65rem;
+  font-size: clamp(1.55rem, 2.15vw, 2.15rem);
+  font-weight: 750;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.project-card__description {
+  margin-top: 0.9rem;
+  color: #71717a;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.project-card__tags span {
+  padding: 0.28rem 0.55rem;
+  border: 1px solid #e4e4e7;
+  border-radius: 999px;
+  color: #52525b;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+:global(.dark .project-card) {
+  border-color: #3f3f46;
+  background: linear-gradient(145deg, #18181b 0%, #111113 100%);
+}
+
+:global(.dark .project-card::before) {
+  background: linear-gradient(90deg, #fafafa 0 28%, #3f3f46 28% 100%);
+}
+
+:global(.dark .project-card:hover) {
+  border-color: #71717a;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.24);
+}
+
+:global(.dark .project-card__icon) {
+  border-color: #3f3f46;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+:global(.dark .project-card__description),
+:global(.dark .project-card__tags span) {
+  color: #a1a1aa;
+}
+
+:global(.dark .project-card__tags span) {
+  border-color: #3f3f46;
+}
+
+@media (max-width: 980px) {
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .project-grid { grid-template-columns: 1fr; margin-top: 2.75rem; }
+  .project-card { min-height: 17.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card { transition: none; }
+  .project-card:hover { transform: none; }
+}
+</style>

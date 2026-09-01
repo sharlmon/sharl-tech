@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Check, ChevronRight, Sparkles } from 'lucide-vue-next'
+import { ArrowRight, Check, Gauge, Globe2, Sparkles, Workflow } from 'lucide-vue-next'
 
 const siteUrl = 'https://sharl-tech.co.ke'
 const canonicalUrl = `${siteUrl}/`
@@ -98,21 +98,53 @@ useHead({
     <AppNavbar />
 
     <main id="top" class="relative z-10">
-      <section class="mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-center px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
-        <div class="grid items-end gap-14 lg:grid-cols-[1.35fr_0.65fr] lg:gap-12">
-          <div>
-            <h1 class="max-w-5xl animate-fade-in-up text-balance text-5xl font-extrabold uppercase leading-[0.9] tracking-tighter text-zinc-950 sm:text-6xl md:text-7xl lg:text-[6.75rem] lg:leading-[0.86]">High-end web design <span class="text-zinc-400">&</span> hosting solutions</h1>
+      <section class="home-hero" aria-labelledby="home-heading">
+        <div class="hero-art" aria-hidden="true" />
+        <div class="hero-grain" aria-hidden="true" />
+
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <div class="hero-badge appear appear--pop" style="--d: 0.22s">
+              <Sparkles class="badge-star" :size="17" aria-hidden="true" />
+              <span>Software · Cloud · AI</span>
+            </div>
+
+            <h1 id="home-heading" class="hero-heading">
+              <span class="headline-line"><span class="appear appear--mask" style="--d: 0.42s">High-end digital systems</span></span>
+              <span class="headline-line"><span class="appear appear--mask" style="--d: 0.62s"><em>engineered</em> to scale.</span></span>
+            </h1>
+
+            <p class="hero-lede appear appear--soft" style="--d: 0.82s; animation-duration: 1.25s">
+              SharlTech designs and builds secure web applications, cloud infrastructure and AI workflows for ambitious organisations in Kenya and beyond.
+            </p>
+
+            <div class="hero-actions">
+              <UiLiquidButton to="/services" external variant="solid" size="lg" class="appear appear--btn" style="--d: 0.96s">
+                Start a Project
+                <ArrowRight :size="17" aria-hidden="true" />
+              </UiLiquidButton>
+              <UiLiquidButton to="/portfolio" external variant="ghost" size="lg" class="appear appear--side" style="--d: 1.1s">
+                See Selected Work
+                <ArrowRight :size="17" aria-hidden="true" />
+              </UiLiquidButton>
+            </div>
           </div>
 
-          <div class="animate-fade-in-up pb-1 [animation-delay:200ms] lg:pb-3">
-            <p class="max-w-xl text-balance text-lg leading-relaxed text-zinc-600 lg:text-xl">Elevate your online presence with SHARL-TECH's premium digital services. Security, performance, and innovation integrated.</p>
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <NuxtLink external to="/services" class="button-primary">Start Project <ArrowRight :size="17" /></NuxtLink>
-              <NuxtLink external to="/services" class="button-glass">Explore Services <ChevronRight :size="17" /></NuxtLink>
+          <div class="hero-stats" aria-label="SharlTech highlights">
+            <div class="hero-stat appear appear--stat" style="--d: 1.12s">
+              <Workflow class="hero-stat-icon" :size="20" aria-hidden="true" />
+              <span>Six focused digital capabilities</span>
+            </div>
+            <div class="hero-stat appear appear--stat" style="--d: 1.28s">
+              <Gauge class="hero-stat-icon hero-stat-icon--tile" :size="19" aria-hidden="true" />
+              <span>Performance and security by design</span>
+            </div>
+            <div class="hero-stat appear appear--stat" style="--d: 1.44s">
+              <Globe2 class="hero-stat-icon" :size="20" aria-hidden="true" />
+              <span>Nairobi built · worldwide ready</span>
             </div>
           </div>
         </div>
-
       </section>
 
       <section id="services" class="scroll-mt-24 px-5 py-24 sm:px-8 lg:py-32">
@@ -171,3 +203,236 @@ useHead({
 
   </div>
 </template>
+
+<style scoped>
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #000000;
+  color: #ffffff;
+}
+
+.hero-art {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-image: url('/hero-bg.png');
+  background-position: center 44%;
+  background-size: cover;
+  filter: saturate(0.78) contrast(1.08);
+  transform: scale(1.035);
+  animation: hero-breathe 12s ease-out both;
+}
+
+.hero-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.14) 34%, rgba(0, 0, 0, 0.72) 78%, #000000 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.42), transparent 30%, transparent 70%, rgba(0, 0, 0, 0.42));
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.11;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(8.75rem, 18vh, 12rem) clamp(1.25rem, 5vw, 4.5rem) max(2rem, env(safe-area-inset-bottom));
+}
+
+.hero-copy {
+  display: flex;
+  width: min(100%, 64rem);
+  align-self: end;
+  justify-self: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.3rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.42rem;
+  background: linear-gradient(90deg, rgba(125, 125, 125, 0.86), rgba(42, 42, 42, 0.82) 52%, rgba(10, 10, 10, 0.88));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 35px rgba(0, 0, 0, 0.28);
+  color: #f1f1f1;
+  font-size: 0.78rem;
+  letter-spacing: -0.01em;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.badge-star {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.55));
+  animation: in-star 900ms cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
+}
+
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: clamp(3.2rem, 6.5vw, 6.2rem);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.headline-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.06em 0.15em 0.13em;
+}
+
+.headline-line > span {
+  display: block;
+}
+
+.hero-heading em {
+  color: #9a9a9a;
+  font-family: 'Instrument Serif', 'Times New Roman', Times, serif;
+  font-size: 1.08em;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  animation: in-em 1.2s cubic-bezier(0.16, 1, 0.3, 1) 720ms both;
+}
+
+.hero-lede {
+  max-width: 40rem;
+  margin-top: 1.15rem;
+  color: #b4b4b4;
+  font-size: clamp(1rem, 1.3vw, 1.16rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.65rem;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: clamp(2.5rem, 8vh, 5.5rem);
+  color: #d8d8d8;
+}
+
+.hero-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.hero-stat-icon {
+  flex: 0 0 auto;
+  color: #ececec;
+}
+
+.hero-stat-icon--tile {
+  box-sizing: content-box;
+  padding: 0.18rem;
+  border-radius: 0.35rem;
+  background: #ffffff;
+  color: #101010;
+}
+
+@keyframes hero-breathe {
+  from { opacity: 0.55; transform: scale(1.08); }
+  to { opacity: 1; transform: scale(1.035); }
+}
+
+@keyframes in-star {
+  from { opacity: 0; transform: scale(0.2) rotate(-50deg); }
+  65% { opacity: 1; transform: scale(1.2) rotate(8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes in-em {
+  from { opacity: 0.35; filter: blur(4px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+@media (min-width: 1600px) {
+  .hero-heading { font-size: 6.8rem; }
+  .hero-lede { max-width: 44rem; font-size: 1.25rem; }
+  .hero-stat { font-size: 0.92rem; }
+}
+
+@media (min-width: 1920px) {
+  .hero-heading { font-size: 7.8rem; }
+  .hero-layout { padding-inline: 7.5rem; }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  .hero-layout { padding-top: 7.5rem; padding-bottom: 1.25rem; }
+  .hero-heading { font-size: clamp(2.75rem, 5.5vw, 4.9rem); }
+  .hero-stats { margin-top: 2rem; }
+  .hero-badge { margin-bottom: 0.8rem; }
+  .hero-lede { margin-top: 0.75rem; }
+  .hero-actions { margin-top: 1rem; }
+}
+
+@media (max-width: 900px) {
+  .hero-layout {
+    padding: 8.5rem 1.25rem max(1.75rem, env(safe-area-inset-bottom));
+  }
+
+  .hero-heading {
+    font-size: clamp(2.65rem, 11vw, 4.75rem);
+    line-height: 1.01;
+  }
+
+  .hero-art { background-position: 62% center; }
+  .hero-stats { flex-direction: column; align-items: center; gap: 0.9rem; }
+  .hero-stat { white-space: normal; text-align: center; }
+}
+
+@media (max-width: 560px) {
+  .hero-layout { padding-inline: 1rem; }
+  .hero-badge { margin-bottom: 1rem; }
+  .hero-lede { font-size: 0.98rem; }
+  .hero-actions { width: 100%; flex-direction: column; }
+  .hero-actions > * { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art,
+  .badge-star,
+  .hero-heading em {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+</style>

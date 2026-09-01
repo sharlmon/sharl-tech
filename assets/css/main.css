@@ -1,3 +1,5 @@
+html, body { background: #000000 !important; color: #ffffff; }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +10,11 @@
   }
 
   body {
-    @apply bg-white font-sans text-zinc-950 antialiased;
+    @apply bg-black font-sans text-white antialiased;
+    overflow-x: hidden;
+    position: relative;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
@@ -35,12 +41,88 @@
   }
 
   .button-primary {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-zinc-950 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2;
+    @apply relative isolate inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 px-6 py-3.5 text-sm font-bold text-white transition-all hover:border-zinc-600 hover:bg-zinc-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2;
   }
 
   .button-glass {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-zinc-300 bg-white px-6 py-3.5 text-sm font-bold text-zinc-950 transition-colors hover:border-zinc-950 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2;
+    @apply relative isolate inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-lg border border-zinc-300 bg-white px-6 py-3.5 text-sm font-bold text-zinc-950 transition-all hover:border-zinc-500 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2;
   }
+
+  .button-primary::after,
+  .button-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.35) 48%, transparent 76%);
+    transform: translateX(-135%);
+    transition: transform 650ms ease;
+  }
+
+  .button-primary:hover::after,
+  .button-glass:hover::after {
+    transform: translateX(135%);
+  }
+}
+
+.appear {
+  opacity: 1;
+  animation-duration: 1.05s;
+  animation-delay: var(--d, 0.08s);
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.appear--scale { animation-name: in-scale; }
+.appear--soft { animation-name: in-soft; }
+.appear--mask { animation-name: in-mask; }
+.appear--pop { animation-name: in-pop; }
+.appear--btn { animation-name: in-btn; }
+.appear--side { animation-name: in-side; }
+.appear--stat { animation-name: in-stat; }
+
+.appear.is-in {
+  opacity: 1;
+  transform: none;
+  clip-path: none;
+  filter: none;
+  animation: none;
+}
+
+@keyframes in-scale {
+  from { opacity: 0; transform: scale(0.84); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes in-soft {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes in-mask {
+  from { opacity: 0; transform: translateY(40%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes in-pop {
+  from { opacity: 0; transform: scale(0.9); }
+  70% { opacity: 1; transform: scale(1.03); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes in-btn {
+  from { opacity: 0; transform: translateY(18px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes in-side {
+  from { opacity: 0; transform: translateX(22px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes in-stat {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -55,4 +137,16 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .appear {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+}
+
+body.menu-open {
+  overflow: hidden;
 }

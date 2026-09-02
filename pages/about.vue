@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ArrowRight, Check, MapPin, Target, Users } from 'lucide-vue-next'
 
+const { openProjectModal } = useProjectModal()
+
 const siteUrl = 'https://sharl-tech.co.ke'
 const canonicalUrl = `${siteUrl}/about`
 const socialImage = `${siteUrl}/og-white.png`
@@ -114,14 +116,14 @@ const principles = [
       <section class="px-5 pb-10 sm:px-8">
         <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 rounded-[2rem] border border-zinc-200 bg-white px-7 py-14 sm:px-12 lg:flex-row lg:items-end lg:px-16">
           <div><p class="section-label">Work with SharlTech</p><h2 class="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-6xl">Bring us the difficult problem.</h2></div>
-          <NuxtLink external to="/services" class="button-primary">Choose your services <ArrowRight :size="18" /></NuxtLink>
+          <button type="button" class="button-primary" aria-haspopup="dialog" aria-controls="project-modal" @click="openProjectModal">Choose your services <ArrowRight :size="18" /></button>
         </div>
       </section>
     </main>
 
     <footer class="px-5 py-10 sm:px-8">
       <div class="mx-auto flex max-w-7xl flex-col gap-6 border-t border-zinc-200 pt-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-        <NuxtLink external to="/" class="font-extrabold text-zinc-950">SHARLTECH</NuxtLink>
+        <NuxtLink to="/" class="font-extrabold text-zinc-950">SHARLTECH</NuxtLink>
         <p>© {{ new Date().getFullYear() }} SharlTech. Engineered in Nairobi.</p>
         <div class="flex gap-5 font-semibold"><a href="mailto:sharlmon19@gmail.com">Email</a><a href="https://www.linkedin.com/in/sharlmon-junior-701746281" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
       </div>

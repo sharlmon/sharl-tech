@@ -8,13 +8,14 @@ const isDark = ref(false)
 
 const navigation = [
   { label: 'Services', to: '/services', motion: 'appear--scale', delay: '0.16s' },
-  { label: 'Work', to: '/portfolio', motion: 'appear--soft', delay: '0.28s' },
+  { label: 'Work', to: '/portfolio#projects', motion: 'appear--soft', delay: '0.28s' },
   { label: 'About', to: '/about', motion: 'appear--scale', delay: '0.4s' },
 ]
 
 function isActive(to: string) {
-  if (to === '/portfolio') return route.path.startsWith('/portfolio')
-  return route.path === to
+  const path = to.split('#')[0]
+  if (path === '/portfolio') return route.path.startsWith('/portfolio')
+  return route.path === path
 }
 
 function closeMenu() {
@@ -68,7 +69,7 @@ onBeforeUnmount(() => {
 <template>
   <header class="site-header">
     <nav class="navbar-shell" aria-label="Main navigation">
-      <NuxtLink external to="/" class="brand appear appear--scale" style="--d: 0.08s" aria-label="SharlTech home">
+      <NuxtLink to="/" class="brand appear appear--scale" style="--d: 0.08s" aria-label="SharlTech home">
         <span class="brand-mark"><img src="/sharltech-logo.png?v=2" alt="" aria-hidden="true"></span>
         <span>SHARL<span class="brand-muted">TECH</span></span>
       </NuxtLink>
@@ -77,7 +78,6 @@ onBeforeUnmount(() => {
         <NuxtLink
           v-for="item in navigation"
           :key="item.label"
-          external
           :to="item.to"
           class="nav-pill appear"
           :class="[item.motion, { 'is-active': isActive(item.to) }]"
@@ -135,7 +135,6 @@ onBeforeUnmount(() => {
         <NuxtLink
           v-for="item in navigation"
           :key="`mobile-${item.label}`"
-          external
           :to="item.to"
           class="mobile-nav-link"
           :aria-current="isActive(item.to) ? 'page' : undefined"

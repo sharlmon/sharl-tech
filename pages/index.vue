@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next'
 
+const { openProjectModal } = useProjectModal()
+
 const siteUrl = 'https://sharl-tech.co.ke'
 const canonicalUrl = `${siteUrl}/`
 const socialImage = `${siteUrl}/og-white.png`
@@ -117,11 +119,11 @@ useHead({
               </p>
 
               <div class="hero-actions">
-                <UiLiquidButton to="/services" external variant="metal" size="lg">
+                <UiLiquidButton variant="metal" size="lg" aria-haspopup="dialog" aria-controls="project-modal" @click="openProjectModal">
                   Start a project
                   <ArrowRight :size="17" aria-hidden="true" />
                 </UiLiquidButton>
-                <UiLiquidButton to="/portfolio" external variant="light" size="lg">
+                <UiLiquidButton to="/portfolio#projects" variant="light" size="lg">
                   View work
                 </UiLiquidButton>
               </div>
@@ -153,7 +155,7 @@ useHead({
           <div><span>04</span><h3>Automation</h3><p>Practical workflows that remove repetitive work and connect systems.</p></div>
         </div>
 
-        <NuxtLink external to="/services" class="section-link">View all services <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
+        <NuxtLink to="/services" class="section-link">View all services <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
       </section>
 
       <section id="work" class="home-section home-work" aria-labelledby="home-work-heading">
@@ -166,21 +168,21 @@ useHead({
         </div>
 
         <div class="work-list">
-          <NuxtLink external to="/portfolio/projects" class="work-item">
+          <NuxtLink to="/portfolio#projects" class="work-item">
             <span class="work-item__meta"><span>AI hiring platform</span><ArrowRight :size="17" aria-hidden="true" /></span>
             <strong>Kazi Smart</strong>
           </NuxtLink>
-          <NuxtLink external to="/portfolio/projects" class="work-item">
+          <NuxtLink to="/portfolio#projects" class="work-item">
             <span class="work-item__meta"><span>Multi-tenant commerce</span><ArrowRight :size="17" aria-hidden="true" /></span>
             <strong>Hodari Stores</strong>
           </NuxtLink>
-          <NuxtLink external to="/portfolio/projects" class="work-item">
+          <NuxtLink to="/portfolio#projects" class="work-item">
             <span class="work-item__meta"><span>Property software</span><ArrowRight :size="17" aria-hidden="true" /></span>
             <strong>Propflow &amp; FindYourKeja</strong>
           </NuxtLink>
         </div>
 
-        <NuxtLink external to="/portfolio" class="section-link section-link--light">View selected work <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
+        <NuxtLink to="/portfolio#projects" class="section-link section-link--light">View selected work <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
       </section>
 
       <section id="about" class="home-section home-about" aria-labelledby="home-about-heading">
@@ -190,14 +192,14 @@ useHead({
         </div>
         <div class="about-copy">
           <p>SharlTech is an independent technology company led by Sharlmon. Strategy, design, engineering and deployment stay under one accountable process.</p>
-          <NuxtLink external to="/about" class="section-link">About SharlTech <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
+          <NuxtLink to="/about" class="section-link">About SharlTech <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
         </div>
       </section>
 
       <section class="home-contact" aria-labelledby="home-contact-heading">
         <p class="section-number">Start a project</p>
         <h2 id="home-contact-heading">Tell us what you need.</h2>
-        <UiLiquidButton to="/services" external variant="metal" size="lg">
+        <UiLiquidButton variant="metal" size="lg" aria-haspopup="dialog" aria-controls="project-modal" @click="openProjectModal">
           Build your project brief
           <ArrowRight :size="17" aria-hidden="true" />
         </UiLiquidButton>

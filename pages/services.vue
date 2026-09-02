@@ -129,14 +129,14 @@ useHead({
       <section class="px-5 pb-10 sm:px-8">
         <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 rounded-[2rem] bg-zinc-950 px-7 py-14 text-white sm:px-12 lg:flex-row lg:items-end lg:px-16">
           <div><p class="text-xs font-extrabold uppercase tracking-[0.22em] text-zinc-400">See the engineering behind the work</p><h2 class="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-6xl">Explore systems built for real-world scale.</h2></div>
-          <NuxtLink external to="/portfolio" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">View portfolio <ArrowRight :size="19" /></NuxtLink>
+          <NuxtLink to="/portfolio#projects" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-extrabold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">View portfolio <ArrowRight :size="19" /></NuxtLink>
         </div>
       </section>
     </main>
 
     <footer class="px-5 py-10 sm:px-8">
       <div class="mx-auto flex max-w-7xl flex-col gap-6 border-t border-zinc-200 pt-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-        <NuxtLink external to="/" class="font-extrabold text-zinc-950">SHARLTECH</NuxtLink>
+        <NuxtLink to="/" class="font-extrabold text-zinc-950">SHARLTECH</NuxtLink>
         <p>© {{ new Date().getFullYear() }} SharlTech. Technology, thoughtfully delivered.</p>
         <div class="flex gap-5 font-semibold"><a href="mailto:sharlmon19@gmail.com">Email</a><a href="https://www.linkedin.com/in/sharlmon-junior-701746281" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
       </div>

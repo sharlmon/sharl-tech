@@ -84,7 +84,7 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
+  <div class="min-h-screen text-zinc-950 dark:text-zinc-50">
     <AppNavbar />
 
     <main class="pt-24">

@@ -167,7 +167,7 @@ watch(() => route.path, scrollToPortfolioSection)
 </script>
 
 <template>
-  <div class="min-h-screen overflow-x-hidden bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
+  <div class="min-h-screen overflow-x-hidden text-zinc-950 dark:text-zinc-50">
     <AppNavbar />
 
     <main class="relative z-10 pt-8 sm:pt-12">

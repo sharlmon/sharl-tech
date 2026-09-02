@@ -94,17 +94,11 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen overflow-x-hidden bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
+  <div class="min-h-screen overflow-x-hidden text-zinc-950 dark:text-zinc-50">
     <AppNavbar />
 
     <main id="top" class="relative z-10">
       <section class="home-hero" aria-labelledby="home-heading">
-        <div class="wave-field" aria-hidden="true">
-          <span class="wave wave--1" />
-          <span class="wave wave--2" />
-          <span class="wave wave--3" />
-        </div>
-
         <div class="hero-layout">
           <div class="hero-grid">
             <div class="hero-title-block">
@@ -226,45 +220,13 @@ useHead({
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
-  background: #ffffff;
+  background: transparent;
   color: #18181b;
 }
 
 :global(.dark .home-hero) {
-  background: #09090b;
   color: #fafafa;
 }
-
-.wave-field {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  overflow: hidden;
-  background: #ffffff;
-  pointer-events: none;
-}
-
-:global(.dark .wave-field) {
-  background: #09090b;
-}
-
-.wave {
-  position: absolute;
-  left: -20%;
-  width: 140%;
-  height: clamp(15rem, 29vw, 30rem);
-  border: 1px solid rgba(24, 24, 27, 0.075);
-  border-radius: 46% 54% 50% 50% / 55% 48% 52% 45%;
-  will-change: transform;
-}
-
-:global(.dark .wave) {
-  border-color: rgba(255, 255, 255, 0.075);
-}
-
-.wave--1 { top: 18%; animation: wave-drift-a 18s ease-in-out infinite alternate; }
-.wave--2 { top: 42%; opacity: 0.7; animation: wave-drift-b 22s ease-in-out -5s infinite alternate; }
-.wave--3 { top: 66%; opacity: 0.45; animation: wave-drift-a 26s ease-in-out -10s infinite alternate-reverse; }
 
 .hero-layout {
   display: grid;
@@ -364,16 +326,6 @@ useHead({
 :global(.dark .hero-capabilities) {
   border-color: rgba(255, 255, 255, 0.11);
   color: #a1a1aa;
-}
-
-@keyframes wave-drift-a {
-  from { transform: translate3d(-2.5%, -10px, 0) rotate(-2deg) scaleX(1.02); }
-  to { transform: translate3d(2.5%, 16px, 0) rotate(2deg) scaleX(0.98); }
-}
-
-@keyframes wave-drift-b {
-  from { transform: translate3d(2%, 14px, 0) rotate(1.5deg) scaleX(0.99); }
-  to { transform: translate3d(-2%, -14px, 0) rotate(-1.5deg) scaleX(1.02); }
 }
 
 @media (min-width: 1600px) {
@@ -663,11 +615,6 @@ useHead({
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wave {
-    animation: none !important;
-    transform: none;
-  }
-
   .work-item,
   .work-item__meta svg { transition: none; }
 

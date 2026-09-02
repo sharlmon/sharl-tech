@@ -172,9 +172,18 @@ useHead({
         </div>
 
         <div class="work-list">
-          <NuxtLink external to="/portfolio/projects" class="work-item"><span>AI hiring platform</span><strong>Kazi Smart</strong><ArrowRight :size="18" aria-hidden="true" /></NuxtLink>
-          <NuxtLink external to="/portfolio/projects" class="work-item"><span>Multi-tenant commerce</span><strong>Hodari Stores</strong><ArrowRight :size="18" aria-hidden="true" /></NuxtLink>
-          <NuxtLink external to="/portfolio/projects" class="work-item"><span>Property software</span><strong>Propflow &amp; FindYourKeja</strong><ArrowRight :size="18" aria-hidden="true" /></NuxtLink>
+          <NuxtLink external to="/portfolio/projects" class="work-item">
+            <span class="work-item__meta"><span>AI hiring platform</span><ArrowRight :size="17" aria-hidden="true" /></span>
+            <strong>Kazi Smart</strong>
+          </NuxtLink>
+          <NuxtLink external to="/portfolio/projects" class="work-item">
+            <span class="work-item__meta"><span>Multi-tenant commerce</span><ArrowRight :size="17" aria-hidden="true" /></span>
+            <strong>Hodari Stores</strong>
+          </NuxtLink>
+          <NuxtLink external to="/portfolio/projects" class="work-item">
+            <span class="work-item__meta"><span>Property software</span><ArrowRight :size="17" aria-hidden="true" /></span>
+            <strong>Propflow &amp; FindYourKeja</strong>
+          </NuxtLink>
         </div>
 
         <NuxtLink external to="/portfolio" class="section-link section-link--light">View selected work <ArrowRight :size="17" aria-hidden="true" /></NuxtLink>
@@ -475,7 +484,7 @@ useHead({
 }
 
 .service-list span,
-.work-item > span {
+.work-item__meta {
   color: #a1a1aa;
   font-size: 0.72rem;
   font-weight: 650;
@@ -506,40 +515,80 @@ useHead({
 }
 
 .home-work {
-  width: min(calc(100% - 2rem), 86rem);
-  padding-inline: clamp(1.5rem, 5vw, 5rem);
-  border-radius: 2rem;
+  width: min(calc(100% - 2rem), 80rem);
+  padding: clamp(2.75rem, 5vw, 4.25rem) clamp(1.25rem, 4vw, 3.5rem);
+  border-radius: 1.5rem;
   background: #09090b;
   color: #fafafa;
 }
 
+.home-work .section-heading-row {
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.home-work h2 {
+  max-width: 10ch;
+  font-size: clamp(2.75rem, 4.8vw, 4.75rem);
+}
+
 .home-work .section-intro {
+  max-width: 27rem;
   color: #a1a1aa;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 .work-list {
-  margin-top: 4.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 2.75rem;
 }
 
 .work-item {
-  display: grid;
-  grid-template-columns: minmax(10rem, 0.55fr) 1fr auto;
+  display: flex;
+  min-height: 10.5rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.025);
+  flex-direction: column;
+  align-items: flex-start;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.work-item__meta {
+  display: flex;
+  width: 100%;
   align-items: center;
-  gap: 2rem;
-  padding: 1.8rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  transition: color 180ms ease;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.work-item__meta svg {
+  flex: 0 0 auto;
+  transition: transform 180ms ease;
 }
 
 .work-item strong {
-  font-size: clamp(1.5rem, 2.8vw, 2.7rem);
+  margin-top: auto;
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
   letter-spacing: -0.045em;
+  line-height: 1.05;
 }
 
 .work-item:hover {
   color: #a7f3d0;
+  border-color: rgba(167, 243, 208, 0.42);
+  background: rgba(255, 255, 255, 0.055);
+  transform: translateY(-2px);
 }
+
+.work-item:hover .work-item__meta svg { transform: translateX(3px); }
+.work-item:focus-visible { outline: 2px solid #a7f3d0; outline-offset: 3px; }
+
+.home-work .section-link { margin-top: 1.8rem; }
 
 .section-link--light { color: #fafafa; }
 
@@ -595,22 +644,21 @@ useHead({
     grid-column: 2;
   }
 
-  .work-item {
-    grid-template-columns: 1fr auto;
-    gap: 0.7rem 1rem;
-  }
+  .work-list { grid-template-columns: 1fr; }
 
-  .work-item > span { grid-column: 1 / -1; }
+  .work-item { min-height: 7.5rem; }
 }
 
 @media (max-width: 560px) {
   .home-section { padding-block: 5rem; }
   .home-section h2,
   .home-contact h2 { font-size: clamp(2.8rem, 14vw, 4.25rem); }
-  .service-list,
-  .work-list { margin-top: 3rem; }
+  .service-list { margin-top: 3rem; }
   .home-work,
   .home-contact { width: calc(100% - 1rem); border-radius: 1.25rem; }
+  .home-work { padding: 2.5rem 1rem; }
+  .home-work h2 { font-size: clamp(2.55rem, 13vw, 3.5rem); }
+  .work-list { margin-top: 2rem; }
   .home-contact { padding: 3.5rem 1.25rem; }
 }
 
@@ -619,5 +667,10 @@ useHead({
     animation: none !important;
     transform: none;
   }
+
+  .work-item,
+  .work-item__meta svg { transition: none; }
+
+  .work-item:hover { transform: none; }
 }
 </style>

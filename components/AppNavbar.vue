@@ -2,6 +2,7 @@
 import { ArrowRight, Moon, Sun } from 'lucide-vue-next'
 
 const route = useRoute()
+const { openProjectModal } = useProjectModal()
 const mobileMenuOpen = ref(false)
 const isDark = ref(false)
 
@@ -18,6 +19,11 @@ function isActive(to: string) {
 
 function closeMenu() {
   mobileMenuOpen.value = false
+}
+
+function openProjectModalFromMenu() {
+  closeMenu()
+  nextTick(openProjectModal)
 }
 
 function toggleMenu() {
@@ -95,7 +101,15 @@ onBeforeUnmount(() => {
           <Moon v-else :size="16" aria-hidden="true" />
         </button>
 
-        <UiLiquidButton to="/services" external variant="metal" size="sm" class="header-cta appear appear--scale" style="--d: 0.34s">
+        <UiLiquidButton
+          variant="metal"
+          size="sm"
+          class="header-cta appear appear--scale"
+          style="--d: 0.34s"
+          aria-haspopup="dialog"
+          aria-controls="project-modal"
+          @click="openProjectModal"
+        >
           Start project
           <ArrowRight :size="15" aria-hidden="true" />
         </UiLiquidButton>
@@ -130,7 +144,14 @@ onBeforeUnmount(() => {
           <span>{{ item.label }}</span>
           <ArrowRight :size="19" aria-hidden="true" />
         </NuxtLink>
-        <UiLiquidButton to="/services" external variant="metal" size="lg" class="mobile-project-link" @click="closeMenu">
+        <UiLiquidButton
+          variant="metal"
+          size="lg"
+          class="mobile-project-link"
+          aria-haspopup="dialog"
+          aria-controls="project-modal"
+          @click="openProjectModalFromMenu"
+        >
           Start a Project
           <ArrowRight :size="17" aria-hidden="true" />
         </UiLiquidButton>

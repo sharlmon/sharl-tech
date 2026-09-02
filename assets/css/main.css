@@ -176,3 +176,7 @@ html.dark body {
 body.menu-open {
   overflow: hidden;
 }
+
+body.modal-open {
+  overflow: hidden;
+}

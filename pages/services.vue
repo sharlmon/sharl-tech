@@ -5,6 +5,7 @@ const siteUrl = 'https://sharl-tech.co.ke'
 const canonicalUrl = `${siteUrl}/services`
 const socialImage = `${siteUrl}/og-white.png`
 const description = 'Explore SharlTech services in Nairobi: custom web applications, headless e-commerce, cloud infrastructure, SEO, PWAs and AI automation workflows.'
+const { openProjectModal } = useProjectModal()
 
 const services = [
   { name: 'Custom Web Application', icon: Code2, description: 'Secure, high-performance software designed around your workflows, customers and commercial goals.' },
@@ -111,13 +112,17 @@ useHead({
         </div>
       </section>
 
-      <section aria-labelledby="project-scope" class="px-5 py-24 sm:px-8 lg:py-32">
-        <div class="mx-auto max-w-7xl">
-          <div class="lg:flex lg:items-end lg:justify-between">
-            <div><p class="section-label">Request a custom quote</p><h2 id="project-scope" class="max-w-4xl text-balance text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">Choose exactly what your project needs.</h2></div>
-            <p class="mt-6 max-w-md leading-relaxed text-zinc-600 lg:mt-0">Select your services and share a focused brief. SharlTech will use it to prepare for your consultation.</p>
+      <section aria-labelledby="project-scope" class="px-5 py-16 sm:px-8 lg:py-20">
+        <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 rounded-3xl border border-zinc-200 bg-white p-7 sm:p-9 lg:flex-row lg:items-center">
+          <div>
+            <p class="section-label">Project enquiry</p>
+            <h2 id="project-scope" class="max-w-3xl text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">Have a project in mind?</h2>
+            <p class="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base">Choose the services you need and send a focused brief in one quick step.</p>
           </div>
-          <ServiceQuoteSelector class="mt-14" />
+          <UiLiquidButton variant="metal" size="lg" aria-haspopup="dialog" aria-controls="project-modal" @click="openProjectModal">
+            Start project
+            <ArrowRight :size="17" aria-hidden="true" />
+          </UiLiquidButton>
         </div>
       </section>
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+defineOptions({ inheritAttrs: false })
+
 type Variant = 'solid' | 'ghost' | 'metal' | 'light'
 type Size = 'sm' | 'md' | 'lg'
 
@@ -19,6 +21,7 @@ const props = withDefaults(defineProps<{
 <template>
   <NuxtLink
     v-if="to"
+    v-bind="$attrs"
     :to="to"
     :external="external"
     class="liquid-button"
@@ -29,6 +32,7 @@ const props = withDefaults(defineProps<{
   </NuxtLink>
   <a
     v-else-if="href"
+    v-bind="$attrs"
     :href="href"
     class="liquid-button"
     :class="[`liquid-button--${variant}`, `liquid-button--${size}`]"
@@ -38,6 +42,7 @@ const props = withDefaults(defineProps<{
   </a>
   <button
     v-else
+    v-bind="$attrs"
     type="button"
     class="liquid-button"
     :class="[`liquid-button--${variant}`, `liquid-button--${size}`]"

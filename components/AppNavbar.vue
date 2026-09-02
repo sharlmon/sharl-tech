@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Moon, Sun } from 'lucide-vue-next'
+import { ArrowRight, Menu, Moon, Sun, X } from 'lucide-vue-next'
 
 const route = useRoute()
 const { openProjectModal } = useProjectModal()
@@ -123,9 +123,8 @@ onBeforeUnmount(() => {
           :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
           @click="toggleMenu"
         >
-          <span />
-          <span />
-          <span />
+          <X v-if="mobileMenuOpen" :size="20" aria-hidden="true" />
+          <Menu v-else :size="20" aria-hidden="true" />
         </button>
       </div>
 
@@ -288,10 +287,10 @@ onBeforeUnmount(() => {
   width: 2.75rem;
   height: 2.75rem;
   place-items: center;
-  gap: 0.29rem;
   border: 1px solid rgba(24, 24, 27, 0.16);
   border-radius: 0.55rem;
   background: rgba(255, 255, 255, 0.72);
+  color: #18181b;
   transition: border-color 250ms ease, background 250ms ease;
 }
 
@@ -299,19 +298,6 @@ onBeforeUnmount(() => {
   border-color: rgba(24, 24, 27, 0.34);
   background: rgba(244, 244, 245, 0.92);
 }
-
-.menu-toggle span {
-  display: block;
-  width: 1.05rem;
-  height: 1.5px;
-  border-radius: 1px;
-  background: #18181b;
-  transition: transform 250ms ease, opacity 200ms ease;
-}
-
-:global(body.menu-open .menu-toggle span:nth-child(1)) { transform: translateY(6px) rotate(45deg); }
-:global(body.menu-open .menu-toggle span:nth-child(2)) { opacity: 0; }
-:global(body.menu-open .menu-toggle span:nth-child(3)) { transform: translateY(-6px) rotate(-45deg); }
 
 .menu-backdrop,
 .mobile-navigation {
@@ -353,10 +339,6 @@ onBeforeUnmount(() => {
   color: #ffffff;
 }
 
-:global(.dark .menu-toggle span) {
-  background: #fafafa;
-}
-
 :global(.dark .brand:focus-visible),
 :global(.dark .nav-pill:focus-visible),
 :global(.dark .mobile-nav-link:focus-visible),
@@ -392,62 +374,85 @@ onBeforeUnmount(() => {
     z-index: 10;
     display: block;
     visibility: hidden;
-    background: rgba(255, 255, 255, 0.62);
+    background: rgba(244, 244, 245, 0.66);
     opacity: 0;
     transition: opacity 280ms ease, visibility 280ms ease;
   }
 
   :global(.dark .menu-backdrop) {
-    background: rgba(9, 9, 11, 0.72);
+    background: rgba(9, 9, 11, 0.76);
   }
 
   .menu-backdrop.is-open {
     visibility: visible;
     opacity: 1;
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
 
   .mobile-navigation {
     position: fixed;
-    inset: 0;
+    top: max(5rem, calc(env(safe-area-inset-top) + 4.65rem));
+    right: 0.75rem;
+    left: 0.75rem;
     z-index: 20;
     display: flex;
     visibility: hidden;
+    max-height: calc(100dvh - 5.75rem - env(safe-area-inset-top));
+    overflow-y: auto;
     flex-direction: column;
-    justify-content: center;
-    gap: 0.7rem;
-    padding: max(6.5rem, calc(env(safe-area-inset-top) + 6rem)) 1.35rem max(2rem, env(safe-area-inset-bottom));
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0.55rem;
+    border: 1px solid rgba(24, 24, 27, 0.12);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 20px 60px rgba(24, 24, 27, 0.14);
     opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 280ms ease, transform 280ms cubic-bezier(0.16, 1, 0.3, 1), visibility 280ms ease;
+    transform: translateY(-8px) scale(0.985);
+    transform-origin: top center;
+    transition: opacity 220ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1), visibility 220ms ease;
     pointer-events: none;
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    backdrop-filter: blur(24px) saturate(140%);
   }
 
   .mobile-navigation.is-open {
     visibility: visible;
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     pointer-events: auto;
+  }
+
+  :global(.dark .mobile-navigation) {
+    border-color: rgba(255, 255, 255, 0.13);
+    background: rgba(24, 24, 27, 0.95);
+    box-shadow: 0 20px 64px rgba(0, 0, 0, 0.42);
   }
 
   .mobile-nav-link {
     display: flex;
-    min-height: 3.8rem;
+    min-height: 3.25rem;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.15rem;
+    padding: 0 0.8rem;
     border-bottom: 1px solid rgba(24, 24, 27, 0.14);
+    border-radius: 0.55rem;
     color: #18181b;
-    font-size: 1.15rem;
-    font-weight: 550;
+    font-size: 0.98rem;
+    font-weight: 600;
     letter-spacing: -0.035em;
+    transition: background-color 180ms ease, color 180ms ease;
   }
+
+  .mobile-nav-link:hover { background: rgba(24, 24, 27, 0.045); }
 
   :global(.dark .mobile-nav-link) {
     border-color: rgba(255, 255, 255, 0.14);
     color: #fafafa;
   }
+
+  :global(.dark .mobile-nav-link:hover) { background: rgba(255, 255, 255, 0.06); }
 
   .mobile-nav-link[aria-current='page'] {
     color: #71717a;
@@ -455,7 +460,7 @@ onBeforeUnmount(() => {
 
   .mobile-project-link {
     width: 100%;
-    margin-top: 0.35rem;
+    margin-top: 0.65rem;
   }
 }
 </style>

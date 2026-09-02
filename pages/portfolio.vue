@@ -2,17 +2,23 @@
 import {
   ArrowRight,
   Bot,
+  BookOpen,
+  Building2,
+  Clapperboard,
   CloudCog,
   Code2,
   ExternalLink,
   Film,
   Home,
+  LayoutDashboard,
   Layers3,
   MapPin,
   MessageSquareMore,
+  Palette,
   Rocket,
   ServerCog,
   ShoppingBag,
+  TreePalm,
 } from 'lucide-vue-next'
 
 definePageMeta({
@@ -24,7 +30,7 @@ const { openProjectModal } = useProjectModal()
 const siteUrl = 'https://sharl-tech.co.ke'
 const canonicalUrl = `${siteUrl}/portfolio`
 const socialImage = `${siteUrl}/portfolio-og-white.png`
-const description = 'Explore Sharlmon’s engineering background, technology stack and featured SaaS, AI, commerce and infrastructure projects built in Nairobi.'
+const description = 'Explore Sharlmon’s engineering background, technology stack and selected software, commercial websites and digital identity work built in Nairobi.'
 
 useSeoMeta({
   title: 'Sharlmon | Full-Stack Engineer & AI Systems Builder at SharlTech',
@@ -112,6 +118,7 @@ const projects = [
     icon: Bot,
     description: 'Multi-agent job matching with role-based access and integrated transcription.',
     tags: ['Next.js', 'Supabase', 'RBAC'],
+    url: null,
   },
   {
     number: '02',
@@ -120,6 +127,7 @@ const projects = [
     icon: ShoppingBag,
     description: 'Headless multi-tenant commerce with M-Pesa and custom retail workflows.',
     tags: ['MedusaJS', 'M-Pesa', 'Multi-tenant'],
+    url: null,
   },
   {
     number: '03',
@@ -128,6 +136,7 @@ const projects = [
     icon: Home,
     description: 'Landlord operations and rental discovery split across focused services.',
     tags: ['Microservices', 'B2B SaaS', 'Marketplace'],
+    url: null,
   },
   {
     number: '04',
@@ -136,6 +145,7 @@ const projects = [
     icon: MessageSquareMore,
     description: 'Routes incoming video from messaging webhooks to storage and publishing APIs.',
     tags: ['Webhooks', 'Cloud storage', 'Publishing APIs'],
+    url: null,
   },
   {
     number: '05',
@@ -144,14 +154,70 @@ const projects = [
     icon: Rocket,
     description: 'Offline-first habit tracking powered by custom service workers.',
     tags: ['PWA', 'Service workers', 'Offline-first'],
+    url: 'https://reboundnow-today.vercel.app',
   },
   {
     number: '06',
-    name: 'Terrace Kilifi & Afrofilms',
-    type: 'Hospitality & entertainment',
+    name: 'Mic-Jasiri Productions',
+    type: 'Production house website',
     icon: Film,
-    description: 'Fast hospitality and entertainment sites with tuned asset delivery and caching.',
-    tags: ['Nginx', 'Plesk VPS', 'Caching'],
+    description: 'A cinematic company website presenting film, documentary, commercial and live-event work.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    url: 'https://sharlmon.github.io/micjasiri-website/',
+  },
+  {
+    number: '07',
+    name: 'Jitume Logo Competition',
+    type: 'Brand identity concept',
+    icon: Palette,
+    description: 'A visual identity proposal for the national Technopolis logo competition run through Jitume.',
+    tags: ['Logo design', 'Identity system', 'Competition entry'],
+    url: null,
+  },
+  {
+    number: '08',
+    name: 'The Terrace Kilifi',
+    type: 'Arts & residency website',
+    icon: TreePalm,
+    description: 'A warm, image-led website for an independent artist residency on Kilifi Creek.',
+    tags: ['TypeScript', 'Responsive UI', 'Vercel'],
+    url: 'https://terracekilifiweb.vercel.app/',
+  },
+  {
+    number: '09',
+    name: 'Afrofilms',
+    type: 'Film platform',
+    icon: Clapperboard,
+    description: 'A focused entertainment experience for discovering African film and media.',
+    tags: ['JavaScript', 'Responsive UI', 'GitHub Pages'],
+    url: 'https://sharlmon.github.io/afrofilms/',
+  },
+  {
+    number: '10',
+    name: 'Wordly',
+    type: 'Dictionary web app',
+    icon: BookOpen,
+    description: 'Word search, definitions, audio pronunciation and saved favourites in one responsive app.',
+    tags: ['JavaScript', 'Dictionary API', 'Local storage'],
+    url: 'https://sharlmon.github.io/WORDLY/',
+  },
+  {
+    number: '11',
+    name: 'Catalogue Admin',
+    type: 'Product administration',
+    icon: LayoutDashboard,
+    description: 'A React workspace for searching, adding, repricing and removing catalogue products.',
+    tags: ['React', 'Vite', 'JSON Server'],
+    url: 'https://sharlmon.github.io/reactSPA/',
+  },
+  {
+    number: '12',
+    name: 'Irish Trading Enterprises',
+    type: 'Construction company website',
+    icon: Building2,
+    description: 'A multi-page corporate website for civil engineering and construction services in Kenya.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    url: 'https://sharlmon.github.io/IrishTradingSite/',
   },
 ]
 
@@ -231,7 +297,7 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
         <div class="mx-auto max-w-7xl">
           <div class="lg:flex lg:items-end lg:justify-between">
             <div><p class="section-label">Featured projects</p><h2 class="max-w-4xl text-balance text-4xl font-extrabold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">Systems built around hard problems.</h2></div>
-            <p class="mt-6 max-w-md leading-relaxed text-zinc-600 lg:mt-0">Selected work spanning intelligent products, commerce, real estate, media pipelines and resilient web infrastructure.</p>
+            <p class="mt-6 max-w-md leading-relaxed text-zinc-600 lg:mt-0">Selected work spanning software products, commercial websites, visual identity and digital infrastructure.</p>
           </div>
 
           <div class="project-grid">
@@ -250,6 +316,18 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
               <div class="project-card__tags">
                 <span v-for="tag in project.tags" :key="tag">{{ tag }}</span>
               </div>
+
+              <a
+                v-if="project.url"
+                :href="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-card__link"
+                :aria-label="`View ${project.name} live (opens in a new tab)`"
+              >
+                View live site
+                <ExternalLink :size="13" aria-hidden="true" />
+              </a>
             </article>
           </div>
         </div>
@@ -286,7 +364,7 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
 .project-card {
   position: relative;
   display: flex;
-  min-height: 19rem;
+  min-height: 18.25rem;
   overflow: hidden;
   padding: 1.4rem;
   border: 1px solid #e4e4e7;
@@ -375,6 +453,31 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
   line-height: 1;
 }
 
+.project-card__link {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding-bottom: 0.18rem;
+  border-bottom: 1px solid #a1a1aa;
+  color: #18181b;
+  font-size: 0.72rem;
+  font-weight: 750;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.project-card__link:hover {
+  border-color: #10b981;
+  color: #059669;
+}
+
+.project-card__link:focus-visible {
+  border-radius: 0.2rem;
+  outline: 2px solid #18181b;
+  outline-offset: 4px;
+}
+
 :global(.dark .project-card) {
   border-color: #3f3f46;
   background: linear-gradient(145deg, #18181b 0%, #111113 100%);
@@ -403,13 +506,27 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
   border-color: #3f3f46;
 }
 
+:global(.dark .project-card__link) {
+  border-color: #71717a;
+  color: #fafafa;
+}
+
+:global(.dark .project-card__link:hover) {
+  border-color: #34d399;
+  color: #34d399;
+}
+
+:global(.dark .project-card__link:focus-visible) {
+  outline-color: #fafafa;
+}
+
 @media (max-width: 980px) {
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 620px) {
   .project-grid { grid-template-columns: 1fr; margin-top: 2.75rem; }
-  .project-card { min-height: 17.5rem; }
+  .project-card { min-height: 16.75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

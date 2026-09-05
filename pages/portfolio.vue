@@ -94,19 +94,29 @@ useHead({
 
 const stackGroups = [
   {
-    label: 'Frontend & UI',
+    label: 'Frontend',
     icon: Code2,
-    tools: ['React', 'Next.js (App Router)', 'Vue 3', 'Nuxt 3', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    tools: ['React', 'Next.js', 'Vue 3', 'Nuxt 3', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
   },
   {
-    label: 'Backend & DB',
+    label: 'Backend & data',
     icon: ServerCog,
-    tools: ['Node.js', 'Prisma ORM', 'Supabase'],
+    tools: ['Node.js', 'REST APIs', 'Prisma ORM', 'Supabase', 'PocketBase', 'PostgreSQL'],
   },
   {
-    label: 'Infrastructure & DevOps',
+    label: 'AI & automation',
+    icon: Bot,
+    tools: ['AI/LLM integration', 'Multi-agent workflows', 'n8n', 'Webhooks', 'API-driven automation'],
+  },
+  {
+    label: 'Infrastructure',
     icon: CloudCog,
-    tools: ['GitHub Actions', 'Vercel', 'Docker', 'Plesk VPS', 'Nginx'],
+    tools: ['Git', 'GitHub Actions', 'Docker', 'Linux', 'Nginx', 'Plesk VPS', 'Vercel', 'GitHub Pages'],
+  },
+  {
+    label: 'Architecture',
+    icon: Layers3,
+    tools: ['Multi-tenant SaaS', 'RBAC', 'Payment integrations', 'Service workers', 'Responsive web systems'],
   },
 ]
 

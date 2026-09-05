@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Menu, Moon, Sun, X } from 'lucide-vue-next'
+import { ArrowRight, Menu, X } from 'lucide-vue-next'
 
 const route = useRoute()
 const { openProjectModal } = useProjectModal()
@@ -89,17 +89,12 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="header-actions">
-        <button
-          type="button"
-          class="theme-toggle appear appear--scale"
+        <UiThemeToggle
+          :is-dark="isDark"
+          class="appear appear--scale"
           style="--d: 0.3s"
-          :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          :title="isDark ? 'Light mode' : 'Dark mode'"
-          @click="toggleTheme"
-        >
-          <Sun v-if="isDark" :size="16" aria-hidden="true" />
-          <Moon v-else :size="16" aria-hidden="true" />
-        </button>
+          @toggle="toggleTheme"
+        />
 
         <UiLiquidButton
           variant="metal"
@@ -204,7 +199,6 @@ onBeforeUnmount(() => {
 .brand:focus-visible,
 .nav-pill:focus-visible,
 .mobile-nav-link:focus-visible,
-.theme-toggle:focus-visible,
 .menu-toggle:focus-visible {
   outline: 2px solid #18181b;
   outline-offset: 3px;
@@ -265,23 +259,6 @@ onBeforeUnmount(() => {
   gap: 0.5rem;
 }
 
-.theme-toggle {
-  display: grid;
-  width: 2.35rem;
-  height: 2.35rem;
-  place-items: center;
-  border: 1px solid rgba(24, 24, 27, 0.13);
-  border-radius: 0.55rem;
-  background: rgba(255, 255, 255, 0.56);
-  color: #3f3f46;
-  transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease;
-}
-
-.theme-toggle:hover {
-  border-color: rgba(24, 24, 27, 0.3);
-  color: #18181b;
-}
-
 .menu-toggle {
   display: none;
   width: 2.75rem;
@@ -325,14 +302,12 @@ onBeforeUnmount(() => {
   color: #a1a1aa;
 }
 
-:global(.dark .theme-toggle),
 :global(.dark .menu-toggle) {
   border-color: rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.06);
   color: #e4e4e7;
 }
 
-:global(.dark .theme-toggle:hover),
 :global(.dark .menu-toggle:hover) {
   border-color: rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
@@ -342,7 +317,6 @@ onBeforeUnmount(() => {
 :global(.dark .brand:focus-visible),
 :global(.dark .nav-pill:focus-visible),
 :global(.dark .mobile-nav-link:focus-visible),
-:global(.dark .theme-toggle:focus-visible),
 :global(.dark .menu-toggle:focus-visible) {
   outline-color: #fafafa;
 }

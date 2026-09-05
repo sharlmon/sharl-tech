@@ -34,6 +34,7 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  animation: whatsapp-attention 5.5s ease-in-out 1.5s infinite;
 }
 
 .whatsapp-float__button {
@@ -63,6 +64,7 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
   border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   background: #10b981;
+  animation: whatsapp-status-pulse 2.4s ease-out infinite;
 }
 
 .whatsapp-float__button svg {
@@ -109,6 +111,24 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
   transform: translateX(0) scale(1);
 }
 
+.whatsapp-float:hover,
+.whatsapp-float:focus-within {
+  animation-play-state: paused;
+}
+
+@keyframes whatsapp-attention {
+  0%, 76%, 100% { transform: translateY(0); }
+  80% { transform: translateY(-0.42rem); }
+  84% { transform: translateY(0); }
+  88% { transform: translateY(-0.2rem); }
+  92% { transform: translateY(0); }
+}
+
+@keyframes whatsapp-status-pulse {
+  0%, 55%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  15% { box-shadow: 0 0 0 0.32rem rgba(16, 185, 129, 0.18); }
+}
+
 :global(.dark .whatsapp-float__button) {
   border-color: rgba(255, 255, 255, 0.2);
   background: rgba(24, 24, 27, 0.9);
@@ -152,8 +172,11 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .whatsapp-float,
   .whatsapp-float__button,
+  .whatsapp-float__button::after,
   .whatsapp-float__label {
+    animation: none;
     transition: none;
   }
 }

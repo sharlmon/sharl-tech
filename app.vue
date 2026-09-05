@@ -25,6 +25,7 @@ watch(() => route.fullPath, () => nextTick(armEntranceMotion))
 
 <template>
   <div class="site-frame">
+    <AppLoader />
     <div class="site-wave-field" aria-hidden="true">
       <span class="site-wave site-wave--1" />
       <span class="site-wave site-wave--2" />

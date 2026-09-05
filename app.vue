@@ -35,6 +35,7 @@ watch(() => route.fullPath, () => nextTick(armEntranceMotion))
     <div class="site-content">
       <NuxtPage />
     </div>
+    <WhatsAppFloat />
     <ProjectModal />
   </div>
 </template>

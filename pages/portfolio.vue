@@ -17,6 +17,7 @@ import {
   ServerCog,
   ShoppingBag,
   TreePalm,
+  Users,
 } from 'lucide-vue-next'
 
 definePageMeta({
@@ -175,6 +176,15 @@ const projects = [
   },
   {
     number: '07',
+    name: 'Jitume Creator Hub',
+    type: 'Creator marketplace platform',
+    icon: Users,
+    description: 'A digital marketplace connecting Kenyan creatives with clients, mentorship, learning resources and bookable studio spaces.',
+    tags: ['Nuxt 3', 'API integration', 'Authentication'],
+    url: 'https://marketplace.jitumedmf.co.ke/',
+  },
+  {
+    number: '08',
     name: 'Mic-Jasiri Productions',
     type: 'Production house website',
     icon: Film,
@@ -183,7 +193,7 @@ const projects = [
     url: 'https://sharlmon.github.io/micjasiri-website/',
   },
   {
-    number: '08',
+    number: '09',
     name: 'Jitume Logo Competition',
     type: 'Brand identity concept',
     icon: Palette,
@@ -192,7 +202,7 @@ const projects = [
     url: 'https://www.jitumedmf.co.ke/',
   },
   {
-    number: '09',
+    number: '10',
     name: 'The Terrace Kilifi',
     type: 'Arts & residency website',
     icon: TreePalm,
@@ -201,7 +211,7 @@ const projects = [
     url: 'https://terracekilifiweb.vercel.app/',
   },
   {
-    number: '10',
+    number: '11',
     name: 'Afrofilms',
     type: 'Film platform',
     icon: Clapperboard,
@@ -210,7 +220,7 @@ const projects = [
     url: 'https://sharlmon.github.io/afrofilms/',
   },
   {
-    number: '11',
+    number: '12',
     name: 'Irish Trading Enterprises',
     type: 'Construction company website',
     icon: Building2,

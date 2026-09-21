@@ -189,7 +189,7 @@ const projects = [
     icon: Palette,
     description: 'A visual identity proposal for the national Technopolis logo competition run through Jitume.',
     tags: ['Logo design', 'Identity system', 'Competition entry'],
-    url: null,
+    url: 'https://www.jitumedmf.co.ke/',
   },
   {
     number: '09',

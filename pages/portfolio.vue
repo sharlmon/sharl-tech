@@ -16,8 +16,10 @@ import {
   Rocket,
   ServerCog,
   ShoppingBag,
+  Sprout,
   TreePalm,
   Users,
+  Wallet,
 } from 'lucide-vue-next'
 
 definePageMeta({
@@ -52,6 +54,149 @@ useSeoMeta({
   twitterImageAlt: 'Sharlmon, Full-Stack Engineer and AI Systems Builder at SharlTech',
 })
 
+const stackGroups = [
+  {
+    label: 'Frontend',
+    icon: Code2,
+    tools: ['React', 'Next.js', 'Vue 3', 'Nuxt 3 & 4', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
+    label: 'Backend & data',
+    icon: ServerCog,
+    tools: ['Node.js', 'REST APIs', 'Medusa 2', 'Prisma ORM', 'Drizzle ORM', 'Supabase', 'PocketBase', 'PostgreSQL'],
+  },
+  {
+    label: 'AI & automation',
+    icon: Bot,
+    tools: ['AI/LLM integration', 'Multi-agent workflows', 'n8n', 'Webhooks', 'API-driven automation'],
+  },
+  {
+    label: 'Infrastructure',
+    icon: CloudCog,
+    tools: ['Git', 'GitHub Actions', 'Docker', 'Linux', 'Nginx', 'Plesk VPS', 'Vercel', 'GitHub Pages'],
+  },
+  {
+    label: 'Architecture',
+    icon: Layers3,
+    tools: ['Multi-tenant SaaS', 'RBAC', 'Payment integrations', 'Service workers', 'Responsive web systems'],
+  },
+]
+
+const projects = [
+  {
+    name: 'Kazi Smart',
+    type: 'AI hiring ecosystem',
+    icon: Bot,
+    description: 'AI talent marketplace and agency OS that turns client briefs and voice notes into scoped projects, talent matches and human-approved proposals.',
+    tags: ['Next.js', 'Prisma', 'Gemini AI'],
+    url: null,
+  },
+  {
+    name: 'Hodari Stores',
+    type: 'Multi-tenant commerce',
+    icon: ShoppingBag,
+    description: 'Kenyan commerce platform rebuilt on Medusa 2 and Nuxt 4, with server-validated carts and a WhatsApp-first checkout.',
+    tags: ['Medusa 2', 'Nuxt 4', 'PostgreSQL'],
+    url: null,
+  },
+  {
+    name: 'Propflow & FindYourKeja',
+    type: 'Dual real estate suite',
+    icon: Home,
+    description: 'Landlord operations and rental discovery split across focused services.',
+    tags: ['Microservices', 'B2B SaaS', 'Marketplace'],
+    url: null,
+  },
+  {
+    name: 'Chat2Post AI',
+    type: 'Media automation',
+    icon: MessageSquareMore,
+    description: 'Routes incoming video from messaging webhooks to storage and publishing APIs.',
+    tags: ['Webhooks', 'Cloud storage', 'Publishing APIs'],
+    url: null,
+  },
+  {
+    name: 'Rebound',
+    type: 'Offline-first PWA',
+    icon: Rocket,
+    description: 'Offline-first habit tracking powered by custom service workers.',
+    tags: ['PWA', 'Service workers', 'Offline-first'],
+    url: 'https://reboundnow-today.vercel.app',
+  },
+  {
+    name: 'Kilifi Creek Festival',
+    type: 'Film & arts festival platform',
+    icon: Clapperboard,
+    description: 'A vibrant festival platform for film screenings, creative programmes, submissions and visitor information along Kilifi Creek.',
+    tags: ['Festival platform', 'Responsive UI', 'Production deployment'],
+    url: 'https://kilificreekfestival.com/',
+  },
+  {
+    name: 'Jitume Creator Hub',
+    type: 'Creator marketplace platform',
+    icon: Users,
+    description: 'A digital marketplace connecting Kenyan creatives with clients, mentorship, learning resources and bookable studio spaces.',
+    tags: ['Nuxt 3', 'API integration', 'Authentication'],
+    url: 'https://marketplace.jitumedmf.co.ke/',
+  },
+  {
+    name: 'Weka',
+    type: 'Personal finance PWA',
+    icon: Wallet,
+    description: 'A budget tracker that splits your pay across needs, wants, savings and debt, tracks M-Pesa and bank balances, and syncs offline edits across devices.',
+    tags: ['Nuxt 4', 'Neon Postgres', 'Offline sync'],
+    url: 'https://budget-now-psi.vercel.app',
+  },
+  {
+    name: 'Fresca Premier Fresh',
+    type: 'Exporter website & brand collateral',
+    icon: Sprout,
+    description: 'A new website, digital business cards, A4 brochure and export packaging for a Kenyan fresh vegetable exporter.',
+    tags: ['Nuxt', 'Print design', 'Packaging'],
+    url: 'https://sharlmon.github.io/fresca-premier-fresh/',
+  },
+  {
+    name: 'Mic-Jasiri Productions',
+    type: 'Production house website',
+    icon: Film,
+    description: 'A cinematic company website presenting film, documentary, commercial and live-event work.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    url: 'https://sharlmon.github.io/micjasiri-website/',
+  },
+  {
+    name: 'Jitume Logo Competition',
+    type: 'Brand identity concept',
+    icon: Palette,
+    description: 'A visual identity proposal for the national Technopolis logo competition run through Jitume.',
+    tags: ['Logo design', 'Identity system', 'Competition entry'],
+    url: 'https://www.jitumedmf.co.ke/',
+  },
+  {
+    name: 'The Terrace Kilifi',
+    type: 'Arts & residency website',
+    icon: TreePalm,
+    description: 'A warm, image-led website for an independent artist residency on Kilifi Creek.',
+    tags: ['TypeScript', 'Responsive UI', 'Vercel'],
+    url: 'https://terracekilifiweb.vercel.app/',
+  },
+  {
+    name: 'Afrofilms',
+    type: 'Film platform',
+    icon: Clapperboard,
+    description: 'A focused entertainment experience for discovering African film and media.',
+    tags: ['JavaScript', 'Responsive UI', 'GitHub Pages'],
+    url: 'https://sharlmon.github.io/afrofilms/',
+  },
+  {
+    name: 'Irish Trading Enterprises',
+    type: 'Construction company website',
+    icon: Building2,
+    description: 'A multi-page corporate website for civil engineering and construction services in Kenya.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    url: 'https://sharlmon.github.io/IrishTradingSite/',
+  },
+]
+
 useHead({
   link: [{ rel: 'canonical', href: canonicalUrl }],
   script: [
@@ -83,152 +228,31 @@ useHead({
             '@type': 'Place',
             name: 'Westlands, Nairobi, Kenya',
           },
-          sameAs: ['https://www.linkedin.com/in/sharlmon-junior-701746281'],
+          sameAs: ['https://www.linkedin.com/in/sharlmon-junior-701746281', 'https://github.com/sharlmon'],
           knowsAbout: ['Full-stack software engineering', 'SaaS architecture', 'Artificial intelligence systems', 'Cloud infrastructure', 'E-commerce platforms'],
+        },
+        hasPart: {
+          '@type': 'ItemList',
+          '@id': `${canonicalUrl}#projects`,
+          name: 'Selected projects by Sharlmon and SharlTech',
+          itemListElement: projects.map((project, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+              '@type': 'CreativeWork',
+              name: project.name,
+              genre: project.type,
+              description: project.description,
+              keywords: project.tags.join(', '),
+              ...(project.url ? { url: project.url } : {}),
+              creator: { '@id': `${canonicalUrl}#sharlmon` },
+            },
+          })),
         },
       }),
     },
   ],
 })
-
-const stackGroups = [
-  {
-    label: 'Frontend',
-    icon: Code2,
-    tools: ['React', 'Next.js', 'Vue 3', 'Nuxt 3', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
-  },
-  {
-    label: 'Backend & data',
-    icon: ServerCog,
-    tools: ['Node.js', 'REST APIs', 'Prisma ORM', 'Supabase', 'PocketBase', 'PostgreSQL'],
-  },
-  {
-    label: 'AI & automation',
-    icon: Bot,
-    tools: ['AI/LLM integration', 'Multi-agent workflows', 'n8n', 'Webhooks', 'API-driven automation'],
-  },
-  {
-    label: 'Infrastructure',
-    icon: CloudCog,
-    tools: ['Git', 'GitHub Actions', 'Docker', 'Linux', 'Nginx', 'Plesk VPS', 'Vercel', 'GitHub Pages'],
-  },
-  {
-    label: 'Architecture',
-    icon: Layers3,
-    tools: ['Multi-tenant SaaS', 'RBAC', 'Payment integrations', 'Service workers', 'Responsive web systems'],
-  },
-]
-
-const projects = [
-  {
-    number: '01',
-    name: 'Kazi Smart',
-    type: 'AI hiring ecosystem',
-    icon: Bot,
-    description: 'Multi-agent job matching with role-based access and integrated transcription.',
-    tags: ['Next.js', 'Supabase', 'RBAC'],
-    url: null,
-  },
-  {
-    number: '02',
-    name: 'Hodari Stores',
-    type: 'Multi-tenant commerce',
-    icon: ShoppingBag,
-    description: 'Headless multi-tenant commerce with M-Pesa and custom retail workflows.',
-    tags: ['MedusaJS', 'M-Pesa', 'Multi-tenant'],
-    url: null,
-  },
-  {
-    number: '03',
-    name: 'Propflow & FindYourKeja',
-    type: 'Dual real estate suite',
-    icon: Home,
-    description: 'Landlord operations and rental discovery split across focused services.',
-    tags: ['Microservices', 'B2B SaaS', 'Marketplace'],
-    url: null,
-  },
-  {
-    number: '04',
-    name: 'Chat2Post AI',
-    type: 'Media automation',
-    icon: MessageSquareMore,
-    description: 'Routes incoming video from messaging webhooks to storage and publishing APIs.',
-    tags: ['Webhooks', 'Cloud storage', 'Publishing APIs'],
-    url: null,
-  },
-  {
-    number: '05',
-    name: 'Rebound',
-    type: 'Offline-first PWA',
-    icon: Rocket,
-    description: 'Offline-first habit tracking powered by custom service workers.',
-    tags: ['PWA', 'Service workers', 'Offline-first'],
-    url: 'https://reboundnow-today.vercel.app',
-  },
-  {
-    number: '06',
-    name: 'Kilifi Creek Festival',
-    type: 'Film & arts festival platform',
-    icon: Clapperboard,
-    description: 'A vibrant festival platform for film screenings, creative programmes, submissions and visitor information along Kilifi Creek.',
-    tags: ['Festival platform', 'Responsive UI', 'Production deployment'],
-    url: 'https://kilificreekfestival.com/',
-  },
-  {
-    number: '07',
-    name: 'Jitume Creator Hub',
-    type: 'Creator marketplace platform',
-    icon: Users,
-    description: 'A digital marketplace connecting Kenyan creatives with clients, mentorship, learning resources and bookable studio spaces.',
-    tags: ['Nuxt 3', 'API integration', 'Authentication'],
-    url: 'https://marketplace.jitumedmf.co.ke/',
-  },
-  {
-    number: '08',
-    name: 'Mic-Jasiri Productions',
-    type: 'Production house website',
-    icon: Film,
-    description: 'A cinematic company website presenting film, documentary, commercial and live-event work.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    url: 'https://sharlmon.github.io/micjasiri-website/',
-  },
-  {
-    number: '09',
-    name: 'Jitume Logo Competition',
-    type: 'Brand identity concept',
-    icon: Palette,
-    description: 'A visual identity proposal for the national Technopolis logo competition run through Jitume.',
-    tags: ['Logo design', 'Identity system', 'Competition entry'],
-    url: 'https://www.jitumedmf.co.ke/',
-  },
-  {
-    number: '10',
-    name: 'The Terrace Kilifi',
-    type: 'Arts & residency website',
-    icon: TreePalm,
-    description: 'A warm, image-led website for an independent artist residency on Kilifi Creek.',
-    tags: ['TypeScript', 'Responsive UI', 'Vercel'],
-    url: 'https://terracekilifiweb.vercel.app/',
-  },
-  {
-    number: '11',
-    name: 'Afrofilms',
-    type: 'Film platform',
-    icon: Clapperboard,
-    description: 'A focused entertainment experience for discovering African film and media.',
-    tags: ['JavaScript', 'Responsive UI', 'GitHub Pages'],
-    url: 'https://sharlmon.github.io/afrofilms/',
-  },
-  {
-    number: '12',
-    name: 'Irish Trading Enterprises',
-    type: 'Construction company website',
-    icon: Building2,
-    description: 'A multi-page corporate website for civil engineering and construction services in Kenya.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    url: 'https://sharlmon.github.io/IrishTradingSite/',
-  },
-]
 
 function scrollToPortfolioSection(path: string, hash: string) {
   const sectionId = hash === '#projects' || hash === '#stack'
@@ -313,7 +337,7 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
             <article v-for="(project, index) in projects" :key="project.name" class="project-card animate-fade-in-up" :style="{ animationDelay: `${index * 70}ms` }">
               <div class="project-card__top">
                 <span class="project-card__icon"><component :is="project.icon" :size="18" :stroke-width="1.8" /></span>
-                <span class="project-card__number">{{ project.number }}</span>
+                <span class="project-card__number">{{ String(index + 1).padStart(2, '0') }}</span>
               </div>
 
               <div class="project-card__body">

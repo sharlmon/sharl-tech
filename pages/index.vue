@@ -8,6 +8,33 @@ const canonicalUrl = `${siteUrl}/`
 const socialImage = `${siteUrl}/og-white.png`
 const description = 'SharlTech is a Nairobi technology company building custom web applications, e-commerce platforms, cloud infrastructure, SEO and AI automation.'
 
+const faqs = [
+  {
+    question: 'What does SharlTech do?',
+    answer: 'SharlTech is a Nairobi technology company that designs and builds custom web applications, e-commerce platforms, progressive web apps, cloud hosting and infrastructure, technical SEO and AI automation workflows.',
+  },
+  {
+    question: 'Where is SharlTech based?',
+    answer: 'SharlTech is based in Westlands, Nairobi, Kenya. It works with organisations across Kenya and with clients worldwide.',
+  },
+  {
+    question: 'Can SharlTech build an online store with M-Pesa payments?',
+    answer: 'Yes. SharlTech builds e-commerce platforms and storefronts for Kenyan businesses, including M-Pesa and other payment integrations, product catalogues and custom retail workflows.',
+  },
+  {
+    question: 'What technologies does SharlTech use?',
+    answer: 'SharlTech works with Nuxt, Vue, Next.js, React and TypeScript on the frontend; Node.js, PostgreSQL, Supabase and Prisma on the backend; and Docker, GitHub Actions, Vercel and Linux servers for hosting and deployment. AI work uses LLM integrations, multi-agent workflows and n8n automation.',
+  },
+  {
+    question: 'Who leads SharlTech?',
+    answer: 'SharlTech is led by Sharlmon, a full-stack software engineer and AI systems builder in Nairobi. Strategy, design, engineering and deployment are handled under one accountable process.',
+  },
+  {
+    question: 'How do I start a project with SharlTech?',
+    answer: 'Use the Start a project button on sharl-tech.co.ke to choose the services you need and send a short brief, which continues to a WhatsApp consultation. You can also email sharlmon19@gmail.com or call +254 707 575 397.',
+  },
+]
+
 useSeoMeta({
   title: 'SharlTech | Custom Software, Web Design & Cloud Hosting Kenya',
   description,
@@ -75,7 +102,7 @@ useHead({
               addressCountry: 'KE',
             },
             areaServed: [{ '@type': 'Country', name: 'Kenya' }, 'Worldwide'],
-            sameAs: ['https://www.linkedin.com/in/sharlmon-junior-701746281'],
+            sameAs: ['https://www.linkedin.com/in/sharlmon-junior-701746281', 'https://github.com/sharlmon'],
             knowsAbout: ['Custom software development', 'Web application development', 'Cloud hosting', 'E-commerce', 'Search engine optimization', 'Artificial intelligence automation'],
           },
           {
@@ -87,6 +114,15 @@ useHead({
             isPartOf: { '@id': `${siteUrl}/#website` },
             about: { '@id': `${siteUrl}/#organization` },
             inLanguage: 'en-KE',
+          },
+          {
+            '@type': 'FAQPage',
+            '@id': `${canonicalUrl}#faq`,
+            mainEntity: faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+            })),
           },
         ],
       }),
@@ -196,6 +232,23 @@ useHead({
         </div>
       </section>
 
+      <section id="faq" class="home-section home-faq" aria-labelledby="home-faq-heading">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-number">04 / Questions</p>
+            <h2 id="home-faq-heading">Common questions.</h2>
+          </div>
+          <p class="section-intro">Quick answers about SharlTech, what we build and how projects start.</p>
+        </div>
+
+        <div class="faq-list">
+          <details v-for="faq in faqs" :key="faq.question">
+            <summary><h3>{{ faq.question }}</h3><span aria-hidden="true">+</span></summary>
+            <p>{{ faq.answer }}</p>
+          </details>
+        </div>
+      </section>
+
       <section class="home-contact" aria-labelledby="home-contact-heading">
         <p class="section-number">Start a project</p>
         <h2 id="home-contact-heading">Tell us what you need.</h2>
@@ -209,7 +262,7 @@ useHead({
     <footer class="relative z-10 px-5 py-8 sm:px-8">
       <div class="mx-auto flex max-w-7xl flex-col gap-4 border-t border-zinc-200 pt-7 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
         <p>© {{ new Date().getFullYear() }} SharlTech</p>
-        <div class="flex gap-5 font-semibold"><a href="mailto:sharlmon19@gmail.com" class="transition hover:text-emerald-500">Email</a><a href="https://www.linkedin.com/in/sharlmon-junior-701746281" target="_blank" rel="noopener noreferrer" class="transition hover:text-emerald-500">LinkedIn</a></div>
+        <div class="flex gap-5 font-semibold"><a href="mailto:sharlmon19@gmail.com" class="transition hover:text-emerald-500">Email</a><a href="https://www.linkedin.com/in/sharlmon-junior-701746281" target="_blank" rel="noopener noreferrer" class="transition hover:text-emerald-500">LinkedIn</a><a href="https://github.com/sharlmon" target="_blank" rel="noopener noreferrer" class="transition hover:text-emerald-500">GitHub</a></div>
       </div>
     </footer>
   </div>
@@ -555,6 +608,50 @@ useHead({
 
 .home-about h2 { max-width: 11ch; }
 
+.faq-list {
+  margin-top: 4.5rem;
+  border-top: 1px solid #e4e4e7;
+}
+
+.faq-list details { border-bottom: 1px solid #e4e4e7; }
+
+.faq-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker { display: none; }
+
+.faq-list h3 {
+  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.faq-list summary span {
+  flex: 0 0 auto;
+  color: #a1a1aa;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.faq-list details[open] summary span { transform: rotate(45deg); }
+
+.faq-list summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.faq-list p {
+  max-width: 48rem;
+  padding-bottom: 1.6rem;
+  color: #52525b;
+  line-height: 1.65;
+}
+
 .home-contact {
   display: flex;
   width: min(calc(100% - 2rem), 80rem);
@@ -571,12 +668,15 @@ useHead({
 :global(.dark .section-number),
 :global(.dark .section-intro),
 :global(.dark .about-copy > p),
-:global(.dark .service-list p) {
+:global(.dark .service-list p),
+:global(.dark .faq-list p) {
   color: #a1a1aa;
 }
 
 :global(.dark .service-list),
 :global(.dark .service-list > div),
+:global(.dark .faq-list),
+:global(.dark .faq-list details),
 :global(.dark .home-contact) {
   border-color: #3f3f46;
 }
@@ -607,7 +707,8 @@ useHead({
   .home-section { padding-block: 5rem; }
   .home-section h2,
   .home-contact h2 { font-size: clamp(2.8rem, 14vw, 4.25rem); }
-  .service-list { margin-top: 3rem; }
+  .service-list,
+  .faq-list { margin-top: 3rem; }
   .home-work,
   .home-contact { width: calc(100% - 1rem); border-radius: 1.25rem; }
   .home-work { padding: 2.5rem 1rem; }
@@ -618,7 +719,8 @@ useHead({
 
 @media (prefers-reduced-motion: reduce) {
   .work-item,
-  .work-item__meta svg { transition: none; }
+  .work-item__meta svg,
+  .faq-list summary span { transition: none; }
 
   .work-item:hover { transform: none; }
 }

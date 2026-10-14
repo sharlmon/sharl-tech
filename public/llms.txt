@@ -1,0 +1,28 @@
+# SharlTech
+
+> SharlTech is an independent technology company in Westlands, Nairobi, Kenya, led by full-stack software engineer and AI systems builder Sharlmon. It designs and builds custom web applications, e-commerce platforms (including M-Pesa payment integrations), progressive web apps, cloud hosting and infrastructure, technical SEO and AI automation workflows for organisations in Kenya and worldwide.
+
+Contact: sharlmon19@gmail.com · +254 707 575 397 · WhatsApp via the "Start a project" button on https://sharl-tech.co.ke/
+
+## Pages
+
+- [Home](https://sharl-tech.co.ke/): Overview of SharlTech, core services, selected work and frequently asked questions.
+- [Services](https://sharl-tech.co.ke/services): Custom web applications, headless e-commerce, cloud hosting and infrastructure, SEO optimisation, progressive web apps and AI automation workflows.
+- [About](https://sharl-tech.co.ke/about): How SharlTech works, its principles and its delivery process.
+- [Portfolio](https://sharl-tech.co.ke/portfolio): Sharlmon's background, technology stack and selected projects.
+
+## Selected projects
+
+- Kazi Smart: AI talent marketplace and agency operating system (Next.js, Prisma, Gemini AI).
+- Hodari Stores: Kenyan commerce platform on Medusa 2 and Nuxt 4 with WhatsApp-first checkout.
+- Propflow & FindYourKeja: property management SaaS and rental discovery marketplace.
+- Weka: personal budget tracker PWA with offline sync (https://budget-now-psi.vercel.app).
+- Fresca Premier Fresh: website, business cards, brochure and packaging for a Kenyan vegetable exporter (https://sharlmon.github.io/fresca-premier-fresh/).
+- Kilifi Creek Festival: film and arts festival platform (https://kilificreekfestival.com/).
+- Jitume Creator Hub: marketplace connecting Kenyan creatives with clients and studio spaces (https://marketplace.jitumedmf.co.ke/).
+- Rebound: offline-first habit tracking PWA (https://reboundnow-today.vercel.app).
+
+## Profiles
+
+- [LinkedIn](https://www.linkedin.com/in/sharlmon-junior-701746281)
+- [GitHub](https://github.com/sharlmon)

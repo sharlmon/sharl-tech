@@ -4,17 +4,22 @@ import {
   Bot,
   Building2,
   Clapperboard,
+  ClipboardList,
   CloudCog,
   Code2,
   ExternalLink,
   Film,
+  Github,
+  Globe,
   Home,
   Layers3,
+  Leaf,
   MapPin,
   MessageSquareMore,
   Palette,
   Rocket,
   ServerCog,
+  ShieldCheck,
   ShoppingBag,
   Sprout,
   TreePalm,
@@ -84,6 +89,34 @@ const stackGroups = [
 
 const projects = [
   {
+    name: 'Seico',
+    type: 'Server security product',
+    kind: 'system',
+    icon: ShieldCheck,
+    description: 'One-command security for small Linux servers: automatic attack blocking and regular checks, with plain-language explanations of what happened, why it matters and what to do. In early access.',
+    tags: ['Wazuh', 'Python', 'AI summaries'],
+    url: 'https://seico.asudi.tech/',
+  },
+  {
+    name: 'ASUDI Digital Services',
+    type: 'Company website',
+    kind: 'website',
+    icon: Globe,
+    description: 'The company site for an East African studio building AI automation, cloud platforms and secure digital systems for clinics, schools, SACCOs and growing businesses.',
+    tags: ['Nuxt 4', 'Nitro', 'VPS'],
+    url: 'https://asudi.tech/',
+  },
+  {
+    name: 'ASUDI Planner',
+    type: 'Public activity planner',
+    kind: 'system',
+    icon: ClipboardList,
+    description: 'An open planner that lets anyone see what the company is working on and what is still to do, organised in weekly milestones with no login needed.',
+    tags: ['GitHub Issues', 'Milestones', 'Automation'],
+    url: null,
+    repos: [{ label: 'Planner', url: 'https://github.com/sharlmon/asudi-planner' }],
+  },
+  {
     name: 'Kazi Smart',
     type: 'AI hiring ecosystem',
     kind: 'system',
@@ -100,6 +133,7 @@ const projects = [
     description: 'Kenyan commerce platform rebuilt on Medusa 2 and Nuxt 4, with server-validated carts and a WhatsApp-first checkout.',
     tags: ['Medusa 2', 'Nuxt 4', 'PostgreSQL'],
     url: null,
+    repos: [{ label: 'Storefront', url: 'https://github.com/sharlmon/NewUpdatedHodari' }],
   },
   {
     name: 'Propflow & FindYourKeja',
@@ -110,6 +144,10 @@ const projects = [
     description: 'Landlord operations and rental discovery split across focused services.',
     tags: ['Microservices', 'B2B SaaS', 'Marketplace'],
     url: null,
+    repos: [
+      { label: 'Propflow', url: 'https://github.com/sharlmon/propflow' },
+      { label: 'FindYourKeja', url: 'https://github.com/sharlmon/findyourkeja' },
+    ],
   },
   {
     name: 'Chat2Post AI',
@@ -164,6 +202,15 @@ const projects = [
     description: 'A new website, digital business cards, A4 brochure and export packaging for a Kenyan fresh vegetable exporter.',
     tags: ['Nuxt', 'Print design', 'Packaging'],
     url: 'https://sharlmon.github.io/fresca-premier-fresh/',
+  },
+  {
+    name: 'Premier Veg',
+    type: 'Exporter website',
+    kind: 'website',
+    icon: Leaf,
+    description: 'A redesign of the exporter’s WordPress site: year-round fresh vegetables, fruit and herbs from Kenya to Europe, with product pages, spec sheets and an enquiry flow.',
+    tags: ['Nuxt 3', 'GitHub Pages', 'SEO'],
+    url: 'https://premierveg.com/',
   },
   {
     name: 'Mic-Jasiri Productions',
@@ -388,6 +435,21 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
                 View live site
                 <ExternalLink :size="13" aria-hidden="true" />
               </a>
+
+              <div v-else-if="project.repos?.length" class="project-card__links">
+                <a
+                  v-for="repo in project.repos"
+                  :key="repo.url"
+                  :href="repo.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  :aria-label="`View ${repo.label} on GitHub (opens in a new tab)`"
+                >
+                  <Github :size="13" aria-hidden="true" />
+                  {{ project.repos.length > 1 ? `${repo.label} on GitHub` : 'View on GitHub' }}
+                </a>
+              </div>
             </article>
           </div>
         </div>
@@ -525,6 +587,17 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
   font-size: 0.72rem;
   font-weight: 750;
   transition: border-color 180ms ease, color 180ms ease;
+}
+
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin-top: 0.9rem;
+}
+
+.project-card__links .project-card__link {
+  margin-top: 0;
 }
 
 .project-card__link:hover {

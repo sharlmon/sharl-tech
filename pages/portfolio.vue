@@ -86,6 +86,7 @@ const projects = [
   {
     name: 'Kazi Smart',
     type: 'AI hiring ecosystem',
+    kind: 'system',
     icon: Bot,
     description: 'AI talent marketplace and agency OS that turns client briefs and voice notes into scoped projects, talent matches and human-approved proposals.',
     tags: ['Next.js', 'Prisma', 'Gemini AI'],
@@ -94,6 +95,7 @@ const projects = [
   {
     name: 'Hodari Stores',
     type: 'Multi-tenant commerce',
+    kind: 'system',
     icon: ShoppingBag,
     description: 'Kenyan commerce platform rebuilt on Medusa 2 and Nuxt 4, with server-validated carts and a WhatsApp-first checkout.',
     tags: ['Medusa 2', 'Nuxt 4', 'PostgreSQL'],
@@ -102,6 +104,8 @@ const projects = [
   {
     name: 'Propflow & FindYourKeja',
     type: 'Dual real estate suite',
+    kind: 'system',
+    count: 2,
     icon: Home,
     description: 'Landlord operations and rental discovery split across focused services.',
     tags: ['Microservices', 'B2B SaaS', 'Marketplace'],
@@ -110,6 +114,7 @@ const projects = [
   {
     name: 'Chat2Post AI',
     type: 'Media automation',
+    kind: 'system',
     icon: MessageSquareMore,
     description: 'Routes incoming video from messaging webhooks to storage and publishing APIs.',
     tags: ['Webhooks', 'Cloud storage', 'Publishing APIs'],
@@ -118,6 +123,7 @@ const projects = [
   {
     name: 'Rebound',
     type: 'Offline-first PWA',
+    kind: 'system',
     icon: Rocket,
     description: 'Offline-first habit tracking powered by custom service workers.',
     tags: ['PWA', 'Service workers', 'Offline-first'],
@@ -126,6 +132,7 @@ const projects = [
   {
     name: 'Kilifi Creek Festival',
     type: 'Film & arts festival platform',
+    kind: 'website',
     icon: Clapperboard,
     description: 'A vibrant festival platform for film screenings, creative programmes, submissions and visitor information along Kilifi Creek.',
     tags: ['Festival platform', 'Responsive UI', 'Production deployment'],
@@ -134,6 +141,7 @@ const projects = [
   {
     name: 'Jitume Creator Hub',
     type: 'Creator marketplace platform',
+    kind: 'system',
     icon: Users,
     description: 'A digital marketplace connecting Kenyan creatives with clients, mentorship, learning resources and bookable studio spaces.',
     tags: ['Nuxt 3', 'API integration', 'Authentication'],
@@ -142,6 +150,7 @@ const projects = [
   {
     name: 'Weka',
     type: 'Personal finance PWA',
+    kind: 'system',
     icon: Wallet,
     description: 'A budget tracker that splits your pay across needs, wants, savings and debt, tracks M-Pesa and bank balances, and syncs offline edits across devices.',
     tags: ['Nuxt 4', 'Neon Postgres', 'Offline sync'],
@@ -150,6 +159,7 @@ const projects = [
   {
     name: 'Fresca Premier Fresh',
     type: 'Exporter website & brand collateral',
+    kind: 'website',
     icon: Sprout,
     description: 'A new website, digital business cards, A4 brochure and export packaging for a Kenyan fresh vegetable exporter.',
     tags: ['Nuxt', 'Print design', 'Packaging'],
@@ -158,6 +168,7 @@ const projects = [
   {
     name: 'Mic-Jasiri Productions',
     type: 'Production house website',
+    kind: 'website',
     icon: Film,
     description: 'A cinematic company website presenting film, documentary, commercial and live-event work.',
     tags: ['HTML', 'CSS', 'JavaScript'],
@@ -166,6 +177,7 @@ const projects = [
   {
     name: 'Jitume Logo Competition',
     type: 'Brand identity concept',
+    kind: 'identity',
     icon: Palette,
     description: 'A visual identity proposal for the national Technopolis logo competition run through Jitume.',
     tags: ['Logo design', 'Identity system', 'Competition entry'],
@@ -174,6 +186,7 @@ const projects = [
   {
     name: 'The Terrace Kilifi',
     type: 'Arts & residency website',
+    kind: 'website',
     icon: TreePalm,
     description: 'A warm, image-led website for an independent artist residency on Kilifi Creek.',
     tags: ['TypeScript', 'Responsive UI', 'Vercel'],
@@ -182,6 +195,7 @@ const projects = [
   {
     name: 'Afrofilms',
     type: 'Film platform',
+    kind: 'website',
     icon: Clapperboard,
     description: 'A focused entertainment experience for discovering African film and media.',
     tags: ['JavaScript', 'Responsive UI', 'GitHub Pages'],
@@ -190,11 +204,24 @@ const projects = [
   {
     name: 'Irish Trading Enterprises',
     type: 'Construction company website',
+    kind: 'website',
     icon: Building2,
     description: 'A multi-page corporate website for civil engineering and construction services in Kenya.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     url: 'https://sharlmon.github.io/IrishTradingSite/',
   },
+]
+
+// Counts shown in the hero. Tag each project with kind: 'system' | 'website' | 'identity'
+// (and count: 2 when one card covers two builds) and these update on their own.
+const countBuilds = (kind: string) => projects.filter(project => project.kind === kind).reduce((total, project) => total + (project.count ?? 1), 0)
+const systemsBuilt = countBuilds('system')
+const websitesBuilt = countBuilds('website')
+const heroFacts = [
+  { value: 'Full-Stack', label: 'Engineering' },
+  { value: String(systemsBuilt), label: 'Systems built' },
+  { value: String(websitesBuilt), label: 'Websites launched' },
+  { value: 'Nairobi', label: 'Based' },
 ]
 
 useHead({
@@ -297,8 +324,8 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
           <NuxtLink to="/portfolio#stack" class="button-glass">View technology stack <Layers3 :size="17" /></NuxtLink>
         </div>
 
-        <div class="glass-panel mt-16 grid w-full max-w-4xl animate-fade-in-up grid-cols-1 divide-y divide-zinc-200/70 overflow-hidden rounded-3xl [animation-delay:400ms] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          <div v-for="fact in [{ value: 'Full-Stack', label: 'Engineering' }, { value: 'AI-Native', label: 'Systems' }, { value: 'Nairobi', label: 'Based' }]" :key="fact.label" class="px-6 py-5">
+        <div class="glass-panel mt-16 grid w-full max-w-4xl animate-fade-in-up grid-cols-2 divide-y divide-zinc-200/70 overflow-hidden rounded-3xl [animation-delay:400ms] sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+          <div v-for="fact in heroFacts" :key="fact.label" class="px-6 py-5">
             <p class="text-xl font-extrabold tracking-tight">{{ fact.value }}</p><p class="mt-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">{{ fact.label }}</p>
           </div>
         </div>
@@ -330,7 +357,7 @@ watch(() => route.fullPath, () => scrollToPortfolioSection(route.path, route.has
         <div class="mx-auto max-w-7xl">
           <div class="lg:flex lg:items-end lg:justify-between">
             <div><p class="section-label">Featured projects</p><h2 class="max-w-4xl text-balance text-4xl font-extrabold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">Systems built around hard problems.</h2></div>
-            <p class="mt-6 max-w-md leading-relaxed text-zinc-600 lg:mt-0">Selected work spanning software products, commercial websites, visual identity and digital infrastructure.</p>
+            <p class="mt-6 max-w-md leading-relaxed text-zinc-600 lg:mt-0">{{ systemsBuilt }} systems and {{ websitesBuilt }} websites, plus visual identity work and digital infrastructure. A selection of what has shipped.</p>
           </div>
 
           <div class="project-grid">

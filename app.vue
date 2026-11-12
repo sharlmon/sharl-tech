@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
+// The chess portfolio has its own full-bleed look, so it hides the shared wave background.
+const ownBackground = computed(() => route.path.startsWith('/chess'))
 
 function armEntranceMotion() {
   const animated = Array.from(document.querySelectorAll<HTMLElement>('.appear'))
@@ -26,7 +28,7 @@ watch(() => route.fullPath, () => nextTick(armEntranceMotion))
 <template>
   <div class="site-frame">
     <AppLoader />
-    <div class="site-wave-field" aria-hidden="true">
+    <div v-if="!ownBackground" class="site-wave-field" aria-hidden="true">
       <span class="site-wave site-wave--1" />
       <span class="site-wave site-wave--2" />
       <span class="site-wave site-wave--3" />

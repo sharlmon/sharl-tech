@@ -5,14 +5,15 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
 <template>
   <div class="whatsapp-float">
     <span id="whatsapp-float-label" class="whatsapp-float__label" role="tooltip">
-      Let’s talk on WhatsApp
+      <span class="whatsapp-float__dot" aria-hidden="true" />
+      Chat on WhatsApp
     </span>
     <a
       :href="whatsappUrl"
       class="whatsapp-float__button"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Let’s talk on WhatsApp (opens in a new tab)"
+      aria-label="Chat on WhatsApp (opens in a new tab)"
       aria-describedby="whatsapp-float-label"
     >
       <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -26,6 +27,7 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
 </template>
 
 <style scoped>
+/* WhatsApp green + white glyph, black ring and label, a pulsing halo and a repeating bounce. */
 .whatsapp-float {
   position: fixed;
   right: max(1rem, env(safe-area-inset-right));
@@ -33,82 +35,78 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
   z-index: 40;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  animation: whatsapp-attention 5.5s ease-in-out 1.5s infinite;
+  gap: 0.75rem;
+  animation: whatsapp-bounce 2.8s ease-in-out 1s infinite;
 }
 
 .whatsapp-float__button {
   position: relative;
   display: grid;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.9rem;
+  height: 3.9rem;
   flex: 0 0 auto;
   place-items: center;
-  border: 1px solid rgba(24, 24, 27, 0.2);
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.88);
-  color: #18181b;
-  box-shadow: 0 12px 36px rgba(9, 9, 11, 0.14);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+  border: 3px solid #09090b;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55), 0 3px 0 #09090b;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
-.whatsapp-float__button::after {
+.whatsapp-float__button::before {
   content: '';
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 0.42rem;
-  height: 0.42rem;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  inset: -3px;
+  z-index: -1;
   border-radius: 50%;
-  background: #10b981;
-  animation: whatsapp-status-pulse 2.4s ease-out infinite;
+  background: #25d366;
+  opacity: 0.55;
+  animation: whatsapp-halo 2s ease-out infinite;
 }
 
 .whatsapp-float__button svg {
-  width: 1.65rem;
-  height: 1.65rem;
+  width: 2.05rem;
+  height: 2.05rem;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25));
 }
 
 .whatsapp-float__button:hover {
-  transform: translateY(-3px);
-  border-color: #18181b;
-  background: #18181b;
-  color: #fff;
-  box-shadow: 0 18px 44px rgba(9, 9, 11, 0.22);
+  transform: scale(1.08);
+  border-color: #25d366;
+  background: #09090b;
+  color: #25d366;
 }
 
 .whatsapp-float__button:focus-visible {
-  outline: 2px solid #18181b;
-  outline-offset: 4px;
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #09090b;
 }
 
 .whatsapp-float__label {
-  padding: 0.68rem 0.85rem;
-  border: 1px solid rgba(24, 24, 27, 0.16);
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.92);
-  color: #18181b;
-  box-shadow: 0 10px 30px rgba(9, 9, 11, 0.12);
-  font-size: 0.76rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.72rem 1rem;
+  border: 2px solid #25d366;
+  border-radius: 999px;
+  background: #09090b;
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(9, 9, 11, 0.35);
+  font-size: 0.8rem;
+  font-weight: 800;
   line-height: 1;
   white-space: nowrap;
-  opacity: 0;
   pointer-events: none;
-  transform: translateX(0.45rem) scale(0.97);
-  transform-origin: right center;
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  transition: opacity 160ms ease, transform 160ms ease;
 }
 
-.whatsapp-float:hover .whatsapp-float__label,
-.whatsapp-float:focus-within .whatsapp-float__label {
-  opacity: 1;
-  transform: translateX(0) scale(1);
+.whatsapp-float__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #25d366;
+  animation: whatsapp-dot 1.6s ease-in-out infinite;
 }
 
 .whatsapp-float:hover,
@@ -116,41 +114,48 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
   animation-play-state: paused;
 }
 
-@keyframes whatsapp-attention {
-  0%, 76%, 100% { transform: translateY(0); }
-  80% { transform: translateY(-0.42rem); }
-  84% { transform: translateY(0); }
-  88% { transform: translateY(-0.2rem); }
-  92% { transform: translateY(0); }
+@keyframes whatsapp-bounce {
+  0%, 52%, 100% { transform: translateY(0); }
+  10% { transform: translateY(-0.95rem); }
+  20% { transform: translateY(0); }
+  28% { transform: translateY(-0.5rem); }
+  36% { transform: translateY(0); }
+  42% { transform: translateY(-0.2rem); }
+  48% { transform: translateY(0); }
 }
 
-@keyframes whatsapp-status-pulse {
-  0%, 55%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-  15% { box-shadow: 0 0 0 0.32rem rgba(16, 185, 129, 0.18); }
+@keyframes whatsapp-halo {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.75); opacity: 0; }
 }
 
+@keyframes whatsapp-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.7); }
+}
+
+/* On dark pages the black ring would vanish, so use white. */
 :global(.dark .whatsapp-float__button) {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(24, 24, 27, 0.9);
-  color: #fafafa;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.38);
+  border-color: #ffffff;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5), 0 3px 0 #ffffff;
 }
-
-:global(.dark .whatsapp-float__button::after) { border-color: #18181b; }
 
 :global(.dark .whatsapp-float__button:hover) {
-  border-color: #fafafa;
-  background: #fafafa;
-  color: #18181b;
+  border-color: #25d366;
+  background: #09090b;
+  color: #25d366;
 }
 
-:global(.dark .whatsapp-float__button:focus-visible) { outline-color: #fafafa; }
-
 :global(.dark .whatsapp-float__label) {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(24, 24, 27, 0.94);
-  color: #fafafa;
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.42);
+  border-color: #25d366;
+  background: #09090b;
+  color: #ffffff;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+}
+
+:global(.dark .whatsapp-float__button:focus-visible) {
+  outline-color: #25d366;
+  box-shadow: 0 0 0 6px #ffffff;
 }
 
 @media (max-width: 640px) {
@@ -159,25 +164,37 @@ const whatsappUrl = 'https://wa.me/254707575397?text=Hi%20Sharlmon%2C%20I%27d%20
     bottom: max(0.75rem, env(safe-area-inset-bottom));
   }
 
+  /* Keep the screen clear on phones: the label only shows when the button is focused. */
+  .whatsapp-float__label {
+    display: none;
+  }
+
+  .whatsapp-float:focus-within .whatsapp-float__label {
+    display: inline-flex;
+  }
+
   .whatsapp-float__button {
-    width: 3.2rem;
-    height: 3.2rem;
-    border-radius: 0.9rem;
+    width: 3.6rem;
+    height: 3.6rem;
   }
 
   .whatsapp-float__button svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.9rem;
+    height: 1.9rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-float,
   .whatsapp-float__button,
-  .whatsapp-float__button::after,
-  .whatsapp-float__label {
+  .whatsapp-float__button::before,
+  .whatsapp-float__dot {
     animation: none;
     transition: none;
+  }
+
+  .whatsapp-float__button::before {
+    display: none;
   }
 }
 </style>
